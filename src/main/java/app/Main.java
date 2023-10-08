@@ -3,15 +3,10 @@ package app;
 import controllers.LoginController;
 import controllers.MainScreenController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.net.URL;
-import java.util.Objects;
 
 public class Main extends Application {
 
