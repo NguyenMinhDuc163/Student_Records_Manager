@@ -1,0 +1,8 @@
+.root{
+    -fx-background-image: url("../images/backgroundMainLefft.jpg");
+    -fx-background-size: cover;
+}
+.leftPaner{
+    -fx-background-image: url("../images/anhtruong.jpg");
+    -fx-background-size: cover;
+}
