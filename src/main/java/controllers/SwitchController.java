@@ -15,10 +15,34 @@ public class SwitchController {
     private Scene scene;
     private Parent root;
 
-    public void switchToScene1(ActionEvent event) throws IOException {
+    public void switchToSceneMain(ActionEvent event) throws IOException {
         // set scene o controller
         MainScreenController screenController = new MainScreenController();
         scene = screenController.setScene();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToSceneLogin(ActionEvent event) throws IOException {
+        // set scene o controller
+        LoginController loginController = new LoginController();
+        scene = loginController.setScene();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToSceneRegister(ActionEvent event) throws IOException {
+        // set scene o controller
+        RegisterController registerConntroller = new RegisterController();
+        scene = registerConntroller.setScene();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToSceneForgotPassWord(ActionEvent event) throws IOException {
+        ForgotPassController forgotPassController = new ForgotPassController();
+        scene = forgotPassController.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
