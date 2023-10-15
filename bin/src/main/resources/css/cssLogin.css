@@ -1,0 +1,50 @@
+.root{
+    -fx-background-image: url("../images/background.jpg");
+}
+/* JavaFX CSS */
+#loginButton {
+    -fx-text-fill: white;
+    -fx-padding: 15px 25px;
+    -fx-background-color: #38D2D2, #38D2D2; /* Gradient Background */
+    -fx-background-radius: 14px;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-border-radius: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 2, 19, 31, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.6), 0, 1, 5, 0) inset,
+    dropshadow(gaussian, rgba(0, 0, 0, 0.3), 0, -8, 36, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.6), 0, 1, 1, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.3), 0, 3, 9, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.25), -3, -3, 9, 0) inset;
+    -fx-user-select: none;
+    -fx-touch-action: manipulation;
+}
+
+#loginButton:hover {
+    -fx-background-color: #38D2D2, #38D2D2; /* Gradient Background */
+    -fx-background-radius: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 2, 19, 31, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.6), 0, 1, 5, 0) inset,
+    dropshadow(gaussian, rgba(0, 0, 0, 0.3), 0, -8, 36, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.6), 0, 1, 1, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.3), 0, 3, 9, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.25), -3, -3, 9, 0) inset;
+}
+
+#loginButton:pressed {
+    -fx-background-color: #38D2D2, #38D2D2; /* Gradient Background */
+    -fx-background-radius: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 2, 19, 31, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.6), 0, 1, 5, 0) inset,
+    dropshadow(gaussian, rgba(0, 0, 0, 0.3), 0, -8, 36, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.6), 0, 1, 1, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.3), 0, 3, 9, 0) inset,
+    dropshadow(gaussian, rgba(255, 255, 255, 0.25), -3, -3, 9, 0) inset;
+}
+
+#UserLogin{
+
+}
+

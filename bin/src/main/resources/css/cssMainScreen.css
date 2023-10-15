@@ -1,0 +1,23 @@
+.titleMain{
+        -fx-font-size: 20px;
+        -fx-font-weight: bold;
+        -fx-background-color: #f0f0f0;
+}
+/* styles.css */
+.main-pane-left {
+        -fx-background-image: url("../images/backgroundMainLefft.jpg");
+        -fx-background-size: cover;
+        -fx-background-repeat: no-repeat;
+        -fx-background-position: center;
+}
+.main-pane-right {
+        -fx-background-image: url("../images/backgroundMainRight.jpg");
+        -fx-background-size: cover;
+        -fx-background-repeat: no-repeat;
+        -fx-background-position: center;
+}
+
+.tab-anchor-pane {
+        -fx-background-color: #C6E2FF;
+}
+
