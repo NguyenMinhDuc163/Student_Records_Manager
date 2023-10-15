@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="564.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterConntroller">
+   <children>
+      <Label layoutX="491.0" layoutY="41.0" text="Register">
+         <font>
+            <Font size="44.0" />
+         </font>
+      </Label>
+      <Label layoutX="407.0" layoutY="115.0" prefHeight="21.0" prefWidth="303.0" text="Don't have an account? Create your account." />
+      <Label layoutX="403.0" layoutY="143.0" text=" it takes less than a minute" />
+      <TextField layoutX="445.0" layoutY="194.0" prefHeight="39.0" prefWidth="339.0" promptText="Name" />
+      <TextField layoutX="445.0" layoutY="263.0" prefHeight="39.0" prefWidth="339.0" promptText="UserName" />
+      <TextField layoutX="445.0" layoutY="332.0" prefHeight="39.0" prefWidth="339.0" promptText="PassWord" />
+      <TextField layoutX="445.0" layoutY="399.0" prefHeight="39.0" prefWidth="339.0" promptText="Confirm Password" />
+      <Button layoutX="676.0" layoutY="458.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="98.0" text="Submit" />
+      <AnchorPane layoutY="-2.0" prefHeight="564.0" prefWidth="317.0" />
+   </children>
+</AnchorPane>

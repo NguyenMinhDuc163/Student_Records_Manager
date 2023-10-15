@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="968.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="main-pane-left" stylesheets="@../css/cssMainScreen.css">
+         <children>
+            <MenuButton layoutX="26.0" layoutY="144.0" mnemonicParsing="false" text="MenuButton">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <MenuButton layoutX="26.0" layoutY="211.0" mnemonicParsing="false" text="MenuButton">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <MenuButton layoutX="26.0" layoutY="275.0" mnemonicParsing="false" text="MenuButton">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <MenuButton layoutX="26.0" layoutY="332.0" mnemonicParsing="false" text="MenuButton">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <ImageView fitHeight="77.0" fitWidth="139.0" layoutX="42.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="48.0">
+               <image>
+                  <Image url="@../images/Logo_PTIT.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="id1" layoutX="32.0" layoutY="14.0" styleClass="titleMain" text="Dashboard" textAlignment="CENTER" AnchorPane.bottomAnchor="571.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="main-pane-right">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="61.0" layoutY="30.0" prefHeight="24.0" prefWidth="273.0" styleClass="titleMain" text="Student Records Manager" />
+            <TabPane layoutY="83.0" prefHeight="315.0" prefWidth="416.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="83.0">
+              <tabs>
+                <Tab styleClass="tab-anchor-pane" text="Thời Khoá biểu">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="493.0" prefWidth="665.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="134.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="257.0" AnchorPane.topAnchor="63.0">
+                                 <image>
+                                    <Image url="@../images/Logo_PTIT.png" />
+                                 </image>
+                              </ImageView>
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                <Tab styleClass="tab-anchor-pane" text="Kết quả học tập">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="187.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="221.0" AnchorPane.rightAnchor="303.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@../images/Logo_PTIT.png" />
+                                 </image>
+                              </ImageView>
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
