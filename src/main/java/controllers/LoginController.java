@@ -1,6 +1,8 @@
 package controllers;
 
+import dao.GetDataBase;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -23,6 +26,8 @@ public class LoginController implements Initializable {
     private TextField passWord;
     @FXML
     private Button loginButton;
+    @FXML
+    private Button register;
     private LoginHandler loginHandler = new LoginHandler();
     public Scene setScene() throws IOException {
         URL url = new File("src/main/resources/view/loginScreen.fxml").toURI().toURL();
@@ -36,17 +41,28 @@ public class LoginController implements Initializable {
     public void bttLogIn (ActionEvent event) throws IOException {
         String username = userName.getText();
         String password = passWord.getText();
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Login");
         alert.setHeaderText("Login Notification");
         if (loginHandler.isValidLogin(username, password)) {
             alert.setContentText("Logged in successfully");
             SwitchController switchController = new SwitchController();
-            switchController.switchToScene1(event);
+            switchController.switchToSceneMain(event);
         } else {
             alert.setContentText("Account or password is incorrect");
         }
         alert.show();
+    }
+
+    public void bttRegister(ActionEvent event) throws IOException {
+        SwitchController switchController = new SwitchController();
+        switchController.switchToSceneRegister(event);
+
+    }
+    public void setForgotPass(ActionEvent event) throws IOException {
+        SwitchController switchController = new SwitchController();
+        switchController.switchToSceneForgotPassWord(event);
     }
 
     @Override
