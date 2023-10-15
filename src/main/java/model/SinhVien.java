@@ -2,11 +2,14 @@ package model;
 
 public class SinhVien {
 	private String maSV;
-	private String tenSinhVien;
-	private float Diem;
-	public SinhVien(String maSV, String tenSinhVien, float diem) {
+	private String tenSinhVien, hoLot,maLop;
+	private DiemSo Diem;
+	public SinhVien(String maSV, String tenSinhVien, String hoLot, String maLop, DiemSo diem) {
+		super();
 		this.maSV = maSV;
 		this.tenSinhVien = tenSinhVien;
+		this.hoLot = hoLot;
+		this.maLop = maLop;
 		Diem = diem;
 	}
 	public String getMaSV() {
@@ -15,7 +18,13 @@ public class SinhVien {
 	public String getTenSinhVien() {
 		return tenSinhVien;
 	}
-	public float getDiem() {
+	public String getHoLot() {
+		return hoLot;
+	}
+	public String getMaLop() {
+		return maLop;
+	}
+	public DiemSo getDiem() {
 		return Diem;
 	}
 	public void setMaSV(String maSV) {
@@ -24,11 +33,15 @@ public class SinhVien {
 	public void setTenSinhVien(String tenSinhVien) {
 		this.tenSinhVien = tenSinhVien;
 	}
-	public void setDiem(float diem) {
-		this.Diem = diem;
+	public void setHoLot(String hoLot) {
+		this.hoLot = hoLot;
 	}
-	
-	
+	public void setMaLop(String maLop) {
+		this.maLop = maLop;
+	}
+	public void setDiem(DiemSo diem) {
+		Diem = diem;
+	}
 	
 	
 	
