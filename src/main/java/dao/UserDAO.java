@@ -13,7 +13,7 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public int insert(User user) {
-        String url = "INSERT INTO user (userName, passWord, studentID)VALUES(?, ?, ?)";
+        String url = "INSERT INTO users (userName, passWord, studentID)VALUES(?, ?, ?)";
         // try-with-resources
         try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(url)) {
             stmt.setString(1,user.getUserName());
@@ -30,7 +30,7 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public int update(User user) {
-        String url = "UPDATE user SET userName = ?, passWord = ? WHERE studentID = ?";
+        String url = "UPDATE users SET userName = ?, passWord = ? WHERE studentID = ?";
         // try-with-resources
         try (Connection con = JDBCUtil.getConnection();
              PreparedStatement stmt = con.prepareStatement(url)) {
@@ -48,7 +48,7 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public int delete(User user) {
-        String url = "DELETE FROM user WHERE studentID = ?";
+        String url = "DELETE FROM users WHERE studentID = ?";
         // try-with-resources
         try (Connection con = JDBCUtil.getConnection();
              PreparedStatement stmt = con.prepareStatement(url)) {
@@ -64,7 +64,7 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public ArrayList<User> selectAll() {
-        String sql = "SELECT * FROM user;";
+        String sql = "SELECT * FROM users;";
         // try-with-resource
         ArrayList<User> users = new ArrayList<>();
         try (Connection con = JDBCUtil.getConnection();
@@ -83,7 +83,7 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public ArrayList<User> selectByCondition(String condition) {
-        String sql = "SELECT * FROM user WHERE ?;";
+        String sql = "SELECT * FROM users WHERE ?;";
         // try-with-resource
         ArrayList<User> users = new ArrayList<>();
         try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -102,7 +102,7 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public User selectByID(String studentID) {
-        String sql = "SELECT * FROM user WHERE studentID = ?";
+        String sql = "SELECT * FROM users WHERE studentID = ?";
         User user = null;
         // try-with-resource
         try (Connection con = JDBCUtil.getConnection();
@@ -119,7 +119,7 @@ public class UserDAO implements DAOInterface<User>{
         return user;
     }
     public User selectByUserNamePassWord(String userName, String passWord) {
-        String sql = "SELECT * FROM user WHERE userName = ? AND passWord = ?";
+        String sql = "SELECT * FROM users WHERE userName = ? AND passWord = ?";
         User user = null;
         // try-with-resource
         try (Connection con = JDBCUtil.getConnection();
