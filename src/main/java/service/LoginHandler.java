@@ -1,11 +1,11 @@
 package service;
 
-import dao.GetDataBase;
+import dao.UserDAO;
+import model.User;
 
 public class LoginHandler {
     public boolean isValidLogin(String username, String password) {
-//        return "a".equals(username) && "a".equals(password);
-        GetDataBase getDataBase = new GetDataBase();
-        return getDataBase.checkAccount(username, password);
+        User user = UserDAO.getInstance().selectByUserNamePassWord(username, password);
+        return user.getUserName().equals(username) && user.getPassWord().equals(password);
     }
 }
