@@ -1,6 +1,5 @@
 package controllers;
 
-import dao.GetDataBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +22,7 @@ public class RegisterController {
     @FXML
     private TextField username;
     @FXML
-    private TextField studentid;
+    private TextField studentId;
     @FXML
     private TextField password;
     @FXML
@@ -44,19 +43,14 @@ public class RegisterController {
     public void setSubmit (ActionEvent event) throws IOException, SQLException {
         String nameText = name.getText();
         String usernameText = username.getText();
-        String studentID = studentid.getText();
+        String studentID = studentId.getText();
         String passWordText = password.getText();
         String confirmPassText = confirmPass.getText();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Register");
         alert.setHeaderText("Login Notification");
-        if (registerHandler.isRegister(nameText, usernameText, passWordText, confirmPassText)) {
+        if (registerHandler.isRegister(nameText, usernameText, passWordText, confirmPassText, studentID)) {
             alert.setContentText("Register successfully");
-
-            // luu data vao db
-            GetDataBase db = new GetDataBase();
-            db.setDBlogin(usernameText,passWordText, studentID);
-
             // set hanh dong sau khi an ok o alert
             alert.setOnCloseRequest(e -> {
                 // neu thanh cong se ve man hinh login

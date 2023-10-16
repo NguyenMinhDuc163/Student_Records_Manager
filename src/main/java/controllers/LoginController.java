@@ -1,8 +1,6 @@
 package controllers;
 
-import dao.GetDataBase;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,9 +11,7 @@ import service.LoginHandler;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
