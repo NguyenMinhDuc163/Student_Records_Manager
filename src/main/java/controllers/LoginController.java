@@ -22,8 +22,6 @@ public class LoginController implements Initializable {
     private TextField passWord;
     @FXML
     private Button loginButton;
-    @FXML
-    private Button register;
     private LoginHandler loginHandler = new LoginHandler();
     public Scene setScene() throws IOException {
         URL url = new File("src/main/resources/view/loginScreen.fxml").toURI().toURL();
@@ -33,7 +31,6 @@ public class LoginController implements Initializable {
         scene.getStylesheets().add(Objects.requireNonNull(css).toExternalForm());
         return scene;
     }
-
     public void bttLogIn (ActionEvent event) throws IOException {
         String username = userName.getText();
         String password = passWord.getText();

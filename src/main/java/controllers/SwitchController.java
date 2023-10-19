@@ -47,4 +47,5 @@ public class SwitchController {
         stage.setScene(scene);
         stage.show();
     }
+
 }

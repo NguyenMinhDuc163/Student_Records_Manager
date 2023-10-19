@@ -141,10 +141,10 @@ public class GradeDAO implements DAOInterface<Grade> {
         return grades;
     }
 
-    @Override
-    public Grade selectByID(String studentID) {
+//    @Override
+    public ArrayList<Grade> selectByID(String studentID) {
         String sql = "SELECT * FROM grade WHERE studentID = ?";
-        Grade grade = null;
+        ArrayList<Grade> grades = new ArrayList<>();
         // try-with-resource
         try (Connection con = JDBCUtil.getConnection();
              PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -162,12 +162,13 @@ public class GradeDAO implements DAOInterface<Grade> {
                 String componentScore = rs.getString("componentScore");
                 String letterGrade = rs.getString("letterGrade");
 
-                grade = new Grade(student, course, group, assignmentScore, examScore, practicalScore, attendanceScore,
+                Grade grade = new Grade(student, course, group, assignmentScore, examScore, practicalScore, attendanceScore,
                         finalExamScore, componentScore, letterGrade);
+                grades.add(grade);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return grade;
+        return grades;
     }
 }
