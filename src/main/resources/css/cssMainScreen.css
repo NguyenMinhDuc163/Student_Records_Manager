@@ -4,7 +4,7 @@
         -fx-background-color: #f0f0f0;
 }
 /* styles.css */
-.main-pane-left {
+.mainPaneLeft {
         -fx-background-image: url("../images/backgroundMainLefft.jpg");
         -fx-background-size: cover;
         -fx-background-repeat: no-repeat;
@@ -16,6 +16,12 @@
         -fx-background-repeat: no-repeat;
         -fx-background-position: center;
 }
+/*.coverimage{*/
+/*        -fx-background-image: url("../images/anhtruong.jpg");*/
+/*        -fx-background-size: cover;*/
+/*        -fx-background-repeat: no-repeat;*/
+/*        -fx-background-position: cente*/
+/*}*/
 
 .tab-anchor-pane {
         -fx-background-color: #C6E2FF;

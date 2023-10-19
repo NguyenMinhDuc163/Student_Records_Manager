@@ -20,6 +20,7 @@ public class Course {
         return courseName;
     }
 
+
     @Override
     public String toString() {
         return String.join(" ", courseID, courseName);
