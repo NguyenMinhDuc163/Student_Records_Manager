@@ -19,12 +19,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
+
 import model.Course;
 import model.Grade;
 import model.Student;
@@ -44,7 +40,6 @@ public class MainScreenController implements Initializable {
     @FXML private TableColumn<Course, String> courseId, courseName;
     @FXML private TableColumn<Grade, String> nameSV, course, assignmentScore, examScore, practicalScore, attendanceScore, finalExamScore, componentScore, letterGrade;
     @FXML private TextField msv;
-
     public Scene setScene() throws IOException {
         URL url = new File("src/main/resources/view/MainScreens.fxml").toURI().toURL();
         URL css = new File("src/main/resources/css/cssMainScreen.css").toURI().toURL();
@@ -115,6 +110,7 @@ public class MainScreenController implements Initializable {
         letterGrade.setCellValueFactory(new PropertyValueFactory<Grade, String>("letterGrade"));
         tableGrade.setItems(gradeList);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         main.setVisible(true);
@@ -136,7 +132,6 @@ public class MainScreenController implements Initializable {
         courseId.setCellValueFactory(new PropertyValueFactory<Course, String>("courseID"));
         courseName.setCellValueFactory(new PropertyValueFactory<Course, String>("courseName"));
         tableCourse.setItems(coursesList);
-
 
     }
 }
