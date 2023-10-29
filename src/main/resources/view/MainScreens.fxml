@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -50,24 +51,24 @@
       </MenuBar>
    </top>
    <left>
-      <Pane prefHeight="645.0" prefWidth="238.0" styleClass="mainPaneLeft" BorderPane.alignment="CENTER">
+      <Pane prefHeight="674.0" prefWidth="272.0" styleClass="mainPaneLeft" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="75.0" fitWidth="80.0" layoutX="7.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="80.0" layoutX="5.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/logo.png" />
                </image>
             </ImageView>
             <Label layoutX="110.0" layoutY="48.0" text="Welcome" textFill="#1a88ba" />
-            <Label fx:id="user" layoutX="86.0" layoutY="86.0">
+            <Label fx:id="user" layoutX="32.0" layoutY="107.0" prefHeight="30.0" prefWidth="209.0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="profile" layoutX="19.0" layoutY="169.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" text="Thông tin các nhân" />
-            <Button fx:id="home" layoutX="18.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" text="Trang chủ" />
-            <Button fx:id="courseBtt" layoutX="17.0" layoutY="307.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" text="Khoá học" />
-            <Button fx:id="gradebbt" layoutX="17.0" layoutY="377.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" text="Bảng điểm" />
-            <Button fx:id="extrabbt" layoutX="17.0" layoutY="439.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="199.0" text="Thêm" />
+            <Button fx:id="profile" layoutX="27.0" layoutY="165.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" text="Thông tin các nhân" />
+            <Button fx:id="home" layoutX="27.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" text="Trang chủ" />
+            <Button fx:id="courseBtt" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" text="Khoá học" />
+            <Button fx:id="gradebbt" layoutX="26.0" layoutY="378.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" text="Bảng điểm" />
+            <Button fx:id="extrabbt" layoutX="26.0" layoutY="439.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="199.0" text="Thêm" />
             <Button layoutX="12.0" layoutY="596.0" mnemonicParsing="false" onAction="#setLogout" prefHeight="34.0" prefWidth="48.0">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
@@ -106,48 +107,22 @@
          </children>
       </Pane>
    </left>
-   <center>
+   <right>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main-pane-right" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="main" layoutX="-2.0" layoutY="-3.0" prefHeight="680.0" prefWidth="919.0" visible="false">
-               <children>
-                  <TitledPane animated="false" layoutX="36.0" layoutY="218.0" prefHeight="377.0" prefWidth="270.0" text="Thông báo">
-                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="268.0" />
-                     </content>
-                  </TitledPane>
-                  <DatePicker layoutX="495.0" layoutY="156.0" />
-                  <TableView layoutX="338.0" layoutY="217.0" prefHeight="382.0" prefWidth="549.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="Thứ 2" />
-                      <TableColumn prefWidth="75.0" text="Thứ 3" />
-                        <TableColumn prefWidth="75.0" text="Thứ 4" />
-                        <TableColumn prefWidth="75.0" text="Thứ 5" />
-                        <TableColumn prefWidth="75.0" text="Thứ 6" />
-                        <TableColumn prefWidth="75.0" text="Thứ 7" />
-                        <TableColumn prefWidth="75.0" text="Chủ Nhật" />
-                    </columns>
-                  </TableView>
-                  <Label layoutX="543.0" layoutY="103.0" text="Thời khoá biểu" textFill="#eb2b2b">
-                     <font>
-                        <Font name="System Italic" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="profileForm" prefHeight="676.0" prefWidth="914.0" visible="false">
+            <AnchorPane fx:id="profileForm" prefHeight="676.0" prefWidth="903.0">
                <children>
                   <Label fx:id="majors" layoutX="367.0" layoutY="440.0" prefHeight="30.0" prefWidth="234.0" text="Label">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="classRoom" layoutX="367.0" layoutY="389.0" prefHeight="21.0" prefWidth="129.0" text="Label">
+                  <Label fx:id="classRoom" layoutX="367.0" layoutY="389.0" prefHeight="30.0" prefWidth="279.0" text="Label">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="studentID" layoutX="367.0" layoutY="338.0" prefHeight="21.0" prefWidth="129.0" text="Label">
+                  <Label fx:id="studentID" layoutX="367.0" layoutY="338.0" prefHeight="30.0" prefWidth="233.0" text="Label">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -192,9 +167,36 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
+                  <Button layoutX="531.0" layoutY="581.0" mnemonicParsing="false" onAction="#setChangePassWord" text="Đổi mật khẩu" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="courseForm" prefHeight="681.0" prefWidth="916.0" visible="false">
+            <AnchorPane fx:id="main" layoutX="-2.0" layoutY="-3.0" prefHeight="680.0" prefWidth="905.0" visible="false">
+               <children>
+                  <TitledPane animated="false" layoutX="36.0" layoutY="218.0" prefHeight="377.0" prefWidth="270.0" text="Thông báo">
+                     <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="268.0" />
+                     </content>
+                  </TitledPane>
+                  <DatePicker layoutX="495.0" layoutY="156.0" />
+                  <TableView layoutX="338.0" layoutY="217.0" prefHeight="382.0" prefWidth="549.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Thứ 2" />
+                      <TableColumn prefWidth="75.0" text="Thứ 3" />
+                        <TableColumn prefWidth="75.0" text="Thứ 4" />
+                        <TableColumn prefWidth="75.0" text="Thứ 5" />
+                        <TableColumn prefWidth="75.0" text="Thứ 6" />
+                        <TableColumn prefWidth="75.0" text="Thứ 7" />
+                        <TableColumn prefWidth="75.0" text="Chủ Nhật" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="543.0" layoutY="103.0" text="Thời khoá biểu" textFill="#eb2b2b">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="courseForm" prefHeight="681.0" prefWidth="898.0" visible="false">
                <children>
                   <TableView fx:id="tableCourse" layoutX="117.0" layoutY="136.0" prefHeight="459.0" prefWidth="682.0">
                     <columns>
@@ -204,10 +206,10 @@
                   </TableView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="gradePane" prefHeight="684.0" prefWidth="914.0" visible="false">
+            <AnchorPane fx:id="gradePane" prefHeight="684.0" prefWidth="866.0" visible="false">
                <children>
                   <TextField fx:id="msv" layoutX="62.0" layoutY="58.0" prefHeight="31.0" prefWidth="235.0" promptText="Mã sinh viên" />
-                  <TableView fx:id="tableGrade" layoutX="28.0" layoutY="155.0" prefHeight="502.0" prefWidth="881.0">
+                  <TableView fx:id="tableGrade" layoutX="10.0" layoutY="168.0" prefHeight="502.0" prefWidth="881.0">
                     <columns>
                         <TableColumn fx:id="nameSV" prefWidth="181.0" text="Tên" />
                         <TableColumn fx:id="course" prefWidth="179.0" text="course" />
@@ -223,7 +225,58 @@
                   <Button fx:id="search" layoutX="344.0" layoutY="58.0" mnemonicParsing="false" onAction="#setSearch" text="Tra cứu" />
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="ChangePassWordPane" layoutX="-1.0" prefHeight="684.0" prefWidth="906.0" visible="false">
+               <children>
+                  <Label layoutX="65.0" layoutY="66.0" prefHeight="36.0" prefWidth="236.0" text="Thay đổi mật khẩu">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="164.0" layoutY="218.0" text="Mật khẩu cũ">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="164.0" layoutY="294.0" text="Mật khẩu mới">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="163.0" layoutY="363.0" text="Nhập lại mật khẩu">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="166.0" layoutY="437.0" text="Nhập mã captcha">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="oldPass" layoutX="417.0" layoutY="217.0" prefHeight="38.0" prefWidth="359.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </PasswordField>
+                  <PasswordField fx:id="newPass" layoutX="417.0" layoutY="293.0" prefHeight="38.0" prefWidth="359.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </PasswordField>
+                  <PasswordField fx:id="confirmPass" layoutX="417.0" layoutY="362.0" prefHeight="38.0" prefWidth="359.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </PasswordField>
+                  <PasswordField fx:id="captcha" layoutX="417.0" layoutY="437.0" prefHeight="38.0" prefWidth="359.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </PasswordField>
+                  <Button layoutX="649.0" layoutY="526.0" mnemonicParsing="false" onAction="#setConfirm" prefHeight="52.0" prefWidth="114.0" text="Xác nhận" />
+                  <Button layoutX="433.0" layoutY="525.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="52.0" prefWidth="111.0" text="Huỷ bỏ" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-   </center>
+   </right>
 </BorderPane>

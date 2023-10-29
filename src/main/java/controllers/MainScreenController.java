@@ -2,6 +2,7 @@ package controllers;
 
 
 import app.Main;
+import dao.ClassesDAO;
 import dao.CourseDAO;
 import dao.GradeDAO;
 import dao.StudentDAO;
@@ -21,9 +22,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import model.Classes;
 import model.Course;
 import model.Grade;
 import model.Student;
+import service.ChangePassWordHandl;
 import service.LoginHandler;
 
 import java.io.File;
@@ -34,12 +37,14 @@ import java.util.ResourceBundle;
 public class MainScreenController implements Initializable {
     @FXML private Label name, studentID, classRoom, majors, year, user;
     @FXML private Button profile, home, courseBtt, gradebbt,extrabbt;
-    @FXML private AnchorPane profileForm, main, courseForm, gradePane;
+    @FXML private AnchorPane profileForm, main, courseForm, gradePane, ChangePassWordPane;
     @FXML private TableView<Course> tableCourse;
     @FXML private TableView<Grade> tableGrade;
     @FXML private TableColumn<Course, String> courseId, courseName;
     @FXML private TableColumn<Grade, String> nameSV, course, assignmentScore, examScore, practicalScore, attendanceScore, finalExamScore, componentScore, letterGrade;
     @FXML private TextField msv;
+    @FXML private PasswordField oldPass, newPass, confirmPass,captcha;
+    Student student;
     public Scene setScene() throws IOException {
         URL url = new File("src/main/resources/view/MainScreens.fxml").toURI().toURL();
         URL css = new File("src/main/resources/css/cssMainScreen.css").toURI().toURL();
@@ -59,30 +64,35 @@ public class MainScreenController implements Initializable {
             main.setVisible(false);
             courseForm.setVisible(false);
             gradePane.setVisible(false);
+            ChangePassWordPane.setVisible(false);
         }
         else if(event.getSource() == home){
             profileForm.setVisible(false);
             main.setVisible(true);
             courseForm.setVisible(false);
             gradePane.setVisible(false);
+            ChangePassWordPane.setVisible(false);
         }
         else if(event.getSource() == courseBtt){
             courseForm.setVisible(true);
             profileForm.setVisible(false);
             main.setVisible(false);
             gradePane.setVisible(false);
+            ChangePassWordPane.setVisible(false);
         }
         else if(event.getSource() == gradebbt){
             gradePane.setVisible(true);
             courseForm.setVisible(false);
             profileForm.setVisible(false);
             main.setVisible(false);
+            ChangePassWordPane.setVisible(false);
         }
         else if(event.getSource() == extrabbt){
             gradePane.setVisible(false);
             courseForm.setVisible(false);
             profileForm.setVisible(false);
             main.setVisible(false);
+            ChangePassWordPane.setVisible(false);
         }
     }
 
@@ -110,19 +120,52 @@ public class MainScreenController implements Initializable {
         letterGrade.setCellValueFactory(new PropertyValueFactory<Grade, String>("letterGrade"));
         tableGrade.setItems(gradeList);
     }
+    public void setChangePassWord(ActionEvent event){
+        profileForm.setVisible(false);
+        ChangePassWordPane.setVisible(true);
+    }
+    public void setConfirm(ActionEvent event){
+            String oldPassWord = oldPass.getText();
+            String newPassWord = newPass.getText();
+            String confirmPassWord = confirmPass.getText();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thay đổi mật khẩu");
+            alert.setHeaderText("Thông báo:");
+            if(ChangePassWordHandl.updatePassWord(oldPassWord, newPassWord, confirmPassWord, student.getStudentID())){
+                alert.setContentText("Đổi mật khẩu thành công");
+                clearData();
+            }
+            else {
+                alert.setContentText("Đổi mật khẩu thất bai, vui lòng kiểm tra lại thông tin");
+                clearData();
+            }
+            alert.show();
+    }
+    public void setCancel(ActionEvent event){
+        ChangePassWordPane.setVisible(false);
+        profileForm.setVisible(true);
+    }
 
+    public void clearData(){
+        oldPass.clear();
+        newPass.clear();
+        confirmPass.clear();
+        captcha.clear();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         main.setVisible(true);
         profileForm.setVisible(false);
         courseForm.setVisible(false);
         gradePane.setVisible(false);
+        ChangePassWordPane.setVisible(false);
 
         String ID = LoginHandler.getUser();
-        Student student = StudentDAO.getInstance().selectByID(ID);
+        student = StudentDAO.getInstance().selectByID(ID);
+        Classes classes= ClassesDAO.getInstance().selectByID(ID);
         name.setText(student.getFirstName() + " " + student.getLastName());
         studentID.setText(student.getStudentID());
-        classRoom.setText("D21");
+        classRoom.setText(classes.getClassID());
         majors.setText("Công nghệ thông tin");
         year.setText("D21");
         user.setText(student.getFirstName() + " " + student.getLastName());

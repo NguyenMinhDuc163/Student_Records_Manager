@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,8 +20,6 @@
       <Label layoutX="403.0" layoutY="112.0" text="It takes less than a minute!" />
       <TextField fx:id="name" layoutX="445.0" layoutY="149.0" prefHeight="39.0" prefWidth="339.0" promptText="Name" />
       <TextField fx:id="username" layoutX="445.0" layoutY="213.0" prefHeight="39.0" prefWidth="339.0" promptText="UserName" />
-      <TextField fx:id="password" layoutX="445.0" layoutY="341.0" prefHeight="39.0" prefWidth="339.0" promptText="PassWord" />
-      <TextField id="confirmPass" fx:id="confirmPass" layoutX="445.0" layoutY="399.0" prefHeight="39.0" prefWidth="339.0" promptText="Confirm Password" />
       <Button id="submit" layoutX="676.0" layoutY="458.0" mnemonicParsing="false" onAction="#setSubmit" prefHeight="46.0" prefWidth="98.0" text="Submit" />
       <AnchorPane layoutY="-2.0" prefHeight="564.0" prefWidth="317.0" styleClass="leftPaner" />
       <ImageView fitHeight="110.0" fitWidth="137.0" layoutX="784.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -30,5 +29,7 @@
       </ImageView>
       <Button id="cancel" layoutX="473.0" layoutY="458.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="46.0" prefWidth="98.0" text="Cancel" />
       <TextField fx:id="studentId" layoutX="445.0" layoutY="280.0" prefHeight="39.0" prefWidth="339.0" promptText="Student ID" />
+      <PasswordField fx:id="password" layoutX="445.0" layoutY="343.0" prefHeight="39.0" prefWidth="339.0" promptText="PassWord" />
+      <PasswordField fx:id="confirmPass" layoutX="445.0" layoutY="407.0" prefHeight="39.0" prefWidth="339.0" promptText="Confirm Password" />
    </children>
 </AnchorPane>
