@@ -41,7 +41,8 @@ public class MainScreenController implements Initializable {
     @FXML private TableView<Course> tableCourse;
     @FXML private TableView<Grade> tableGrade;
     @FXML private TableColumn<Course, String> courseId, courseName;
-    @FXML private TableColumn<Grade, String> nameSV, course, assignmentScore, examScore, practicalScore, attendanceScore, finalExamScore, componentScore, letterGrade;
+    @FXML private TableColumn<Grade, String> nameSV, course, assignmentScore, examScore, practicalScore, attendanceScore;
+    @FXML private TableColumn<Grade, String> finalExamScore, componentScore, letterGrade;
     @FXML private TextField msv;
     @FXML private PasswordField oldPass, newPass, confirmPass,captcha;
     Student student;
