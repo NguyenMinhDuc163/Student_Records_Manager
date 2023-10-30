@@ -30,13 +30,13 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public int update(User user) {
-        String url = "UPDATE users SET userName = ?, passWord = ? WHERE studentID = ?";
+        String url = "UPDATE users SET passWord = ? WHERE studentID = ? and userName = ?";
         // try-with-resources
         try (Connection con = JDBCUtil.getConnection();
              PreparedStatement stmt = con.prepareStatement(url)) {
-            stmt.setString(1, user.getUserName());
-            stmt.setString(2, user.getPassWord());
-            stmt.setString(3, user.getStudentID());
+            stmt.setString(1, user.getPassWord());
+            stmt.setString(2, user.getStudentID());
+            stmt.setString(3, user.getUserName());
             int row = stmt.executeUpdate();
             System.out.println("Số dữ liệu được cập nhật là: " + row);
             return row;

@@ -11,7 +11,13 @@ public class LoginHandler {
     }
 
     public boolean isValidLogin(String username, String password) {
-        user = UserDAO.getInstance().selectByUserNamePassWord(username, password);
-        return user.getUserName().equals(username) && user.getPassWord().equals(password);
+        try {
+            user = UserDAO.getInstance().selectByUserNamePassWord(username, password);
+            return user.getUserName().equals(username) && user.getPassWord().equals(password);
+        }catch (Exception e){
+            // do user co the null
+            System.out.println("Nhập thông tin không đúng !!!");
+            return false;
+        }
     }
 }

@@ -36,14 +36,14 @@ public class LoginController implements Initializable {
         String password = passWord.getText();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Login");
-        alert.setHeaderText("Login Notification");
+        alert.setTitle("Đăng Nhập");
+        alert.setHeaderText("Thông báo đăng nhập:");
         if (loginHandler.isValidLogin(username, password)) {
-            alert.setContentText("Logged in successfully");
+            alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
             SwitchController switchController = new SwitchController();
             switchController.switchToSceneMain(event);
         } else {
-            alert.setContentText("Account or password is incorrect");
+            alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại và thử đăng nhập lại.");
         }
         alert.show();
     }

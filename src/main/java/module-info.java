@@ -4,6 +4,7 @@ module com.example.studentrecordsmanager {
     requires java.sql;
     requires mysql.connector.java;
     requires javafx.web;
+    requires java.mail;
 
 
 //    opens com.example.studentrecordsmanager to javafx.fxml;

@@ -19,6 +19,10 @@ public class User {
         this.studentID = studentID;
     }
 
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
     public String getUserID() {
         return userID;
     }

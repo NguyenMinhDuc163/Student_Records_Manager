@@ -1,5 +1,6 @@
 package app;
 
+import controllers.ForgotPassController;
 import controllers.LoginController;
 import controllers.MainScreenController;
 import javafx.application.Application;
@@ -16,12 +17,24 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+//        try{
+//            LoginController loginController = new LoginController();
+//            MainScreenController screenController = new MainScreenController();
+//            primaryStage.setScene(loginController.setScene());
+//            primaryStage.setTitle("Student Records Manager");
+//            primaryStage.getIcons().add(new Image(String.valueOf(new File("src/main/resources/images/Logo_PTIT.png").toURI().toURL())));
+//            primaryStage.show();
+//        }catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
+
+
         try{
-            LoginController loginController = new LoginController();
             MainScreenController screenController = new MainScreenController();
+            ForgotPassController forgotPassController = new ForgotPassController();
+            LoginController loginController = new LoginController();
             primaryStage.setScene(loginController.setScene());
             primaryStage.setTitle("Student Records Manager");
-            primaryStage.getIcons().add(new Image(String.valueOf(new File("src/main/resources/images/Logo_PTIT.png").toURI().toURL())));
             primaryStage.show();
         }catch (Exception e){
             System.out.println(e.getMessage());
