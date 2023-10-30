@@ -27,10 +27,7 @@ public class RegisterController {
     private TextField password;
     @FXML
     private TextField confirmPass;
-    @FXML
-    private Button submit;
-    @FXML
-    private Button Cancel;
+
     private final RegisterHandler registerHandler = new RegisterHandler();
     public Scene setScene() throws IOException {
         URL url = new File("src/main/resources/view/RegisterScreen.fxml").toURI().toURL();
