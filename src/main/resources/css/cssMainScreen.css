@@ -27,3 +27,35 @@
         -fx-background-color: #C6E2FF;
 }
 
+.button{
+        -fx-background-color: white;
+        -fx-background-radius: 4px;
+        -fx-cursor: hand;
+        -fx-font-weight: bold;
+        -fx-font-size: 16px;
+}
+
+.button:hover {
+        -fx-scale-x: 1.05;
+        -fx-scale-y: 1.05;
+        -fx-background-color: #ece4e4;
+}
+.button:pressed {
+        -fx-scale-y: 0.95;
+        -fx-scale-x: 0.95;
+}
+
+#log_out{
+        -fx-background-color: #ff2b2b;
+}
+
+#log_out:hover{
+        -fx-scale-x: 1.1;
+        -fx-scale-y: 1.1;
+        -fx-background-color: rgba(255, 43, 43, 0.85);
+}
+
+#log_out:pressed{
+        -fx-scale-y: 0.95;
+        -fx-scale-x: 0.95;
+}
