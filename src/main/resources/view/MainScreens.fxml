@@ -1,53 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.input.KeyCodeCombination?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1155.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1155.0" stylesheets="@../css/cssMainScreen.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
    <top>
-      <MenuBar prefHeight="40.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#setActionMenuBar" text="Close">
+      <MenuBar prefHeight="40.0" prefWidth="600.0" stylesheets="@../css/cssMainScreen.css" BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#setActionMenuBar" text="Close">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
                   <Menu mnemonicParsing="false" text="Unspecified Menu">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                     </items>
                   </Menu>
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
    </top>
    <left>
@@ -64,12 +51,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="profile" layoutX="27.0" layoutY="165.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" text="Thông tin các nhân" />
-            <Button fx:id="home" layoutX="27.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" text="Trang chủ" />
-            <Button fx:id="courseBtt" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" text="Khoá học" />
-            <Button fx:id="gradebbt" layoutX="26.0" layoutY="378.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" text="Bảng điểm" />
-            <Button fx:id="extrabbt" layoutX="26.0" layoutY="439.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="199.0" text="Thêm" />
-            <Button layoutX="12.0" layoutY="596.0" mnemonicParsing="false" onAction="#setLogout" prefHeight="34.0" prefWidth="48.0">
+            <Button fx:id="profile" layoutX="26.0" layoutY="165.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="36.0" prefWidth="199.0" text="Thông tin cá nhân" />
+            <Button fx:id="home" layoutX="26.0" layoutY="235.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="36.0" prefWidth="199.0" text="Trang chủ" />
+            <Button fx:id="courseBtt" layoutX="26.0" layoutY="305.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="36.0" prefWidth="198.0" text="Khoá học" />
+            <Button fx:id="gradebbt" layoutX="26.0" layoutY="375.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="36.0" prefWidth="199.0" text="Bảng điểm" />
+            <Button fx:id="extrabbt" layoutX="26.0" layoutY="445.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="36.0" prefWidth="199.0" text="Thêm" />
+            <Button fx:id="log_out" layoutX="12.0" layoutY="596.0" mnemonicParsing="false" onAction="#setLogout" prefHeight="34.0" prefWidth="48.0">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -78,28 +65,31 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="27.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="30.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/6.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="27.0" fitWidth="33.0" layoutX="28.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="27.0" fitWidth="33.0" layoutX="30.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/7.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="28.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="30.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/8.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="24.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="30.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/9.png" />
                </image>
             </ImageView>
-            <Label layoutX="69.0" layoutY="605.0" text="Đăng xuất" />
-            <ImageView fitHeight="36.0" fitWidth="25.0" layoutX="28.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="69.0" layoutY="605.0" text="Đăng xuất">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <ImageView fitHeight="36.0" fitWidth="25.0" layoutX="30.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/5.png" />
                </image>
@@ -174,20 +164,20 @@
                <children>
                   <TitledPane animated="false" layoutX="36.0" layoutY="218.0" prefHeight="377.0" prefWidth="270.0" text="Thông báo">
                      <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="268.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="268.0" />
                      </content>
                   </TitledPane>
                   <DatePicker layoutX="495.0" layoutY="156.0" />
                   <TableView layoutX="338.0" layoutY="217.0" prefHeight="382.0" prefWidth="549.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="Thứ 2" />
-                      <TableColumn prefWidth="75.0" text="Thứ 3" />
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Thứ 2" />
+                        <TableColumn prefWidth="75.0" text="Thứ 3" />
                         <TableColumn prefWidth="75.0" text="Thứ 4" />
                         <TableColumn prefWidth="75.0" text="Thứ 5" />
                         <TableColumn prefWidth="75.0" text="Thứ 6" />
                         <TableColumn prefWidth="75.0" text="Thứ 7" />
                         <TableColumn prefWidth="75.0" text="Chủ Nhật" />
-                    </columns>
+                     </columns>
                   </TableView>
                   <Label layoutX="543.0" layoutY="103.0" text="Thời khoá biểu" textFill="#eb2b2b">
                      <font>
@@ -199,10 +189,10 @@
             <AnchorPane fx:id="courseForm" prefHeight="681.0" prefWidth="898.0" visible="false">
                <children>
                   <TableView fx:id="tableCourse" layoutX="117.0" layoutY="136.0" prefHeight="459.0" prefWidth="682.0">
-                    <columns>
-                      <TableColumn fx:id="courseId" prefWidth="168.0" text="Mã Môn học" />
-                      <TableColumn fx:id="courseName" prefWidth="513.0" text="Tên Môn Học" />
-                    </columns>
+                     <columns>
+                        <TableColumn fx:id="courseId" prefWidth="168.0" text="Mã Môn học" />
+                        <TableColumn fx:id="courseName" prefWidth="513.0" text="Tên Môn Học" />
+                     </columns>
                   </TableView>
                </children>
             </AnchorPane>
@@ -210,17 +200,17 @@
                <children>
                   <TextField fx:id="msv" layoutX="62.0" layoutY="58.0" prefHeight="31.0" prefWidth="235.0" promptText="Mã sinh viên" />
                   <TableView fx:id="tableGrade" layoutX="10.0" layoutY="168.0" prefHeight="502.0" prefWidth="881.0">
-                    <columns>
+                     <columns>
                         <TableColumn fx:id="nameSV" prefWidth="181.0" text="Tên" />
                         <TableColumn fx:id="course" prefWidth="179.0" text="course" />
-                      <TableColumn fx:id="assignmentScore" prefWidth="70.0" text="BT" />
-                      <TableColumn fx:id="examScore" prefWidth="62.0" text="KT" />
+                        <TableColumn fx:id="assignmentScore" prefWidth="70.0" text="BT" />
+                        <TableColumn fx:id="examScore" prefWidth="62.0" text="KT" />
                         <TableColumn fx:id="practicalScore" prefWidth="64.0" text="TH" />
                         <TableColumn fx:id="attendanceScore" prefWidth="71.0" text="CC" />
                         <TableColumn fx:id="finalExamScore" prefWidth="86.0" text="KTHP" />
                         <TableColumn fx:id="componentScore" prefWidth="72.0" text="TB" />
                         <TableColumn fx:id="letterGrade" prefWidth="95.0" text="Chữ" />
-                    </columns>
+                     </columns>
                   </TableView>
                   <Button fx:id="search" layoutX="344.0" layoutY="58.0" mnemonicParsing="false" onAction="#setSearch" text="Tra cứu" />
                </children>
