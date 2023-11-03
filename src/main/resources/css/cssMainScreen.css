@@ -10,7 +10,7 @@
         -fx-background-repeat: no-repeat;
         -fx-background-position: center;
 }
-.main-pane-right {
+.main-pane-center {
         -fx-background-image: url("../images/backgroundMainRight.jpg");
         -fx-background-size: cover;
         -fx-background-repeat: no-repeat;
