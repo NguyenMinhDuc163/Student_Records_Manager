@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -16,8 +17,12 @@
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1155.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
    <top>
@@ -51,15 +56,18 @@
       </MenuBar>
    </top>
    <left>
-      <Pane prefHeight="674.0" prefWidth="272.0" styleClass="mainPaneLeft" BorderPane.alignment="CENTER">
+      <Pane prefHeight="674.0" prefWidth="253.0" styleClass="mainPaneLeft" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="75.0" fitWidth="80.0" layoutX="5.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageLogo" fitHeight="75.0" fitWidth="80.0" layoutX="33.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/logo.png" />
+                  <Image url="@../images/logoAVT.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="110.0" layoutY="48.0" text="Welcome" textFill="#1a88ba" />
-            <Label fx:id="user" layoutX="32.0" layoutY="107.0" prefHeight="30.0" prefWidth="209.0">
+            <Label layoutX="110.0" layoutY="47.0" prefHeight="30.0" prefWidth="95.0" text="Welcome" textFill="#1a88ba">
+               <font>
+                  <Font name="Book Antiqua" size="20.0" />
+               </font></Label>
+            <Label fx:id="user" layoutX="42.0" layoutY="109.0" prefHeight="30.0" prefWidth="209.0" text="Nguyễn Minh Đức">
                <font>
                   <Font size="20.0" />
                </font>
@@ -68,7 +76,7 @@
             <Button fx:id="home" layoutX="27.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" text="Trang chủ" />
             <Button fx:id="courseBtt" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" text="Khoá học" />
             <Button fx:id="gradebbt" layoutX="26.0" layoutY="378.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" text="Bảng điểm" />
-            <Button fx:id="extrabbt" layoutX="26.0" layoutY="439.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="199.0" text="Thêm" />
+            <Button fx:id="extrabbt" layoutX="26.0" layoutY="439.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="199.0" text="Tính điểm" />
             <Button layoutX="12.0" layoutY="596.0" mnemonicParsing="false" onAction="#setLogout" prefHeight="34.0" prefWidth="48.0">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
@@ -107,10 +115,10 @@
          </children>
       </Pane>
    </left>
-   <right>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main-pane-right" BorderPane.alignment="CENTER">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main-pane-center" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="profileForm" prefHeight="676.0" prefWidth="903.0">
+            <AnchorPane fx:id="profileForm" layoutX="2.0" layoutY="1.0" prefHeight="672.0" prefWidth="903.0" visible="false">
                <children>
                   <Label fx:id="majors" layoutX="367.0" layoutY="440.0" prefHeight="30.0" prefWidth="234.0" text="Label">
                      <font>
@@ -127,9 +135,9 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="343.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="125.0" layoutX="322.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/avata.jpg" />
+                        <Image url="@../images/logoAVT.jpg" />
                      </image>
                   </ImageView>
                   <Label layoutX="176.0" layoutY="278.0" text="Họ và tên">
@@ -168,9 +176,10 @@
                      </font>
                   </Label>
                   <Button layoutX="531.0" layoutY="581.0" mnemonicParsing="false" onAction="#setChangePassWord" text="Đổi mật khẩu" />
+                  <Button layoutX="472.0" layoutY="224.0" mnemonicParsing="false" onAction="#setImageView" text="Chỉnh sửa" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="main" layoutX="-2.0" layoutY="-3.0" prefHeight="680.0" prefWidth="905.0" visible="false">
+            <AnchorPane fx:id="main" prefHeight="674.0" prefWidth="905.0" visible="false">
                <children>
                   <TitledPane animated="false" layoutX="36.0" layoutY="218.0" prefHeight="377.0" prefWidth="270.0" text="Thông báo">
                      <content>
@@ -196,7 +205,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="courseForm" prefHeight="681.0" prefWidth="898.0" visible="false">
+            <AnchorPane fx:id="courseForm" prefHeight="677.0" prefWidth="898.0" visible="false">
                <children>
                   <TableView fx:id="tableCourse" layoutX="117.0" layoutY="136.0" prefHeight="459.0" prefWidth="682.0">
                     <columns>
@@ -206,10 +215,10 @@
                   </TableView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="gradePane" prefHeight="684.0" prefWidth="866.0" visible="false">
+            <AnchorPane fx:id="gradePane" prefHeight="680.0" prefWidth="910.0" visible="false">
                <children>
                   <TextField fx:id="msv" layoutX="62.0" layoutY="58.0" prefHeight="31.0" prefWidth="235.0" promptText="Mã sinh viên" />
-                  <TableView fx:id="tableGrade" layoutX="10.0" layoutY="168.0" prefHeight="502.0" prefWidth="881.0">
+                  <TableView fx:id="tableGrade" layoutX="10.0" layoutY="168.0" prefHeight="502.0" prefWidth="881.0" styleClass="tab-anchor-pane">
                     <columns>
                         <TableColumn fx:id="nameSV" prefWidth="181.0" text="Tên" />
                         <TableColumn fx:id="course" prefWidth="179.0" text="course" />
@@ -225,7 +234,7 @@
                   <Button fx:id="search" layoutX="344.0" layoutY="58.0" mnemonicParsing="false" onAction="#setSearch" text="Tra cứu" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="ChangePassWordPane" layoutX="-1.0" prefHeight="684.0" prefWidth="906.0" visible="false">
+            <AnchorPane fx:id="ChangePassWordPane" prefHeight="681.0" prefWidth="907.0" visible="false">
                <children>
                   <Label layoutX="65.0" layoutY="66.0" prefHeight="36.0" prefWidth="236.0" text="Thay đổi mật khẩu">
                      <font>
@@ -276,7 +285,55 @@
                   <Button layoutX="433.0" layoutY="525.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="52.0" prefWidth="111.0" text="Huỷ bỏ" />
                </children>
             </AnchorPane>
+            <BorderPane fx:id="borderPaneGrade" prefHeight="683.0" prefWidth="909.0" styleClass="main-pane-center">
+               <top>
+                  <Label prefHeight="52.0" prefWidth="588.0" text="Dự tính điểm bạn sẽ đạt được trong những kì tới" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold Italic" size="25.0" />
+                     </font>
+                  </Label>
+               </top>
+               <right>
+                  <AnchorPane prefHeight="550.0" prefWidth="204.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Text fx:id="notice" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hãy nhập điểm mà bạn dự định sẽ đạt được" wrappingWidth="206.6708984375">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </right>
+               <bottom>
+                  <AnchorPane prefHeight="86.0" prefWidth="909.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button layoutX="455.0" layoutY="27.0" mnemonicParsing="false" onAction="#calcGrade" prefHeight="33.0" prefWidth="110.0" text="TÍnh điểm" />
+                        <Button layoutX="272.0" layoutY="27.0" mnemonicParsing="false" onAction="#setResetGrande" prefHeight="33.0" prefWidth="110.0" text="Làm mới" />
+                     </children>
+                  </AnchorPane>
+               </bottom>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ScrollPane fx:id="grandePane" prefHeight="550.0" prefWidth="698.0" styleClass="main-pane-center">
+                           <content>
+                              <GridPane fx:id="gridPane" prefHeight="547.0" prefWidth="701.0" styleClass="main-pane-center">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="429.0" minWidth="10.0" prefWidth="428.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="339.0" minWidth="10.0" prefWidth="265.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                              </GridPane>
+                           </content></ScrollPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
          </children>
       </AnchorPane>
-   </right>
+   </center>
 </BorderPane>

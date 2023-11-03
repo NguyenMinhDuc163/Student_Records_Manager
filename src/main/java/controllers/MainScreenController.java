@@ -2,10 +2,7 @@ package controllers;
 
 
 import app.Main;
-import dao.ClassesDAO;
-import dao.CourseDAO;
-import dao.GradeDAO;
-import dao.StudentDAO;
+import dao.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -16,24 +13,27 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 
-import model.Classes;
-import model.Course;
-import model.Grade;
-import model.Student;
+import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import model.*;
 import service.ChangePassWordHandl;
 import service.LoginHandler;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
+
 public class MainScreenController implements Initializable {
     @FXML private Label name, studentID, classRoom, majors, year, user;
     @FXML private Button profile, home, courseBtt, gradebbt,extrabbt;
@@ -45,6 +45,12 @@ public class MainScreenController implements Initializable {
     @FXML private TableColumn<Grade, String> finalExamScore, componentScore, letterGrade;
     @FXML private TextField msv;
     @FXML private PasswordField oldPass, newPass, confirmPass,captcha;
+    @FXML private BorderPane borderPaneGrade;
+    @FXML private ScrollPane grandePane;
+    @FXML private Text notice;
+    @FXML private GridPane gridPane;
+    @FXML private ImageView imageView, imageLogo;
+    private Map<Label, ChoiceBox> choiceList = new LinkedHashMap<>();
     Student student;
     public Scene setScene() throws IOException {
         URL url = new File("src/main/resources/view/MainScreens.fxml").toURI().toURL();
@@ -66,6 +72,7 @@ public class MainScreenController implements Initializable {
             courseForm.setVisible(false);
             gradePane.setVisible(false);
             ChangePassWordPane.setVisible(false);
+            borderPaneGrade.setVisible(false);
         }
         else if(event.getSource() == home){
             profileForm.setVisible(false);
@@ -73,6 +80,7 @@ public class MainScreenController implements Initializable {
             courseForm.setVisible(false);
             gradePane.setVisible(false);
             ChangePassWordPane.setVisible(false);
+            borderPaneGrade.setVisible(false);
         }
         else if(event.getSource() == courseBtt){
             courseForm.setVisible(true);
@@ -80,6 +88,7 @@ public class MainScreenController implements Initializable {
             main.setVisible(false);
             gradePane.setVisible(false);
             ChangePassWordPane.setVisible(false);
+            borderPaneGrade.setVisible(false);
         }
         else if(event.getSource() == gradebbt){
             gradePane.setVisible(true);
@@ -87,6 +96,7 @@ public class MainScreenController implements Initializable {
             profileForm.setVisible(false);
             main.setVisible(false);
             ChangePassWordPane.setVisible(false);
+            borderPaneGrade.setVisible(false);
         }
         else if(event.getSource() == extrabbt){
             gradePane.setVisible(false);
@@ -94,7 +104,9 @@ public class MainScreenController implements Initializable {
             profileForm.setVisible(false);
             main.setVisible(false);
             ChangePassWordPane.setVisible(false);
+            borderPaneGrade.setVisible(true);
         }
+
     }
 
     public void setLogout(ActionEvent event) throws IOException {
@@ -147,11 +159,75 @@ public class MainScreenController implements Initializable {
         profileForm.setVisible(true);
     }
 
+    public void setImageView(ActionEvent event){
+        Stage stage = (Stage) profileForm.getScene().getWindow();
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Choose a image");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png");
+        fc.getExtensionFilters().add(imageFilter);
+        File file = fc.showOpenDialog(stage);
+        if (file != null){
+            Image image = new Image(file.toURI().toString(),320, 213, false, true);
+            imageView.setImage(image);
+            imageLogo.setImage(image);
+
+        }
+    }
+
     public void clearData(){
         oldPass.clear();
         newPass.clear();
         confirmPass.clear();
         captcha.clear();
+    }
+
+    public void setGrande(){
+        ArrayList<Subject> subjects = SubjectDAO.getInstance().selectAll();
+        gridPane.setVgap(20);
+        gridPane.setHgap(10);
+        gridPane.setPadding(new Insets(20));
+        // Setting column constraints to make columns equally sized
+        ColumnConstraints col1 = new ColumnConstraints();
+        col1.setHgrow(Priority.ALWAYS);
+        ColumnConstraints col2 = new ColumnConstraints();
+        col2.setHgrow(Priority.ALWAYS);
+        gridPane.getColumnConstraints().addAll(col1, col2);
+
+        // Iterating over each subject to create labels and choice boxes
+        for (int i = 0; i < subjects.size(); i++) {
+            Label label = new Label(subjects.get(i).getSubjectName());
+            label.setWrapText(true);
+            ChoiceBox<String> choiceBox = new ChoiceBox<>();
+            choiceList.put(label, choiceBox);
+            choiceBox.getItems().addAll("A+", "A", "B+", "B", "C+", "C", "D+", "D", "F");
+            gridPane.add(label, 0, i);
+            gridPane.add(choiceBox, 1, i);
+        }
+
+        // Creating a ScrollPane and setting the GridPane as its content
+        grandePane.setContent(gridPane);
+        grandePane.setFitToWidth(true);
+        grandePane.setFitToHeight(true);
+    }
+
+    public void calcGrade() {
+        Map<String, Double> gradeMap = Map.of("A+", 4.0, "A", 3.7, "B+", 3.5, "B", 3.0,
+                "C+", 2.5, "C", 2.0, "D+", 1.5, "D", 1.0, "F", 0.0);
+        double totalScore = 0, credit = 0;
+        for (var e : choiceList.entrySet()) {
+            if (e.getValue().getValue() != null) {
+                Subject subject = SubjectDAO.getInstance().selectByID(e.getKey().getText());
+                totalScore += gradeMap.get(e.getValue().getValue()) * Double.parseDouble(subject.getCredit());
+                credit += Double.parseDouble(subject.getCredit());
+            }
+        }
+        notice.setText("Số điểm bạn đạt dược trên thang điểm 4 là: " + String.format("%.2f",totalScore / credit));
+    }
+
+    public void setResetGrande(ActionEvent event){
+        for(var x: choiceList.entrySet()){
+            x.getValue().getSelectionModel().clearSelection();
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -160,6 +236,8 @@ public class MainScreenController implements Initializable {
         courseForm.setVisible(false);
         gradePane.setVisible(false);
         ChangePassWordPane.setVisible(false);
+        borderPaneGrade.setVisible(false);
+        setGrande();
 
         String ID = LoginHandler.getUser();
         student = StudentDAO.getInstance().selectByID(ID);
