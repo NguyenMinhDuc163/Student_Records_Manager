@@ -1,6 +1,10 @@
 # Student Records Manager
 
-Mô tả ngắn về dự án và mục tiêu của nó.
+Phần mềm giúp hỗ trợ các chức năng
+- Xem thông tin sinh viên
+- Xếp lịch học
+- Xem điểm thi
+- Tính toán, ước lượng GPA của kỳ
 
 ## Cài đặt
 
