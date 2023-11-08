@@ -39,12 +39,12 @@
             <scope>test</scope>
         </dependency>
 
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.mysql/mysql-connector-j &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.mysql</groupId>-->
-<!--            <artifactId>mysql-connector-j</artifactId>-->
-<!--            <version>8.0.33</version>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.mysql/mysql-connector-j &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.mysql</groupId>-->
+        <!--            <artifactId>mysql-connector-j</artifactId>-->
+        <!--            <version>8.0.33</version>-->
+        <!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-web -->
         <dependency>
@@ -67,6 +67,16 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.30</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-controls -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>22-ea+16</version>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
