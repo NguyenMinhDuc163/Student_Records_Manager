@@ -44,5 +44,5 @@ Chắc chắn rằng bạn đã cài đặt các phiên bản phần mềm đư�
 ## Sử dụng
 - Khởi đông intelij đợi phần mềm khởi động và thêm những thứ cần thiết
 - Khởi động Mysql workbench hoặc phần mềm để import cơ sở dữ liệu [DATA BASE](https://drive.google.com/file/d/1J60Tbg4qLQOZn8XsJx5OjPQd_BrbSldM/view?usp=sharing)
-- Quay lại project vào file ../src/main/dao/JDBCUtil đổi tên userName, passWord, tên DB theo thiết bị của bạn
+- Quay lại project vào file **../src/main/dao/JDBCUtil** đổi tên userName, passWord, tên DB theo thiết bị của bạn
 - Vào app/ main.java để run chương trình.
