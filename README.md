@@ -11,8 +11,8 @@ Phần mềm giúp hỗ trợ các chức năng
 Để cài đặt dự án, bạn cần chuẩn bị các điều kiện sau:
 
 1. Java Development Kit (JDK) 20.0.1 trở lên.
-2. Intellij IDE hoặc ide nào bạn quen thuộc
-3. Mysql và công cụ để truy vấn
+2. Intellij IDE hoặc IDE tương tự
+3. Mysql Server và công cụ quản lý cơ sở dữ liệu
 4. Maven 3.11.0 trở lên.
 
 
