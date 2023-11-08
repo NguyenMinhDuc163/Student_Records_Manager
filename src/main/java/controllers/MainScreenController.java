@@ -170,7 +170,6 @@ public class MainScreenController implements Initializable {
             Image image = new Image(file.toURI().toString(),320, 213, false, true);
             imageView.setImage(image);
             imageLogo.setImage(image);
-
         }
     }
 
@@ -225,6 +224,7 @@ public class MainScreenController implements Initializable {
     }
 
     public void setResetGrande(ActionEvent event){
+        notice.setText("Hãy nhập điểm mà bạn dự định sẽ đạt được:");
         for(var x: choiceList.entrySet()){
             x.getValue().getSelectionModel().clearSelection();
         }

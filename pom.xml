@@ -46,7 +46,27 @@
 <!--            <version>8.0.33</version>-->
 <!--        </dependency>-->
 
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-web -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>22-ea+16</version>
+        </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/org.libj/mail -->
+        <dependency>
+            <groupId>org.libj</groupId>
+            <artifactId>mail</artifactId>
+            <version>0.4.4</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.30</version>
+        </dependency>
     </dependencies>
 
     <build>
