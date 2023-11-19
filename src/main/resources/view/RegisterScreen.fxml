@@ -16,20 +16,21 @@
             <Font size="44.0" />
          </font>
       </Label>
-      <Label layoutX="403.0" layoutY="82.0" prefHeight="21.0" prefWidth="303.0" text="Don't have an account? Create your account." />
-      <Label layoutX="403.0" layoutY="112.0" text="It takes less than a minute!" />
-      <TextField fx:id="name" layoutX="445.0" layoutY="149.0" prefHeight="39.0" prefWidth="339.0" promptText="Name" />
-      <TextField fx:id="username" layoutX="445.0" layoutY="213.0" prefHeight="39.0" prefWidth="339.0" promptText="UserName" />
-      <Button id="submit" layoutX="676.0" layoutY="458.0" mnemonicParsing="false" onAction="#setSubmit" prefHeight="46.0" prefWidth="98.0" text="Submit" />
+      <Label layoutX="408.0" layoutY="69.0" prefHeight="21.0" prefWidth="303.0" text="Don't have an account? Create your account." />
+      <Label layoutX="408.0" layoutY="103.0" text="It takes less than a minute!" />
+      <TextField fx:id="name" layoutX="445.0" layoutY="147.0" prefHeight="39.0" prefWidth="339.0" promptText="Name" />
+      <TextField fx:id="username" layoutX="445.0" layoutY="206.0" prefHeight="39.0" prefWidth="339.0" promptText="UserName" />
+      <Button id="submit" layoutX="668.0" layoutY="493.0" mnemonicParsing="false" onAction="#setSubmit" prefHeight="46.0" prefWidth="98.0" text="Submit" />
       <AnchorPane layoutY="-2.0" prefHeight="564.0" prefWidth="317.0" styleClass="leftPaner" />
       <ImageView fitHeight="110.0" fitWidth="137.0" layoutX="784.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Logo_PTIT.png" />
          </image>
       </ImageView>
-      <Button id="cancel" layoutX="473.0" layoutY="458.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="46.0" prefWidth="98.0" text="Cancel" />
-      <TextField fx:id="studentId" layoutX="445.0" layoutY="280.0" prefHeight="39.0" prefWidth="339.0" promptText="Student ID" />
-      <PasswordField fx:id="password" layoutX="445.0" layoutY="343.0" prefHeight="39.0" prefWidth="339.0" promptText="PassWord" />
-      <PasswordField fx:id="confirmPass" layoutX="445.0" layoutY="407.0" prefHeight="39.0" prefWidth="339.0" promptText="Confirm Password" />
+      <Button id="cancel" layoutX="461.0" layoutY="493.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="46.0" prefWidth="98.0" text="Cancel" />
+      <TextField fx:id="studentId" layoutX="445.0" layoutY="263.0" prefHeight="39.0" prefWidth="339.0" promptText="Student ID" />
+      <PasswordField fx:id="password" layoutX="445.0" layoutY="370.0" prefHeight="39.0" prefWidth="339.0" promptText="PassWord" />
+      <PasswordField fx:id="confirmPass" layoutX="445.0" layoutY="425.0" prefHeight="39.0" prefWidth="339.0" promptText="Confirm Password" />
+      <TextField fx:id="email" layoutX="445.0" layoutY="318.0" prefHeight="39.0" prefWidth="339.0" promptText="Email" />
    </children>
 </AnchorPane>

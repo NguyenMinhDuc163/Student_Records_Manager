@@ -46,7 +46,7 @@ public class SubjectDAO implements DAOInterface<Subject> {
         }
     }
 
-    @Override
+//    @Override
     public int delete(Subject subject) {
         String url = "DELETE FROM subject WHERE subjectID = ?";
         // try-with-resources

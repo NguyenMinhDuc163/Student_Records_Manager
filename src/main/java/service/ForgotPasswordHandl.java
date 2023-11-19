@@ -14,7 +14,7 @@ public class ForgotPasswordHandl {
         try {
             if (userName.isEmpty() || studentID.isEmpty() || email.isEmpty()) return false;
             String newPassWord = generateRandomPassword();
-            User user = new User(userName, newPassWord, studentID);
+            User user = new User(userName, newPassWord, studentID, email, 5);
             int count = UserDAO.getInstance().update(user);
             return count > 0 && EmailHandler.sendMail(email, newPassWord, studentID);
         } catch (Exception e) {

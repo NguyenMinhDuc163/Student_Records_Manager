@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 import model.*;
 import service.ChangePassWordHandl;
 import service.LoginHandler;
+import service.UpdateDateHandle;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +37,7 @@ import java.util.*;
 
 public class MainScreenController implements Initializable {
     @FXML private Label name, studentID, classRoom, majors, year, user;
-    @FXML private Button profile, home, courseBtt, gradebbt,extrabbt;
+    @FXML private Button profile, home, courseBtt, gradebbt,extrabbt, editbbt;
     @FXML private AnchorPane profileForm, main, courseForm, gradePane, ChangePassWordPane;
     @FXML private TableView<Course> tableCourse;
     @FXML private TableView<Grade> tableGrade;
@@ -45,11 +46,17 @@ public class MainScreenController implements Initializable {
     @FXML private TableColumn<Grade, String> finalExamScore, componentScore, letterGrade;
     @FXML private TextField msv;
     @FXML private PasswordField oldPass, newPass, confirmPass,captcha;
-    @FXML private BorderPane borderPaneGrade;
+    @FXML private BorderPane borderPaneGrade, editPane;
     @FXML private ScrollPane grandePane;
-    @FXML private Text notice;
+    @FXML private Text notice, fileAddress;
     @FXML private GridPane gridPane;
     @FXML private ImageView imageView, imageLogo;
+    @FXML private TextField msvn, ho, ten, maMon, tenMon, maLop, cc, thi, bt, kt, TH, TBHP, heChu;
+    @FXML private TextField msvNew, maMonNew;
+    @FXML private AnchorPane addData, update, deleteData, addDataAll;
+    @FXML private Button add, up, del, addAll,cancel;
+    @FXML private TextArea notify;
+    @FXML private TextField msvx, mmh, attendance,finalExam, assignment,exam, practical, component, letter;
     private Map<Label, ChoiceBox> choiceList = new LinkedHashMap<>();
     Student student;
     public Scene setScene() throws IOException {
@@ -73,6 +80,7 @@ public class MainScreenController implements Initializable {
             gradePane.setVisible(false);
             ChangePassWordPane.setVisible(false);
             borderPaneGrade.setVisible(false);
+            editPane.setVisible(false);
         }
         else if(event.getSource() == home){
             profileForm.setVisible(false);
@@ -81,6 +89,7 @@ public class MainScreenController implements Initializable {
             gradePane.setVisible(false);
             ChangePassWordPane.setVisible(false);
             borderPaneGrade.setVisible(false);
+            editPane.setVisible(false);
         }
         else if(event.getSource() == courseBtt){
             courseForm.setVisible(true);
@@ -89,6 +98,7 @@ public class MainScreenController implements Initializable {
             gradePane.setVisible(false);
             ChangePassWordPane.setVisible(false);
             borderPaneGrade.setVisible(false);
+            editPane.setVisible(false);
         }
         else if(event.getSource() == gradebbt){
             gradePane.setVisible(true);
@@ -97,6 +107,7 @@ public class MainScreenController implements Initializable {
             main.setVisible(false);
             ChangePassWordPane.setVisible(false);
             borderPaneGrade.setVisible(false);
+            editPane.setVisible(false);
         }
         else if(event.getSource() == extrabbt){
             gradePane.setVisible(false);
@@ -105,8 +116,17 @@ public class MainScreenController implements Initializable {
             main.setVisible(false);
             ChangePassWordPane.setVisible(false);
             borderPaneGrade.setVisible(true);
+            editPane.setVisible(false);
         }
-
+        else if(event.getSource() == editbbt){
+            gradePane.setVisible(false);
+            courseForm.setVisible(false);
+            profileForm.setVisible(false);
+            main.setVisible(false);
+            ChangePassWordPane.setVisible(false);
+            borderPaneGrade.setVisible(false);
+            editPane.setVisible(true);
+        }
     }
 
     public void setLogout(ActionEvent event) throws IOException {
@@ -229,6 +249,80 @@ public class MainScreenController implements Initializable {
             x.getValue().getSelectionModel().clearSelection();
         }
     }
+    public void getDataEdit(ActionEvent event){
+        UpdateDateHandle update = new UpdateDateHandle();
+        String studentID = msvNew.getText().toUpperCase();
+        String firstName = ho.getText();
+        String lastName = ten.getText();
+        String courseID = maMonNew.getText().toUpperCase();
+        String courseName = tenMon.getText();
+        String classID = maLop.getText().toUpperCase();
+        update.createProfile(studentID, firstName, lastName, courseID, courseName, classID,
+                cc.getText(), thi.getText(), bt.getText(), kt.getText(), TH.getText(), TBHP.getText(), heChu.getText());
+        notify.appendText("Đã cập nhật thông tin cho sinh viên: " + studentID + "\n");
+    }
+    public void setDeleteData(ActionEvent event){
+        String studentID = msvn.getText();
+        String courseID = maMon.getText();
+        UpdateDateHandle update = new UpdateDateHandle();
+        update.deleteData(studentID, courseID);
+        notify.appendText("Đã xoá điểm môn học " + courseID + " của sinh viên " + studentID + "\n");
+    }
+
+    public void setGradeData(){
+        UpdateDateHandle update = new UpdateDateHandle();
+        String studentID = msvx.getText().toUpperCase();
+        String courseID = mmh.getText().toUpperCase();
+        update.updateGrade(studentID, courseID, attendance.getText(), finalExam.getText(), assignment.getText(),
+                exam.getText(), practical.getText(), component.getText(), letter.getText());
+        notify.appendText("Đã cập nhật điểm môn học " + courseID + " cho sinh viên " + studentID + "\n");
+    }
+
+    public void setUpdateAll(ActionEvent event){
+        Stage stage = (Stage) editPane.getScene().getWindow();
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Choose a image");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
+        fc.getExtensionFilters().add(imageFilter);
+        File file = fc.showOpenDialog(stage);
+        notify.appendText("Bạn đã chọn file " + file.getName() + "\n");
+        fileAddress.setText(file.getPath());
+    }
+    public void setBbtUpdate(ActionEvent event){
+        if(event.getSource() == add){
+            addData.setVisible(true);
+            update.setVisible(false);
+            deleteData.setVisible(false);
+            addDataAll.setVisible(false);
+        }
+        else if(event.getSource() == up){
+            addData.setVisible(false);
+            update.setVisible(true);
+            deleteData.setVisible(false);
+            addDataAll.setVisible(false);
+        }
+        else if(event.getSource() == del){
+            addData.setVisible(false);
+            update.setVisible(false);
+            deleteData.setVisible(true);
+            addDataAll.setVisible(false);
+        }
+        else if(event.getSource() == cancel){
+            gradePane.setVisible(true);
+            courseForm.setVisible(false);
+            profileForm.setVisible(false);
+            main.setVisible(false);
+            ChangePassWordPane.setVisible(false);
+            borderPaneGrade.setVisible(false);
+            editPane.setVisible(false);
+        }
+        else if(event.getSource() == addAll){
+            addData.setVisible(false);
+            update.setVisible(false);
+            deleteData.setVisible(false);
+            addDataAll.setVisible(true);
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         main.setVisible(true);
@@ -237,6 +331,8 @@ public class MainScreenController implements Initializable {
         gradePane.setVisible(false);
         ChangePassWordPane.setVisible(false);
         borderPaneGrade.setVisible(false);
+        editPane.setVisible(false);
+        notify.setEditable(false);
         setGrande();
 
         String ID = LoginHandler.getUser();

@@ -3,12 +3,17 @@ package model;
 public class Subject {
     private String subjectID;
     private String SubjectName;
-    private String credit;
+    private String credit = "2";
 
     public Subject(String subjectID, String subjectName, String credit) {
         this.subjectID = subjectID;
         SubjectName = subjectName;
         this.credit = credit;
+    }
+
+    public Subject(String subjectID, String subjectName) {
+        this.subjectID = subjectID;
+        SubjectName = subjectName;
     }
 
     public String getSubjectID() {

@@ -36,7 +36,7 @@ public class ForgotPassController {
     public void setButtonSubmit(ActionEvent event){
         String userName = username.getText();
         String emailText = email.getText();
-        String studentID = studentid.getText();
+        String studentID = studentid.getText().toUpperCase();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Register");
         // kiem tra dieu kien

@@ -27,6 +27,8 @@ public class RegisterController {
     private TextField password;
     @FXML
     private TextField confirmPass;
+    @FXML
+    private TextField email;
 
     private final RegisterHandler registerHandler = new RegisterHandler();
     public Scene setScene() throws IOException {
@@ -40,13 +42,14 @@ public class RegisterController {
     public void setSubmit (ActionEvent event) throws IOException, SQLException {
         String nameText = name.getText();
         String usernameText = username.getText();
-        String studentID = studentId.getText();
+        String studentID = studentId.getText().toUpperCase();
         String passWordText = password.getText();
         String confirmPassText = confirmPass.getText();
+        String Email = email.getText();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Register");
         alert.setHeaderText("Login Notification");
-        if (registerHandler.isRegister(nameText, usernameText, passWordText, confirmPassText, studentID)) {
+        if (registerHandler.isRegister(nameText, usernameText, passWordText, confirmPassText, studentID, Email)) {
             alert.setContentText("Register successfully");
             // set hanh dong sau khi an ok o alert
             alert.setOnCloseRequest(e -> {
