@@ -13,12 +13,13 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public int insert(User user) {
-        String url = "INSERT INTO users (userName, passWord, studentID)VALUES(?, ?, ?)";
+        String url = "INSERT INTO users (userName, passWord, studentID, email)VALUES(?, ?, ?, ?)";
         // try-with-resources
         try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(url)) {
             stmt.setString(1,user.getUserName());
             stmt.setString(2,user.getPassWord());
             stmt.setString(3,user.getStudentID());
+            stmt.setString(4,user.getEmail());
             int row = stmt.executeUpdate();
             System.out.println("Số dữ liệu được cập nhật là: " + row);
             return row;
@@ -46,7 +47,7 @@ public class UserDAO implements DAOInterface<User>{
     }
 
 
-    @Override
+//    @Override
     public int delete(User user) {
         String url = "DELETE FROM users WHERE studentID = ?";
         // try-with-resources

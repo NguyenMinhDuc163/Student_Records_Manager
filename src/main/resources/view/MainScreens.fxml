@@ -10,6 +10,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
@@ -232,6 +233,11 @@
                     </columns>
                   </TableView>
                   <Button fx:id="search" layoutX="344.0" layoutY="58.0" mnemonicParsing="false" onAction="#setSearch" text="Tra cứu" />
+                  <AnchorPane layoutX="607.0" layoutY="20.0" prefHeight="107.0" prefWidth="155.0">
+                     <children>
+                        <Button fx:id="editbbt" layoutX="45.0" layoutY="38.0" mnemonicParsing="false" onAction="#switchForm" text="Chỉnh sửa" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="ChangePassWordPane" prefHeight="681.0" prefWidth="907.0" visible="false">
@@ -285,7 +291,7 @@
                   <Button layoutX="433.0" layoutY="525.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="52.0" prefWidth="111.0" text="Huỷ bỏ" />
                </children>
             </AnchorPane>
-            <BorderPane fx:id="borderPaneGrade" prefHeight="683.0" prefWidth="909.0" styleClass="main-pane-center">
+            <BorderPane fx:id="borderPaneGrade" prefHeight="683.0" prefWidth="909.0" styleClass="main-pane-center" visible="false">
                <top>
                   <Label prefHeight="52.0" prefWidth="588.0" text="Dự tính điểm bạn sẽ đạt được trong những kì tới" BorderPane.alignment="CENTER">
                      <font>
@@ -332,6 +338,87 @@
                      </children>
                   </AnchorPane>
                </center>
+            </BorderPane>
+            <BorderPane fx:id="editPane" prefHeight="686.0" prefWidth="912.0">
+               <bottom>
+                  <AnchorPane prefHeight="89.0" prefWidth="912.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="add" layoutX="48.0" layoutY="29.0" mnemonicParsing="false" onAction="#setBbtUpdate" text="Thêm" />
+                        <Button fx:id="up" layoutX="184.0" layoutY="31.0" mnemonicParsing="false" onAction="#setBbtUpdate" text="Cập nhật" />
+                        <Button fx:id="del" layoutX="348.0" layoutY="31.0" mnemonicParsing="false" onAction="#setBbtUpdate" prefHeight="31.0" prefWidth="63.0" text="Xoá" />
+                        <Button fx:id="addAll" layoutX="509.0" layoutY="31.0" mnemonicParsing="false" onAction="#setBbtUpdate" text="Thêm danh sách" />
+                        <Button fx:id="cancel" layoutX="757.0" layoutY="29.0" mnemonicParsing="false" onAction="#setBbtUpdate" text="Huỷ bỏ" />
+                     </children>
+                  </AnchorPane>
+               </bottom>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="addData" prefHeight="322.0" prefWidth="911.0">
+                           <children>
+                              <TextField fx:id="cc" layoutX="33.0" layoutY="212.0" prefHeight="31.0" prefWidth="72.0" promptText="CC" />
+                              <TextField fx:id="heChu" layoutX="743.0" layoutY="212.0" prefHeight="31.0" prefWidth="72.0" promptText="Hệ chữ" />
+                              <TextField fx:id="TBHP" layoutX="638.0" layoutY="212.0" prefHeight="31.0" prefWidth="69.0" promptText="TBHP" />
+                              <TextField fx:id="thi" layoutX="137.0" layoutY="212.0" prefHeight="31.0" prefWidth="75.0" promptText="THI" />
+                              <TextField fx:id="bt" layoutX="259.0" layoutY="212.0" prefHeight="31.0" prefWidth="79.0" promptText="BT" />
+                              <TextField fx:id="maLop" layoutX="618.0" layoutY="138.0" prefHeight="31.0" prefWidth="158.0" promptText="Mã lớp" />
+                              <TextField fx:id="ten" layoutX="619.0" layoutY="65.0" prefHeight="31.0" prefWidth="158.0" promptText="Tên" />
+                              <TextField fx:id="ho" layoutX="338.0" layoutY="65.0" prefHeight="31.0" prefWidth="171.0" promptText="Họ lót" />
+                              <TextField fx:id="msvNew" layoutX="69.0" layoutY="65.0" prefHeight="31.0" prefWidth="153.0" promptText="Mã sinh viên" />
+                              <TextField fx:id="maMonNew" layoutX="69.0" layoutY="138.0" prefHeight="31.0" prefWidth="153.0" promptText="Mã môn" />
+                              <TextField fx:id="tenMon" layoutX="338.0" layoutY="138.0" prefHeight="31.0" prefWidth="171.0" promptText="Tên môn" />
+                              <TextField fx:id="kt" layoutX="385.0" layoutY="212.0" prefHeight="31.0" prefWidth="78.0" promptText="KT" />
+                              <TextField fx:id="TH" layoutX="509.0" layoutY="212.0" prefHeight="31.0" prefWidth="76.0" promptText="TH" />
+                              <Button layoutX="698.0" layoutY="270.0" mnemonicParsing="false" onAction="#getDataEdit" text="Xác nhận" />
+                              <Text layoutX="316.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập thông tin sinh viên" wrappingWidth="241.6083984375">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="deleteData" prefHeight="321.0" prefWidth="914.0" visible="false">
+                           <children>
+                              <TextField fx:id="msvn" layoutX="104.0" layoutY="161.0" promptText="Mã sinh viên" />
+                              <Button layoutX="618.0" layoutY="161.0" mnemonicParsing="false" onAction="#setDeleteData" text="Xác nhận" />
+                              <TextField fx:id="maMon" layoutX="330.0" layoutY="161.0" promptText="Mã môn học" />
+                              <Text layoutX="276.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập thông tin sinh viên muốn xoá">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="addDataAll" prefHeight="322.0" prefWidth="912.0" visible="false">
+                           <children>
+                              <Text fx:id="fileAddress" layoutX="182.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đường dẫn" wrappingWidth="298.6708984375" />
+                              <Button layoutX="548.0" layoutY="172.0" mnemonicParsing="false" onAction="#setUpdateAll" text="Chọn file" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="update" prefHeight="323.0" prefWidth="913.0" visible="false">
+                           <children>
+                              <TextField fx:id="msvx" layoutX="100.0" layoutY="57.0" promptText="Mã hinh viên" />
+                              <TextField fx:id="mmh" layoutX="363.0" layoutY="57.0" promptText="Mã môn học" />
+                              <TextField fx:id="attendance" layoutX="100.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="CC" />
+                              <TextField fx:id="finalExam" layoutX="194.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="Thi" />
+                              <TextField fx:id="assignment" layoutX="294.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="BT" />
+                              <TextField fx:id="exam" layoutX="401.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="KT" />
+                              <TextField fx:id="practical" layoutX="498.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="TH" />
+                              <TextField fx:id="component" layoutX="614.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="TBHP" />
+                              <TextField fx:id="letter" layoutX="730.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="Hệ chữ" />
+                              <Button layoutX="649.0" layoutY="220.0" mnemonicParsing="false" onAction="#setGradeData" prefHeight="42.0" prefWidth="82.0" text="xác nhận" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+               <top>
+                  <AnchorPane prefHeight="280.0" prefWidth="912.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextArea fx:id="notify" layoutX="81.0" layoutY="31.0" prefHeight="200.0" prefWidth="732.0" />
+                     </children>
+                  </AnchorPane>
+               </top>
             </BorderPane>
          </children>
       </AnchorPane>

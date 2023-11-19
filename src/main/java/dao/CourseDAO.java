@@ -46,7 +46,7 @@ public class CourseDAO implements DAOInterface<Course> {
         }
     }
 
-    @Override
+//    @Override
     public int delete(Course course) {
         String url = "DELETE FROM courses WHERE courseID = ?";
         // try-with-resources

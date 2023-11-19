@@ -17,20 +17,20 @@ public class GradeDAO implements DAOInterface<Grade> {
     }
     @Override
     public int insert(Grade grade) throws SQLException {
-        String url = "INSERT INTO grade (studentID, courseID, Group, assignmentScore, examScore, practicalScore, " +
-                "attendanceScore, finalExamScore, componentScore, letterGrade)VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String url = "INSERT INTO grade (studentID, courseID, `Group`, assignmentScore, examScore, practicalScore, " +
+                "attendanceScore, finalExamScore, componentScore, letterGrade) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         // try-with-resources
         try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(url)) {
-            stmt.setString(1,grade.getStudent().getStudentID());
-            stmt.setString(2,grade.getCourse().getCourseID());
-            stmt.setString(3,grade.getGroup());
-            stmt.setString(4,grade.getAssignmentScore());
-            stmt.setString(5,grade.getExamScore());
-            stmt.setString(6,grade.getPracticalScore());
-            stmt.setString(7,grade.getAttendanceScore());
-            stmt.setString(8,grade.getFinalExamScore());
-            stmt.setString(9,grade.getComponentScore());
-            stmt.setString(10,grade.getLetterGrade());
+            stmt.setString(1, grade.getStudent().getStudentID());
+            stmt.setString(2, grade.getCourse().getCourseID());
+            stmt.setString(3, grade.getGroup());
+            stmt.setString(4, grade.getAssignmentScore());
+            stmt.setString(5, grade.getExamScore());
+            stmt.setString(6, grade.getPracticalScore());
+            stmt.setString(7, grade.getAttendanceScore());
+            stmt.setString(8, grade.getFinalExamScore());
+            stmt.setString(9, grade.getComponentScore());
+            stmt.setString(10, grade.getLetterGrade());
             int row = stmt.executeUpdate();
             System.out.println("Số dữ liệu được cập nhật là: " + row);
             return row;
@@ -41,38 +41,39 @@ public class GradeDAO implements DAOInterface<Grade> {
 
     @Override
     public int update(Grade grade) {
-        String url = "UPDATE grade SET Group = ?, assignmentScore = ? , examScore = ?, practicalScore = ?," +
+        String url = "UPDATE grade SET `Group` = ?, assignmentScore = ?, examScore = ?, practicalScore = ?," +
                 "attendanceScore = ?, finalExamScore = ?, componentScore = ?, letterGrade = ? " +
                 "WHERE studentID = ? AND courseID = ?";
         // try-with-resources
         try (Connection con = JDBCUtil.getConnection();
              PreparedStatement stmt = con.prepareStatement(url)) {
-            stmt.setString(1,grade.getGroup());
-            stmt.setString(2,grade.getAssignmentScore());
-            stmt.setString(3,grade.getExamScore());
-            stmt.setString(4,grade.getPracticalScore());
-            stmt.setString(5,grade.getAttendanceScore());
-            stmt.setString(6,grade.getFinalExamScore());
-            stmt.setString(7,grade.getComponentScore());
-            stmt.setString(8,grade.getLetterGrade());
-            stmt.setString(9,grade.getStudent().getStudentID());
-            stmt.setString(10,grade.getCourse().getCourseID());
+            stmt.setString(1, grade.getGroup());
+            stmt.setString(2, grade.getAssignmentScore());
+            stmt.setString(3, grade.getExamScore());
+            stmt.setString(4, grade.getPracticalScore());
+            stmt.setString(5, grade.getAttendanceScore());
+            stmt.setString(6, grade.getFinalExamScore());
+            stmt.setString(7, grade.getComponentScore());
+            stmt.setString(8, grade.getLetterGrade());
+            stmt.setString(9, grade.getStudent().getStudentID());
+            stmt.setString(10, grade.getCourse().getCourseID());
             int row = stmt.executeUpdate();
             System.out.println("Số dữ liệu được cập nhật là: " + row);
             return row;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        return 0;
     }
 
-    @Override
-    public int delete(Grade grade) {
+//    @Override
+    public int delete(String studentID, String courseID) {
         String url = "DELETE FROM grade WHERE studentID = ? AND courseID = ?";
         // try-with-resources
         try (Connection con = JDBCUtil.getConnection();
              PreparedStatement stmt = con.prepareStatement(url)) {
-            stmt.setString(1, grade.getStudent().getStudentID());
-            stmt.setString(2, grade.getCourse().getCourseID());
+            stmt.setString(1, studentID);
+            stmt.setString(2, courseID);
             int row = stmt.executeUpdate();
             System.out.println("Số dữ liệu được xóa là: " + row);
             return row;

@@ -33,14 +33,13 @@ public class ClassesDAO implements DAOInterface<Classes> {
         return 0;
     }
 
-    @Override
-    public int delete(Classes classes) {
-        String url = "DELETE FROM classes WHERE studentID = ? AND classID = ?";
+//    @Override
+    public int delete(String studentID) {
+        String url = "DELETE FROM classes WHERE studentID = ? ";
         // try-with-resources
         try (Connection con = JDBCUtil.getConnection();
              PreparedStatement stmt = con.prepareStatement(url)) {
-            stmt.setString(1, classes.getStudent().getStudentID());
-            stmt.setString(1, classes.getClassID());
+            stmt.setString(1, studentID);
             int row = stmt.executeUpdate();
             System.out.println("Số dữ liệu được xóa là: " + row);
             return row;
