@@ -119,7 +119,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main-pane-center" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="profileForm" layoutX="2.0" layoutY="1.0" prefHeight="672.0" prefWidth="903.0">
+            <AnchorPane fx:id="profileForm" layoutX="2.0" layoutY="1.0" prefHeight="672.0" prefWidth="903.0" visible="false">
                <children>
                   <Label fx:id="majors" layoutX="367.0" layoutY="440.0" prefHeight="30.0" prefWidth="234.0" text="Label">
                      <font>
@@ -180,23 +180,26 @@
                   <Button layoutX="472.0" layoutY="224.0" mnemonicParsing="false" onAction="#setImageView" text="Chỉnh sửa" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="main" prefHeight="674.0" prefWidth="905.0" visible="false">
+            <AnchorPane fx:id="main" prefHeight="674.0" prefWidth="905.0">
                <children>
                   <TitledPane animated="false" layoutX="36.0" layoutY="218.0" prefHeight="377.0" prefWidth="270.0" text="Thông báo">
                      <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="268.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="268.0">
+                           <children>
+                              <TextArea editable="false" prefHeight="342.0" prefWidth="269.0" promptText="Đây là thông báo" />
+                           </children></AnchorPane>
                      </content>
                   </TitledPane>
                   <DatePicker layoutX="495.0" layoutY="156.0" />
-                  <TableView layoutX="338.0" layoutY="217.0" prefHeight="382.0" prefWidth="549.0">
+                  <TableView fx:id="scheduleTable" layoutX="338.0" layoutY="217.0" prefHeight="382.0" prefWidth="549.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Thứ 2" />
-                      <TableColumn prefWidth="75.0" text="Thứ 3" />
-                        <TableColumn prefWidth="75.0" text="Thứ 4" />
-                        <TableColumn prefWidth="75.0" text="Thứ 5" />
-                        <TableColumn prefWidth="75.0" text="Thứ 6" />
-                        <TableColumn prefWidth="75.0" text="Thứ 7" />
-                        <TableColumn prefWidth="75.0" text="Chủ Nhật" />
+                      <TableColumn fx:id="time" prefWidth="75.0" text="Thời gian" />
+                      <TableColumn fx:id="monday" prefWidth="75.0" text="Thứ 2" />
+                        <TableColumn fx:id="tuesday" prefWidth="75.0" text="Thứ 3" />
+                        <TableColumn fx:id="wednesday" prefWidth="75.0" text="Thứ 4" />
+                        <TableColumn fx:id="thursday" prefWidth="75.0" text="Thứ 5" />
+                        <TableColumn fx:id="friday" prefWidth="75.0" text="Thứ 6" />
+                        <TableColumn fx:id="saturday" prefWidth="75.0" text="Thứ 7" />
                     </columns>
                   </TableView>
                   <Label layoutX="543.0" layoutY="103.0" text="Thời khoá biểu" textFill="#eb2b2b">
@@ -208,10 +211,11 @@
             </AnchorPane>
             <AnchorPane fx:id="courseForm" prefHeight="677.0" prefWidth="898.0" visible="false">
                <children>
-                  <TableView fx:id="tableCourse" layoutX="117.0" layoutY="136.0" prefHeight="459.0" prefWidth="682.0">
+                  <TableView fx:id="tableSubject" layoutX="14.0" layoutY="141.0" prefHeight="459.0" prefWidth="893.0">
                     <columns>
-                      <TableColumn fx:id="courseId" prefWidth="168.0" text="Mã Môn học" />
-                      <TableColumn fx:id="courseName" prefWidth="513.0" text="Tên Môn Học" />
+                      <TableColumn fx:id="subjectID" prefWidth="168.0" text="Mã Môn học" />
+                      <TableColumn fx:id="subjectName" prefWidth="563.0" text="Tên Môn Học" />
+                        <TableColumn fx:id="creditCol" prefWidth="128.0" text="Tín chỉ" />
                     </columns>
                   </TableView>
                </children>
