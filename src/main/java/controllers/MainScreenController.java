@@ -41,9 +41,9 @@ public class MainScreenController implements Initializable {
     @FXML private Label identifyLb, facultyLb, majorLb, yearLb;
     @FXML private Button profile, home, courseBtt, gradebbt,extrabbt, editbbt;
     @FXML private AnchorPane profileForm, main, courseForm, gradePane, ChangePassWordPane;
-    @FXML private TableView<Course> tableCourse;
+    @FXML private TableView<Subject> tableSubject;
     @FXML private TableView<Grade> tableGrade;
-    @FXML private TableColumn<Course, String> courseId, courseName;
+    @FXML private TableColumn<Subject, String> subjectID, subjectName, creditCol;
     @FXML private TableColumn<Grade, String> nameSV, course, assignmentScore, examScore, practicalScore, attendanceScore;
     @FXML private TableColumn<Grade, String> finalExamScore, componentScore, letterGrade;
     @FXML private TextField msv;
@@ -59,6 +59,8 @@ public class MainScreenController implements Initializable {
     @FXML private Button add, up, del, addAll,cancel;
     @FXML private TextArea notify;
     @FXML private TextField msvx, mmh, attendance,finalExam, assignment,exam, practical, component, letter;
+    @FXML private TableView<ClassSchedule> scheduleTable;
+    @FXML private TableColumn<ClassSchedule, String> time, monday, tuesday, wednesday, thursday, friday,saturday;
     private Map<Label, ChoiceBox> choiceList = new LinkedHashMap<>();
     Student student;
     public Scene setScene() throws IOException {
@@ -290,6 +292,29 @@ public class MainScreenController implements Initializable {
         notify.appendText("Bạn đã chọn file " + file.getName() + "\n");
         fileAddress.setText(file.getPath());
     }
+
+    public void setScheduleTable(){
+
+        ObservableList<ClassSchedule> schedulesList = FXCollections.observableArrayList(
+                new ClassSchedule("7:00 AM", "", "", "", "", "", "Mạng máy tính"),
+                new ClassSchedule("9:00 AM", "", "", "", "", "", "Mạng máy tính"),
+                new ClassSchedule("10:00 AM", "", "", "Tiếng Anh", "", "", "Lịch sử Đảng"),
+                new ClassSchedule("13:00 PM", "", "", "", "Lập trình hướng đối tượng", "", "Python"),
+                new ClassSchedule("15:00 PM", "", "", "", "Lập trình hướng đối tượng", "", "Python"),
+                new ClassSchedule("16:00 PM", "", "", "", "", "", "Hệ điều hành"),
+                new ClassSchedule("17:00 PM", "", "", "", "", "", "Hệ điều hành"),
+                new ClassSchedule("19:00 PM", "", "", "", "", "", "Cơ sở dữ liệu")
+
+        );
+        time.setCellValueFactory(new PropertyValueFactory<>("time"));
+        monday.setCellValueFactory(new PropertyValueFactory<>("monday"));
+        tuesday.setCellValueFactory(new PropertyValueFactory<>("tuesday"));
+        wednesday.setCellValueFactory(new PropertyValueFactory<>("wednesday"));
+        thursday.setCellValueFactory(new PropertyValueFactory<>("thursday"));
+        friday.setCellValueFactory(new PropertyValueFactory<>("friday"));
+        saturday.setCellValueFactory(new PropertyValueFactory<>("saturday"));
+        scheduleTable.setItems(schedulesList);
+    }
     public void setBbtUpdate(ActionEvent event){
         if(event.getSource() == add){
             addData.setVisible(true);
@@ -336,6 +361,7 @@ public class MainScreenController implements Initializable {
         editPane.setVisible(false);
         notify.setEditable(false);
         setGrande();
+        setScheduleTable();
         // check quyen
 
         if(LoginHandler.getInstance().checkRole()){
@@ -365,11 +391,10 @@ public class MainScreenController implements Initializable {
         }
 
 
-
-        ObservableList<Course> coursesList = FXCollections.observableArrayList(CourseDAO.getInstance().selectAll());
-        courseId.setCellValueFactory(new PropertyValueFactory<Course, String>("courseID"));
-        courseName.setCellValueFactory(new PropertyValueFactory<Course, String>("courseName"));
-        tableCourse.setItems(coursesList);
-
+        ObservableList<Subject> coursesList = FXCollections.observableArrayList(SubjectDAO.getInstance().selectAll());
+        subjectID.setCellValueFactory(new PropertyValueFactory<Subject, String>("subjectID"));
+        subjectName.setCellValueFactory(new PropertyValueFactory<Subject, String>("SubjectName"));
+        creditCol.setCellValueFactory(new PropertyValueFactory<Subject, String>("credit"));
+        tableSubject.setItems(coursesList);
     }
 }
