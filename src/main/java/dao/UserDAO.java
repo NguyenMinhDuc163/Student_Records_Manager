@@ -1,6 +1,7 @@
 package dao;
 
 import model.User;
+import service.LoginHandler;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,18 +14,34 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public int insert(User user) {
-        String url = "INSERT INTO users (userName, passWord, studentID, email)VALUES(?, ?, ?, ?)";
-        // try-with-resources
-        try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(url)) {
-            stmt.setString(1,user.getUserName());
-            stmt.setString(2,user.getPassWord());
-            stmt.setString(3,user.getStudentID());
-            stmt.setString(4,user.getEmail());
-            int row = stmt.executeUpdate();
-            System.out.println("Số dữ liệu được cập nhật là: " + row);
-            return row;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        String url  = "";
+        if(user.getTeacherID().startsWith("GV")){
+            url = "INSERT INTO users (userName, passWord, teacherID, email)VALUES(?, ?, ?, ?)";
+            try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(url)) {
+                stmt.setString(1,user.getUserName());
+                stmt.setString(2,user.getPassWord());
+                stmt.setString(3,user.getTeacherID());
+                stmt.setString(4,user.getEmail());
+                int row = stmt.executeUpdate();
+                System.out.println("Số dữ liệu được cập nhật là: " + row);
+                return row;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        else {
+            url = "INSERT INTO users (userName, passWord, studentID, email)VALUES(?, ?, ?, ?)";
+            try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(url)) {
+                stmt.setString(1,user.getUserName());
+                stmt.setString(2,user.getPassWord());
+                stmt.setString(3,user.getStudentID());
+                stmt.setString(4,user.getEmail());
+                int row = stmt.executeUpdate();
+                System.out.println("Số dữ liệu được cập nhật là: " + row);
+                return row;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -73,7 +90,7 @@ public class UserDAO implements DAOInterface<User>{
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 User x = new User(rs.getString("userID"), rs.getString("userName"),
-                        rs.getString( "passWord"), rs.getString("studentID"));
+                        rs.getString( "passWord"), rs.getString("studentID"), rs.getString("teacherID"));
                 users.add(x);
             }
         } catch (SQLException e) {
@@ -92,7 +109,7 @@ public class UserDAO implements DAOInterface<User>{
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 User x = new User(rs.getString("userID"), rs.getString("userName"),
-                        rs.getString( "passWord"), rs.getString("studentID"));
+                        rs.getString( "passWord"), rs.getString("studentID"), rs.getString("teacherID"));
                 users.add(x);
             }
         } catch (SQLException e) {
@@ -112,7 +129,7 @@ public class UserDAO implements DAOInterface<User>{
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 user = new User(rs.getString("userID"), rs.getString("userName"),
-                        rs.getString( "passWord"), rs.getString("studentID"));
+                        rs.getString( "passWord"), rs.getString("studentID"), rs.getString("teacherID"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -130,7 +147,7 @@ public class UserDAO implements DAOInterface<User>{
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 user = new User(rs.getString("userID"), rs.getString("userName"),
-                        rs.getString( "passWord"), rs.getString("studentID"));
+                        rs.getString( "passWord"), rs.getString("studentID"), rs.getString("teacherID"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
