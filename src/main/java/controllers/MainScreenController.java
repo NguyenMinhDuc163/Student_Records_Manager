@@ -2,6 +2,7 @@ package controllers;
 
 
 import app.Main;
+import com.mysql.cj.log.Log;
 import dao.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -37,6 +38,7 @@ import java.util.*;
 
 public class MainScreenController implements Initializable {
     @FXML private Label name, studentID, classRoom, majors, year, user;
+    @FXML private Label identifyLb, facultyLb, majorLb, yearLb;
     @FXML private Button profile, home, courseBtt, gradebbt,extrabbt, editbbt;
     @FXML private AnchorPane profileForm, main, courseForm, gradePane, ChangePassWordPane;
     @FXML private TableView<Course> tableCourse;
@@ -53,7 +55,7 @@ public class MainScreenController implements Initializable {
     @FXML private ImageView imageView, imageLogo;
     @FXML private TextField msvn, ho, ten, maMon, tenMon, maLop, cc, thi, bt, kt, TH, TBHP, heChu;
     @FXML private TextField msvNew, maMonNew;
-    @FXML private AnchorPane addData, update, deleteData, addDataAll;
+    @FXML private AnchorPane addData, update, deleteData, addDataAll, rolePane;
     @FXML private Button add, up, del, addAll,cancel;
     @FXML private TextArea notify;
     @FXML private TextField msvx, mmh, attendance,finalExam, assignment,exam, practical, component, letter;
@@ -334,16 +336,34 @@ public class MainScreenController implements Initializable {
         editPane.setVisible(false);
         notify.setEditable(false);
         setGrande();
+        // check quyen
 
+        if(LoginHandler.getInstance().checkRole()){
+            rolePane.setVisible(true);
+        }
         String ID = LoginHandler.getUser();
-        student = StudentDAO.getInstance().selectByID(ID);
-        Classes classes= ClassesDAO.getInstance().selectByID(ID);
-        name.setText(student.getFirstName() + " " + student.getLastName());
-        studentID.setText(student.getStudentID());
-        classRoom.setText(classes.getClassID());
-        majors.setText("Công nghệ thông tin");
-        year.setText("D21");
-        user.setText(student.getFirstName() + " " + student.getLastName());
+        if(ID.startsWith("GV")){
+            identifyLb.setText("Mã Giảng Viên");
+            facultyLb.setText("Chuyên Ngành");
+            majorLb.setText("Phòng ban");
+            yearLb.setVisible(false);
+            year.setVisible(false);
+            Teachers teachers = TeacherDao.getInstance().selectByID(ID);
+            name.setText(teachers.getTeacherName());
+            studentID.setText(teachers.getTeacherID());
+            classRoom.setText(teachers.getFaculty());
+            majors.setText(teachers.getDepartment());
+        }else {
+            student = StudentDAO.getInstance().selectByID(ID);
+            Classes classes= ClassesDAO.getInstance().selectByID(ID);
+            name.setText(student.getFirstName() + " " + student.getLastName());
+            studentID.setText(student.getStudentID());
+            classRoom.setText(classes.getClassID());
+            majors.setText("Công nghệ thông tin");
+            year.setText("D21");
+            user.setText(student.getFirstName() + " " + student.getLastName());
+        }
+
 
 
         ObservableList<Course> coursesList = FXCollections.observableArrayList(CourseDAO.getInstance().selectAll());

@@ -119,7 +119,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main-pane-center" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="profileForm" layoutX="2.0" layoutY="1.0" prefHeight="672.0" prefWidth="903.0" visible="false">
+            <AnchorPane fx:id="profileForm" layoutX="2.0" layoutY="1.0" prefHeight="672.0" prefWidth="903.0">
                <children>
                   <Label fx:id="majors" layoutX="367.0" layoutY="440.0" prefHeight="30.0" prefWidth="234.0" text="Label">
                      <font>
@@ -151,22 +151,22 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="176.0" layoutY="338.0" text="Mã sinh viên">
+                  <Label fx:id="identifyLb" layoutX="176.0" layoutY="338.0" text="Mã sinh viên">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="177.0" layoutY="389.0" prefHeight="30.0" prefWidth="57.0" text="Lớp">
+                  <Label fx:id="facultyLb" layoutX="177.0" layoutY="389.0" prefHeight="30.0" prefWidth="156.0" text="Lớp">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="177.0" layoutY="440.0" text="Chuyên ngành">
+                  <Label fx:id="majorLb" layoutX="177.0" layoutY="440.0" text="Chuyên ngành">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="176.0" layoutY="498.0" text="Khoá">
+                  <Label fx:id="yearLb" layoutX="176.0" layoutY="498.0" text="Khoá">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -233,7 +233,7 @@
                     </columns>
                   </TableView>
                   <Button fx:id="search" layoutX="344.0" layoutY="58.0" mnemonicParsing="false" onAction="#setSearch" text="Tra cứu" />
-                  <AnchorPane layoutX="607.0" layoutY="20.0" prefHeight="107.0" prefWidth="155.0">
+                  <AnchorPane fx:id="rolePane" layoutX="607.0" layoutY="20.0" prefHeight="107.0" prefWidth="155.0" visible="false">
                      <children>
                         <Button fx:id="editbbt" layoutX="45.0" layoutY="38.0" mnemonicParsing="false" onAction="#switchForm" text="Chỉnh sửa" />
                      </children>
@@ -339,7 +339,7 @@
                   </AnchorPane>
                </center>
             </BorderPane>
-            <BorderPane fx:id="editPane" prefHeight="686.0" prefWidth="912.0">
+            <BorderPane fx:id="editPane" prefHeight="686.0" prefWidth="912.0" visible="false">
                <bottom>
                   <AnchorPane prefHeight="89.0" prefWidth="912.0" BorderPane.alignment="CENTER">
                      <children>

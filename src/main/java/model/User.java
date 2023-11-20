@@ -5,20 +5,29 @@ public class User {
     private String userName;
     private String passWord;
     private String studentID;
+    private String teacherID;
     private String email;
 
     public User(String userName, String passWord, String studentID, String email, int time) {
         this.userName = userName;
         this.passWord = passWord;
-        this.studentID = studentID;
+        if(!studentID.startsWith("GV"))
+            this.studentID = studentID;
+        else this.teacherID = studentID;
         this.email = email;
     }
 
-    public User(String userID, String userName, String passWord, String studentID) {
+    public User(String userID, String userName, String passWord, String studentID, String teacherID) {
         this.userID = userID;
         this.userName = userName;
         this.passWord = passWord;
         this.studentID = studentID;
+        this.teacherID = teacherID;
+    }
+
+
+    public String getTeacherID() {
+        return teacherID;
     }
 
     public void setPassWord(String passWord) {
@@ -47,6 +56,6 @@ public class User {
 
     @Override
     public String toString() {
-        return String.join(" ", userID, userName, passWord, studentID);
+        return String.join(" ", userID, userName, passWord, studentID, teacherID);
     }
 }
