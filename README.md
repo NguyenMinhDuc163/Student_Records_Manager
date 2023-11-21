@@ -20,7 +20,7 @@ Sau khi bạn đã cài đặt JDK và Maven, hãy thực hiện các bước sa
 
 ```sh
 git clone https://github.com/NguyenMinhDuc163/Student_Records_Manager.git
-cd StudentRecordsManager
+cd Student_Records_Manager
 mvn clean javafx:run
 ```
 ### Nếu không sử dụng maven hãy cài thủ công các thư viện sau:
