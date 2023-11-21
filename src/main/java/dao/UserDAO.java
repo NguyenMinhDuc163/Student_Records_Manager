@@ -15,7 +15,7 @@ public class UserDAO implements DAOInterface<User>{
     @Override
     public int insert(User user) {
         String url  = "";
-        if(user.getTeacherID().startsWith("GV")){
+        if(user.getStudentID() == null ){ // KT neu studentID == null thi la gv
             url = "INSERT INTO users (userName, passWord, teacherID, email)VALUES(?, ?, ?, ?)";
             try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(url)) {
                 stmt.setString(1,user.getUserName());
@@ -26,7 +26,7 @@ public class UserDAO implements DAOInterface<User>{
                 System.out.println("Số dữ liệu được cập nhật là: " + row);
                 return row;
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
         else {
@@ -40,9 +40,10 @@ public class UserDAO implements DAOInterface<User>{
                 System.out.println("Số dữ liệu được cập nhật là: " + row);
                 return row;
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
+        return 0;
     }
 
 
