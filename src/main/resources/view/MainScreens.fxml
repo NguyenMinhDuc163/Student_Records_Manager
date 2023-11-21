@@ -27,7 +27,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1155.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenController">
    <top>
-      <MenuBar prefHeight="40.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <MenuBar prefHeight="11.0" prefWidth="1155.0" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -180,13 +180,13 @@
                   <Button layoutX="472.0" layoutY="224.0" mnemonicParsing="false" onAction="#setImageView" text="Chỉnh sửa" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="main" prefHeight="674.0" prefWidth="905.0">
+            <AnchorPane fx:id="main" prefHeight="674.0" prefWidth="905.0" visible="false">
                <children>
                   <TitledPane animated="false" layoutX="36.0" layoutY="218.0" prefHeight="377.0" prefWidth="270.0" text="Thông báo">
                      <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="268.0">
                            <children>
-                              <TextArea editable="false" prefHeight="342.0" prefWidth="269.0" promptText="Đây là thông báo" />
+                              <TextArea fx:id="thongBao" editable="false" prefHeight="342.0" prefWidth="269.0" promptText="Đây là thông báo " />
                            </children></AnchorPane>
                      </content>
                   </TitledPane>
@@ -343,7 +343,7 @@
                   </AnchorPane>
                </center>
             </BorderPane>
-            <BorderPane fx:id="editPane" prefHeight="686.0" prefWidth="912.0" visible="false">
+            <BorderPane fx:id="editPane" prefHeight="686.0" prefWidth="912.0">
                <bottom>
                   <AnchorPane prefHeight="89.0" prefWidth="912.0" BorderPane.alignment="CENTER">
                      <children>
@@ -419,7 +419,12 @@
                <top>
                   <AnchorPane prefHeight="280.0" prefWidth="912.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextArea fx:id="notify" layoutX="81.0" layoutY="31.0" prefHeight="200.0" prefWidth="732.0" />
+                        <TextArea fx:id="notify" layoutX="81.0" layoutY="49.0" prefHeight="182.0" prefWidth="732.0" />
+                        <Label layoutX="365.0" layoutY="14.0" prefHeight="30.0" prefWidth="125.0" text="Thông báo">
+                           <font>
+                              <Font name="System Bold Italic" size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </top>

@@ -57,7 +57,7 @@ public class MainScreenController implements Initializable {
     @FXML private TextField msvNew, maMonNew;
     @FXML private AnchorPane addData, update, deleteData, addDataAll, rolePane;
     @FXML private Button add, up, del, addAll,cancel;
-    @FXML private TextArea notify;
+    @FXML private TextArea notify, thongBao;
     @FXML private TextField msvx, mmh, attendance,finalExam, assignment,exam, practical, component, letter;
     @FXML private TableView<ClassSchedule> scheduleTable;
     @FXML private TableColumn<ClassSchedule, String> time, monday, tuesday, wednesday, thursday, friday,saturday;
@@ -292,7 +292,14 @@ public class MainScreenController implements Initializable {
         notify.appendText("Bạn đã chọn file " + file.getName() + "\n");
         fileAddress.setText(file.getPath());
     }
+    public void setNotice(){
+        thongBao.setWrapText(true);
+        thongBao.appendText("1, PTIT là trường đầu tiên trở thành Đại học số và có văn phòng tại nước ngoài\n\n");
+        thongBao.appendText("2, Mỗi thầy cô PTIT là một tấm gương nhanh nhạy nắm bắt các xu hướng chuyển dịch\n\n");
+        thongBao.appendText("3, Học viện Công nghệ Bưu chính Viễn thông tổ chức Lễ tốt nghiệp năm 2023-đợt 2\n\n");
+        thongBao.appendText("4, Phiên họp thứ 14 của Hội đồng Học viện Học viện Công nghệ Bưu chính Viễn thông\n\n");
 
+    }
     public void setScheduleTable(){
 
         ObservableList<ClassSchedule> schedulesList = FXCollections.observableArrayList(
@@ -362,6 +369,7 @@ public class MainScreenController implements Initializable {
         notify.setEditable(false);
         setGrande();
         setScheduleTable();
+        setNotice();
         // check quyen
 
         if(LoginHandler.getInstance().checkRole()){
