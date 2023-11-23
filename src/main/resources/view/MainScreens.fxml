@@ -65,7 +65,7 @@
                   <Image url="@../images/logoAVT.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="110.0" layoutY="47.0" prefHeight="30.0" prefWidth="95.0" text="Welcome" textFill="#1a88ba">
+            <Label layoutX="110.0" layoutY="47.0" prefHeight="30.0" prefWidth="95.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);" text="Welcome" textFill="#1a88ba">
                <font>
                   <Font name="Book Antiqua" size="20.0" />
                </font></Label>
@@ -74,12 +74,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="profile" layoutX="27.0" layoutY="165.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" text="Thông tin các nhân" />
-            <Button fx:id="home" layoutX="27.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" text="Trang chủ" />
-            <Button fx:id="courseBtt" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" text="Khoá học" />
-            <Button fx:id="gradebbt" layoutX="26.0" layoutY="378.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" text="Bảng điểm" />
-            <Button fx:id="extrabbt" layoutX="26.0" layoutY="439.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="199.0" text="Tính điểm" />
-            <Button layoutX="12.0" layoutY="596.0" mnemonicParsing="false" onAction="#setLogout" prefHeight="34.0" prefWidth="48.0">
+            <Button fx:id="profile" layoutX="27.0" layoutY="165.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" styleClass="custom-button" text="Thông tin các nhân" />
+            <Button fx:id="home" layoutX="27.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" styleClass="custom-button" text="Trang chủ" />
+            <Button fx:id="courseBtt" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" styleClass="custom-button" text="Khoá học" />
+            <Button fx:id="gradebbt" layoutX="26.0" layoutY="378.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" styleClass="custom-button" text="Bảng điểm" />
+            <Button fx:id="extrabbt" layoutX="26.0" layoutY="439.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="199.0" styleClass="custom-button" text="Tính điểm" />
+            <Button layoutX="12.0" layoutY="596.0" mnemonicParsing="false" onAction="#setLogout" prefHeight="34.0" prefWidth="48.0" styleClass="logout-button">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -108,13 +108,13 @@
                   <Image url="@../images/9.png" />
                </image>
             </ImageView>
-            <Label layoutX="69.0" layoutY="605.0" text="Đăng xuất" />
+            <Label layoutX="93.0" layoutY="611.0" text="Đăng xuất" />
             <ImageView fitHeight="36.0" fitWidth="25.0" layoutX="28.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/5.png" />
                </image>
             </ImageView>
-            <Button fx:id="commentbbt" layoutX="26.0" layoutY="503.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="199.0" text="Thảo luận" />
+            <Button fx:id="commentbbt" layoutX="26.0" layoutY="503.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="199.0" styleClass="custom-button" text="Thảo luận" />
             <ImageView fitHeight="23.0" fitWidth="24.0" layoutX="29.0" layoutY="507.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/message.png" />
@@ -440,16 +440,26 @@
                <bottom>
                   <AnchorPane prefHeight="155.0" prefWidth="914.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="sendButton" layoutX="592.0" layoutY="58.0" mnemonicParsing="false" onAction="#setSeenMessage" prefHeight="39.0" prefWidth="60.0" text="Gửi" />
-                        <TextArea fx:id="comment" layoutX="82.0" layoutY="49.0" prefHeight="57.0" prefWidth="434.0" />
+                        <Button fx:id="sendButton" layoutX="576.0" layoutY="60.0" mnemonicParsing="false" onAction="#setSeenMessage" prefHeight="39.0" prefWidth="70.0" styleClass="custom-button" text="Gửi" />
+                        <TextArea fx:id="comment" layoutX="82.0" layoutY="49.0" prefHeight="57.0" prefWidth="434.0" styleClass="message-input" />
                      </children>
                   </AnchorPane>
                </bottom>
                <center>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="510.0" prefWidth="914.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextArea fx:id="chatScreen" editable="false" layoutX="14.0" layoutY="36.0" prefHeight="442.0" prefWidth="638.0" />
-                        <ListView fx:id="onlineUsersListView" layoutX="688.0" layoutY="36.0" prefHeight="445.0" prefWidth="200.0" />
+                        <TextArea fx:id="chatScreen" editable="false" layoutX="39.0" layoutY="117.0" maxHeight="396.0" maxWidth="587.0" prefHeight="396.0" prefWidth="587.0" styleClass="text-area-message" />
+                        <ListView fx:id="onlineUsersListView" layoutX="688.0" layoutY="81.0" prefHeight="400.0" prefWidth="200.0" />
+                        <Label layoutX="274.0" layoutY="35.0" text="Chat Room">
+                           <font>
+                              <Font name="System Bold Italic" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="723.0" layoutY="35.0" text="Tham gia">
+                           <font>
+                              <Font name="System Bold Italic" size="25.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </center>
