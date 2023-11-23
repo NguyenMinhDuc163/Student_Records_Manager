@@ -243,7 +243,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="courseForm" prefHeight="677.0" prefWidth="898.0" visible="false">
+            <AnchorPane fx:id="courseForm" prefHeight="677.0" prefWidth="898.0">
                <children>
                   <TableView fx:id="tableSubject" layoutX="14.0" layoutY="141.0" prefHeight="459.0" prefWidth="893.0">
                     <columns>
@@ -252,9 +252,14 @@
                         <TableColumn fx:id="creditCol" editable="false" prefWidth="125.0" text="Tín chỉ" />
                     </columns>
                   </TableView>
+                  <Text layoutX="258.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chương trình đào tạo ngành CNTT">
+                     <font>
+                        <Font name="System Bold Italic" size="25.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="gradePane" prefHeight="680.0" prefWidth="910.0">
+            <AnchorPane fx:id="gradePane" prefHeight="680.0" prefWidth="910.0" visible="false">
                <children>
                   <TextField fx:id="msv" layoutX="62.0" layoutY="58.0" prefHeight="31.0" prefWidth="235.0" promptText="Mã sinh viên" styleClass="textfield-search" />
                   <TableView fx:id="tableGrade" layoutX="10.0" layoutY="168.0" prefHeight="502.0" prefWidth="881.0" styleClass="tab-anchor-pane">
