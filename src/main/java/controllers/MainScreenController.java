@@ -343,11 +343,21 @@ public class MainScreenController implements Initializable {
         Stage stage = (Stage) editPane.getScene().getWindow();
         FileChooser fc = new FileChooser();
         fc.setTitle("Choose a image");
-        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
-        fc.getExtensionFilters().add(imageFilter);
+        FileChooser.ExtensionFilter fileReader = new FileChooser.ExtensionFilter("All Files", "*.*");
+        fc.getExtensionFilters().add(fileReader);
         File file = fc.showOpenDialog(stage);
-        notify.appendText("Bạn đã chọn file " + file.getName() + "\n");
-        fileAddress.setText(file.getPath());
+        if(file !=  null){
+            notify.appendText("Bạn đã chọn file " + file.getName() + "\n");
+            fileAddress.setText(file.getPath());
+        }else notify.appendText("Bạn đã chọn không tồn tại \n");
+
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Thông báo");
+        alert.setHeaderText("Tinh năng:");
+        alert.setContentText("Tính năng đang gặp một số lỗi vui lòng thử lại sau.");
+        alert.show();
+
     }
     public void setNotice(){
         thongBao.setWrapText(true);
@@ -367,11 +377,11 @@ public class MainScreenController implements Initializable {
 
         ObservableList<ClassSchedule> schedulesList = FXCollections.observableArrayList(
                 new ClassSchedule("7:00 AM", "", "", "", "", "", "Mạng máy tính"),
-                new ClassSchedule("9:00 AM", "", "", "", "", "", "Mạng máy tính"),
+                new ClassSchedule("9:00 AM", "Lập trình C++", "", "", "", "", "Mạng máy tính"),
                 new ClassSchedule("10:00 AM", "", "", "Tiếng Anh", "", "", "Lịch sử Đảng"),
                 new ClassSchedule("13:00 PM", "", "", "", "Lập trình hướng đối tượng", "", "Python"),
                 new ClassSchedule("15:00 PM", "", "", "", "Lập trình hướng đối tượng", "", "Python"),
-                new ClassSchedule("16:00 PM", "", "", "", "", "", "Hệ điều hành"),
+                new ClassSchedule("16:00 PM", "", "DSA", "", "", "", "Hệ điều hành"),
                 new ClassSchedule("17:00 PM", "", "", "", "", "", "Hệ điều hành"),
                 new ClassSchedule("19:00 PM", "", "", "", "", "", "Cơ sở dữ liệu")
 
