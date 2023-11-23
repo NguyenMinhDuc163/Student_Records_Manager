@@ -320,6 +320,8 @@ public class MainScreenController implements Initializable {
         thongBao.appendText("2, Mỗi thầy cô PTIT là một tấm gương nhanh nhạy nắm bắt các xu hướng chuyển dịch\n\n");
         thongBao.appendText("3, Học viện Công nghệ Bưu chính Viễn thông tổ chức Lễ tốt nghiệp năm 2023-đợt 2\n\n");
         thongBao.appendText("4, Phiên họp thứ 14 của Hội đồng Học viện Học viện Công nghệ Bưu chính Viễn thông\n\n");
+        thongBao.appendText("5, Tưng bừng các hoạt động tri ân chào mừng kỷ niệm ngày Nhà Giáo Việt Nam\n\n");
+        thongBao.appendText("6, Bộ trưởng Nguyễn Mạnh Hùng: “Muốn học tốt thì hãy hỏi nhiều hơn\n\n");
 
     }
 

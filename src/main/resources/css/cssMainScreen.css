@@ -27,3 +27,170 @@
         -fx-background-color: #C6E2FF;
 }
 
+.custom-button {
+        -fx-background-color: #3498db; /* Màu nền */
+        -fx-border-color: #2980b9; /* Màu viền */
+        -fx-text-fill: white; /* Màu chữ */
+        -fx-font-size: 14px; /* Kích thước chữ */
+        -fx-background-radius: 15; /* Bo tròn góc */
+        -fx-border-radius: 15;
+        -fx-padding: 8 15; /* Độ lớn của padding */
+        -fx-cursor: hand; /* Con trỏ khi di chuột qua nút */
+}
+
+/* Hover effect khi di chuột qua nút */
+.custom-button:hover {
+        -fx-background-color: #45a049; /* Màu nền khi hover */
+}
+
+
+/* style.css */
+
+/* Nút Đăng xuất */
+.logout-button {
+        -fx-background-color: #e74c3c; /* Màu nền */
+        -fx-border-color: #c0392b; /* Màu viền */
+        -fx-text-fill: white; /* Màu chữ */
+        -fx-font-size: 16px; /* Kích thước chữ */
+        -fx-font-weight: bold; /* Độ đậm của chữ */
+        -fx-padding: 8 15; /* Độ lớn của padding */
+        -fx-background-radius: 10; /* Bo tròn góc */
+        -fx-border-radius: 10;
+        -fx-cursor: hand; /* Con trỏ khi di chuột qua nút */
+}
+
+/* Hiệu ứng khi di chuột qua nút */
+.logout-button:hover {
+        -fx-background-color: #c0392b; /* Màu nền khi hover */
+}
+
+/* Hiệu ứng khi nút được nhấn */
+.logout-button:pressed {
+        -fx-background-color: #922b21; /* Màu nền khi nhấn */
+}
+/* style.css */
+
+/* TitledPane */
+.titled-pane {
+        -fx-background-color: #ecf0f1; /* Màu nền */
+}
+
+/* Header của TitledPane */
+.titled-pane .title {
+        -fx-background-color: #3490db; /* Màu nền */
+        -fx-text-fill: white; /* Màu chữ */
+}
+
+/* Nội dung bên trong TitledPane */
+.titled-pane .content {
+        -fx-background-color: #ecf0f1; /* Màu nền */
+}
+
+
+/* style.css */
+
+/* TableView */
+.table-view {
+        -fx-background-color: #ecf0f1; /* Màu nền */
+}
+
+/* Header của TableView */
+.table-view .column-header-background {
+        -fx-background-color: #3498db; /* Màu nền */
+        -fx-text-fill: white; /* Màu chữ */
+}
+
+/* Cột trong TableView */
+.table-view .column-header {
+        -fx-background-color: #3498db; /* Màu nền */
+        -fx-text-fill: white; /* Màu chữ */
+}
+
+/* Dòng được chọn trong TableView */
+.table-row-cell:selected {
+        -fx-background-color: #2980b9; /* Màu nền khi được chọn */
+        -fx-text-fill: white; /* Màu chữ khi được chọn */
+}
+
+/* Nội dung bên trong TableView */
+.table-cell {
+        -fx-background-color: #ecf0f1; /* Màu nền */
+        -fx-text-fill: #3498db; /* Màu chữ */
+}
+
+/* Hover effect khi di chuột qua dòng của TableView */
+.table-row-cell:hover {
+        -fx-background-color: #bdc3c7; /* Màu nền khi hover */
+}
+
+
+/* style.css */
+
+/* Chat Container (StackPane) */
+.chat-container {
+        -fx-background-color: #ecf0f1; /* Màu nền */
+}
+
+/* Message Area (TextArea) */
+.message-area {
+        -fx-background-color: #f4f4f4; /* Màu nền */
+        -fx-text-fill: #333; /* Màu chữ */
+        -fx-border-color: #ccc; /* Màu viền */
+        -fx-border-width: 2; /* Độ dày của viền */
+        -fx-border-radius: 5; /* Bo tròn góc viền */
+        -fx-padding: 10; /* Độ lớn của padding */
+        -fx-font-family: "Arial", sans-serif; /* Font chữ */
+        -fx-font-size: 14px; /* Kích thước chữ */
+        -fx-min-height: 100; /* Chiều cao tối thiểu */
+        -fx-pref-height: 150; /* Chiều cao ưa thích */
+        -fx-max-height: 200; /* Chiều cao tối đa */
+}
+/* style.css */
+
+/* TextArea */
+.text-area-message {
+        -fx-background-color: #bdc3c7; /* Màu nền xám */
+        -fx-text-fill: #333; /* Màu chữ */
+        -fx-border-color: #7f8c8d; /* Màu viền */
+        -fx-border-width: 2; /* Độ dày của viền */
+        -fx-border-radius: 10; /* Bo tròn góc viền */
+        -fx-padding: 10; /* Độ lớn của padding */
+        -fx-font-family: "Arial", sans-serif; /* Font chữ */
+        -fx-font-size: 16px; /* Kích thước chữ */
+        -fx-min-height: 150; /* Chiều cao tối thiểu */
+        -fx-pref-height: 600; /* Chiều cao ưa thích */
+        -fx-max-height: 300; /* Chiều cao tối đa */
+        -fx-min-width: 300; /* Chiều rộng tối thiểu */
+        -fx-pref-width: 600; /* Chiều rộng ưa thích */
+        -fx-max-width: 700; /* Chiều rộng tối đa */
+}
+
+/* Hiệu ứng khi di chuột vào TextArea */
+.text-area:hover {
+        -fx-border-color: #34495e; /* Màu viền khi hover */
+}
+
+/* style.css */
+
+/* Message Input Area (TextArea) */
+.message-input {
+        -fx-background-color: #ecf0f1; /* Màu nền xám nhạt */
+        -fx-text-fill: #333; /* Màu chữ */
+        -fx-border-color: #bdc3c7; /* Màu viền */
+        -fx-border-width: 2; /* Độ dày của viền */
+        -fx-border-radius: 10; /* Bo tròn góc viền */
+        -fx-padding: 10; /* Độ lớn của padding */
+        -fx-font-family: "Arial", sans-serif; /* Font chữ */
+        -fx-font-size: 16px; /* Kích thước chữ */
+        -fx-min-height: 50; /* Chiều cao tối thiểu */
+        -fx-pref-height: 60; /* Chiều cao ưa thích */
+        -fx-max-height: 100; /* Chiều cao tối đa */
+        -fx-min-width: 200; /* Chiều rộng tối thiểu */
+        -fx-pref-width: 450; /* Chiều rộng ưa thích */
+        -fx-max-width: 500; /* Chiều rộng tối đa */
+}
+
+/* Hiệu ứng khi di chuột vào Message Input Area */
+.message-input:hover {
+        -fx-border-color: #3498db; /* Màu viền khi hover */
+}
