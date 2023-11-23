@@ -1,15 +1,11 @@
 package controllers;
 
 
-import app.Main;
-import com.mysql.cj.log.Log;
 import dao.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,17 +25,22 @@ import javafx.stage.Stage;
 import model.*;
 import service.ChangePassWordHandl;
 import service.LoginHandler;
-import service.UpdateDateHandle;
+import service.UpdateDataHandle;
+import util.Client;
+import util.Server;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.net.URL;
 import java.util.*;
 
 public class MainScreenController implements Initializable {
     @FXML private Label name, studentID, classRoom, majors, year, user;
     @FXML private Label identifyLb, facultyLb, majorLb, yearLb;
-    @FXML private Button profile, home, courseBtt, gradebbt,extrabbt, editbbt;
+    @FXML private Button profile, home, courseBtt, gradebbt,extrabbt, editbbt, commentbbt;
     @FXML private AnchorPane profileForm, main, courseForm, gradePane, ChangePassWordPane;
     @FXML private TableView<Subject> tableSubject;
     @FXML private TableView<Grade> tableGrade;
@@ -48,7 +49,7 @@ public class MainScreenController implements Initializable {
     @FXML private TableColumn<Grade, String> finalExamScore, componentScore, letterGrade;
     @FXML private TextField msv;
     @FXML private PasswordField oldPass, newPass, confirmPass,captcha;
-    @FXML private BorderPane borderPaneGrade, editPane;
+    @FXML private BorderPane borderPaneGrade, editPane, chatRoom;
     @FXML private ScrollPane grandePane;
     @FXML private Text notice, fileAddress;
     @FXML private GridPane gridPane;
@@ -61,6 +62,11 @@ public class MainScreenController implements Initializable {
     @FXML private TextField msvx, mmh, attendance,finalExam, assignment,exam, practical, component, letter;
     @FXML private TableView<ClassSchedule> scheduleTable;
     @FXML private TableColumn<ClassSchedule, String> time, monday, tuesday, wednesday, thursday, friday,saturday;
+    @FXML private TextArea chatScreen, comment;
+    @FXML private ListView<String> onlineUsersListView;
+    @FXML private Button sendButton;
+    private OutputStream outputStream;
+
     private Map<Label, ChoiceBox> choiceList = new LinkedHashMap<>();
     Student student;
     public Scene setScene() throws IOException {
@@ -85,6 +91,7 @@ public class MainScreenController implements Initializable {
             ChangePassWordPane.setVisible(false);
             borderPaneGrade.setVisible(false);
             editPane.setVisible(false);
+            chatRoom.setVisible(false);
         }
         else if(event.getSource() == home){
             profileForm.setVisible(false);
@@ -94,6 +101,7 @@ public class MainScreenController implements Initializable {
             ChangePassWordPane.setVisible(false);
             borderPaneGrade.setVisible(false);
             editPane.setVisible(false);
+            chatRoom.setVisible(false);
         }
         else if(event.getSource() == courseBtt){
             courseForm.setVisible(true);
@@ -103,6 +111,7 @@ public class MainScreenController implements Initializable {
             ChangePassWordPane.setVisible(false);
             borderPaneGrade.setVisible(false);
             editPane.setVisible(false);
+            chatRoom.setVisible(false);
         }
         else if(event.getSource() == gradebbt){
             gradePane.setVisible(true);
@@ -112,6 +121,7 @@ public class MainScreenController implements Initializable {
             ChangePassWordPane.setVisible(false);
             borderPaneGrade.setVisible(false);
             editPane.setVisible(false);
+            chatRoom.setVisible(false);
         }
         else if(event.getSource() == extrabbt){
             gradePane.setVisible(false);
@@ -121,6 +131,7 @@ public class MainScreenController implements Initializable {
             ChangePassWordPane.setVisible(false);
             borderPaneGrade.setVisible(true);
             editPane.setVisible(false);
+            chatRoom.setVisible(false);
         }
         else if(event.getSource() == editbbt){
             gradePane.setVisible(false);
@@ -130,6 +141,17 @@ public class MainScreenController implements Initializable {
             ChangePassWordPane.setVisible(false);
             borderPaneGrade.setVisible(false);
             editPane.setVisible(true);
+            chatRoom.setVisible(false);
+        }
+        else if(event.getSource() == commentbbt){
+            chatRoom.setVisible(true);
+            gradePane.setVisible(false);
+            courseForm.setVisible(false);
+            profileForm.setVisible(false);
+            main.setVisible(false);
+            ChangePassWordPane.setVisible(false);
+            borderPaneGrade.setVisible(false);
+            editPane.setVisible(false);
         }
     }
 
@@ -254,7 +276,7 @@ public class MainScreenController implements Initializable {
         }
     }
     public void getDataEdit(ActionEvent event){
-        UpdateDateHandle update = new UpdateDateHandle();
+        UpdateDataHandle update = new UpdateDataHandle();
         String studentID = msvNew.getText().toUpperCase();
         String firstName = ho.getText();
         String lastName = ten.getText();
@@ -268,13 +290,13 @@ public class MainScreenController implements Initializable {
     public void setDeleteData(ActionEvent event){
         String studentID = msvn.getText();
         String courseID = maMon.getText();
-        UpdateDateHandle update = new UpdateDateHandle();
+        UpdateDataHandle update = new UpdateDataHandle();
         update.deleteData(studentID, courseID);
         notify.appendText("Đã xoá điểm môn học " + courseID + " của sinh viên " + studentID + "\n");
     }
 
     public void setGradeData(){
-        UpdateDateHandle update = new UpdateDateHandle();
+        UpdateDataHandle update = new UpdateDataHandle();
         String studentID = msvx.getText().toUpperCase();
         String courseID = mmh.getText().toUpperCase();
         update.updateGrade(studentID, courseID, attendance.getText(), finalExam.getText(), assignment.getText(),
@@ -298,6 +320,10 @@ public class MainScreenController implements Initializable {
         thongBao.appendText("2, Mỗi thầy cô PTIT là một tấm gương nhanh nhạy nắm bắt các xu hướng chuyển dịch\n\n");
         thongBao.appendText("3, Học viện Công nghệ Bưu chính Viễn thông tổ chức Lễ tốt nghiệp năm 2023-đợt 2\n\n");
         thongBao.appendText("4, Phiên họp thứ 14 của Hội đồng Học viện Học viện Công nghệ Bưu chính Viễn thông\n\n");
+
+    }
+
+    public void setSeenMessage(){
 
     }
     public void setScheduleTable(){
@@ -357,8 +383,37 @@ public class MainScreenController implements Initializable {
             addDataAll.setVisible(true);
         }
     }
+
+    private  boolean isServerRunning(String serverHost, int serverPort) {
+        try (Socket socket = new Socket()) {
+            socket.connect(new InetSocketAddress(serverHost, serverPort), 1000);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public MainScreenController() {
+
+    }
+
+    public String getClientName(){
+        String ID = LoginHandler.getUser();
+        Student student = StudentDAO.getInstance().selectByID(ID);
+        return student.getFirstName();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        if(!isServerRunning("localhost", 5001)){
+            new Thread(() ->{
+                Server server = new Server();
+                server.startServer();
+            }).start();
+
+        }
+
+
         main.setVisible(true);
         profileForm.setVisible(false);
         courseForm.setVisible(false);
@@ -367,6 +422,7 @@ public class MainScreenController implements Initializable {
         borderPaneGrade.setVisible(false);
         editPane.setVisible(false);
         notify.setEditable(false);
+        chatRoom.setVisible(false);
         setGrande();
         setScheduleTable();
         setNotice();
@@ -404,5 +460,18 @@ public class MainScreenController implements Initializable {
         subjectName.setCellValueFactory(new PropertyValueFactory<Subject, String>("SubjectName"));
         creditCol.setCellValueFactory(new PropertyValueFactory<Subject, String>("credit"));
         tableSubject.setItems(coursesList);
+
+
+
+        try {
+            Socket socket = new Socket("localhost", 5001);
+            outputStream = socket.getOutputStream();
+            Client client = new Client(chatScreen, comment, onlineUsersListView, name.getText(), outputStream);
+            new Thread(() -> client.handleServerMessages(socket)).start();
+
+            sendButton.setOnAction(event -> client.sendMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

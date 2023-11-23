@@ -8,13 +8,15 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
 public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
     }
-
     @Override
     public void start(Stage primaryStage) {
         try{
@@ -23,10 +25,17 @@ public class Main extends Application {
             primaryStage.setScene(loginController.setScene());
             primaryStage.setTitle("Student Records Manager");
             primaryStage.getIcons().add(new Image(String.valueOf(new File("src/main/resources/images/Logo_PTIT.png").toURI().toURL())));
+
+//            primaryStage.setX(1155);
+//            primaryStage.setY(714);
+
             primaryStage.show();
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
+
+
+
 //
 
 //        try{

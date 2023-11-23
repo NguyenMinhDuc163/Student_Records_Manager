@@ -20,7 +20,7 @@ public class LoginHandler {
             System.out.println(username + " " + password);
             user = UserDAO.getInstance().selectByUserNamePassWord(username, password);
             System.out.println(user);
-            return user.getUserName().equals(username) && user.getPassWord().equals(password);
+            return user != null && user.getUserName().equals(username) && user.getPassWord().equals(password);
         }catch (Exception e){
             // do user co the null
             e.printStackTrace();

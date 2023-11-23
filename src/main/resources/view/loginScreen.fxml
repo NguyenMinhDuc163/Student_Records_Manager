@@ -40,7 +40,7 @@
          </font>
       </Text>
       <Text layoutX="311.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <CheckBox layoutX="285.0" layoutY="258.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Remember me" />
+      <CheckBox fx:id="checkBox" layoutX="285.0" layoutY="258.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Remember me" />
       <Hyperlink layoutX="32.0" layoutY="315.0" onAction="#setForgotPass" text="Forgot UserName/ Password" textFill="#3339cc" />
       <PasswordField fx:id="passWord" layoutX="274.0" layoutY="220.0" prefHeight="38.0" prefWidth="274.0" />
       <Button id="register" fx:id="registerButton" layoutX="248.0" layoutY="301.0" mnemonicParsing="false" onAction="#bttRegister" prefHeight="53.0" prefWidth="120.0" styleClass="a" text="Register" />
