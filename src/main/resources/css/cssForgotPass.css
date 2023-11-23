@@ -1,3 +1,22 @@
 .root{
     -fx-background-image: url("../images/background.jpg");
 }
+
+.custom-button {
+    -fx-background-color: #3498db; /* Màu nền */
+    -fx-border-color: #2980b9; /* Màu viền */
+    -fx-text-fill: white; /* Màu chữ */
+    -fx-font-size: 14px; /* Kích thước chữ */
+    -fx-background-radius: 15; /* Bo tròn góc */
+    -fx-border-radius: 15;
+    -fx-padding: 8 15; /* Độ lớn của padding */
+    -fx-cursor: hand; /* Con trỏ khi di chuột qua nút */
+}
+
+/* Hover effect khi di chuột qua nút */
+.custom-button:hover {
+    -fx-background-color: #34cddb; /* Màu nền khi hover */
+}
+
+
+/* style.css */

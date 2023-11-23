@@ -1,6 +1,5 @@
 package util;
 
-import controllers.MainScreenController;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -22,11 +21,8 @@ public class Server {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("New client connected: " + clientSocket.getInetAddress().getHostAddress());
-//                    MainScreenController controller = new MainScreenController();
-//                    clientName = controller.getClientName();
 
                 ClientHandler clientHandler = new ClientHandler(clientSocket, this, System.currentTimeMillis() + " ");
-//                ClientHandler clientHandler = new ClientHandler(clientSocket, this, clientName + " ");
                 clients.add(clientHandler);
 
                 new Thread(clientHandler).start();

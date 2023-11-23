@@ -51,7 +51,7 @@ public class MainScreenController implements Initializable {
     @FXML private PasswordField oldPass, newPass, confirmPass,captcha;
     @FXML private BorderPane borderPaneGrade, editPane, chatRoom;
     @FXML private ScrollPane grandePane;
-    @FXML private Text notice, fileAddress;
+    @FXML private Text  fileAddress;
     @FXML private GridPane gridPane;
     @FXML private ImageView imageView, imageLogo;
     @FXML private TextField msvn, ho, ten, maMon, tenMon, maLop, cc, thi, bt, kt, TH, TBHP, heChu;
@@ -62,7 +62,7 @@ public class MainScreenController implements Initializable {
     @FXML private TextField msvx, mmh, attendance,finalExam, assignment,exam, practical, component, letter;
     @FXML private TableView<ClassSchedule> scheduleTable;
     @FXML private TableColumn<ClassSchedule, String> time, monday, tuesday, wednesday, thursday, friday,saturday;
-    @FXML private TextArea chatScreen, comment;
+    @FXML private TextArea chatScreen, comment, notice;
     @FXML private ListView<String> onlineUsersListView;
     @FXML private Button sendButton;
     private OutputStream outputStream;
@@ -161,12 +161,26 @@ public class MainScreenController implements Initializable {
     }
     public void setSearch(ActionEvent event){
         ObservableList<Grade> gradeList = null;
+        Student student1 = StudentDAO.getInstance().selectByID(msv.getText().toUpperCase());
+        if(student1 == null) {
+            System.out.println("Nhập sai mã sinh viên");
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Nhập sai thông tin");
+            alert.setHeaderText("Kiểm tra lại thông tin:");
+            alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại đúng cú pháp mã sinh viên của PTIT.");
+            alert.show();
+            return;
+        }
+
         if(msv.getText().equals("all")){
             gradeList = FXCollections.observableArrayList(GradeDAO.getInstance().selectAll());
         }
         else {
             gradeList = FXCollections.observableArrayList(GradeDAO.getInstance().selectByID(msv.getText().toUpperCase()));
         }
+
+
         nameSV.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getStudent().getFirstName() + " "
                 +  data.getValue().getStudent().getLastName()));
         course.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getCourse().getCourseName()));
@@ -266,14 +280,23 @@ public class MainScreenController implements Initializable {
                 credit += Double.parseDouble(subject.getCredit());
             }
         }
+        notice.setWrapText(true);
         notice.setText("Số điểm bạn đạt dược trên thang điểm 4 là: " + String.format("%.2f",totalScore / credit));
+        notice.appendText("\n\n Chúc bạn đạt được mục tiêu trong kì tới !");
     }
 
     public void setResetGrande(ActionEvent event){
         notice.setText("Hãy nhập điểm mà bạn dự định sẽ đạt được:");
+
         for(var x: choiceList.entrySet()){
             x.getValue().getSelectionModel().clearSelection();
         }
+    }
+
+    public boolean isCheckInput(String studentID, String courseID){
+        Student student1 = StudentDAO.getInstance().selectByID(studentID);
+        Course course1 = CourseDAO.getInstance().selectByID(courseID);
+        return student1 != null && course1 != null;
     }
     public void getDataEdit(ActionEvent event){
         UpdateDataHandle update = new UpdateDataHandle();
@@ -283,25 +306,37 @@ public class MainScreenController implements Initializable {
         String courseID = maMonNew.getText().toUpperCase();
         String courseName = tenMon.getText();
         String classID = maLop.getText().toUpperCase();
-        update.createProfile(studentID, firstName, lastName, courseID, courseName, classID,
-                cc.getText(), thi.getText(), bt.getText(), kt.getText(), TH.getText(), TBHP.getText(), heChu.getText());
-        notify.appendText("Đã cập nhật thông tin cho sinh viên: " + studentID + "\n");
+        if(isCheckInput(studentID, courseID)){
+            update.createProfile(studentID, firstName, lastName, courseID, courseName, classID,
+                    cc.getText(), thi.getText(), bt.getText(), kt.getText(), TH.getText(), TBHP.getText(), heChu.getText());
+            notify.appendText("Đã cập nhật thông tin cho sinh viên: " + studentID + "\n");
+        }
+        else notify.appendText("Dữ liệu nhập vào không đúng,  Hãy kiểm tra lại mã sinh viên hoặc mã khoá học\n");
     }
     public void setDeleteData(ActionEvent event){
         String studentID = msvn.getText();
         String courseID = maMon.getText();
-        UpdateDataHandle update = new UpdateDataHandle();
-        update.deleteData(studentID, courseID);
-        notify.appendText("Đã xoá điểm môn học " + courseID + " của sinh viên " + studentID + "\n");
+        if(isCheckInput(studentID, courseID)){
+            UpdateDataHandle update = new UpdateDataHandle();
+            update.deleteData(studentID, courseID);
+            notify.appendText("Đã xoá điểm môn học " + courseID + " của sinh viên " + studentID + "\n");
+        }
+        else notify.appendText("Dữ liệu nhập vào không đúng,  Hãy kiểm tra lại mã sinh viên hoặc mã khoá học\n");
+
     }
 
     public void setGradeData(){
         UpdateDataHandle update = new UpdateDataHandle();
         String studentID = msvx.getText().toUpperCase();
         String courseID = mmh.getText().toUpperCase();
-        update.updateGrade(studentID, courseID, attendance.getText(), finalExam.getText(), assignment.getText(),
-                exam.getText(), practical.getText(), component.getText(), letter.getText());
-        notify.appendText("Đã cập nhật điểm môn học " + courseID + " cho sinh viên " + studentID + "\n");
+        if(isCheckInput(studentID, courseID)){
+            update.updateGrade(studentID, courseID, attendance.getText(), finalExam.getText(), assignment.getText(),
+                    exam.getText(), practical.getText(), component.getText(), letter.getText());
+            notify.appendText("Đã cập nhật điểm môn học " + courseID + " cho sinh viên " + studentID + "\n");
+        }
+        else notify.appendText("Dữ liệu nhập vào không đúng,  Hãy kiểm tra lại mã sinh viên hoặc mã khoá học\n");
+
+
     }
 
     public void setUpdateAll(ActionEvent event){
@@ -395,15 +430,6 @@ public class MainScreenController implements Initializable {
         }
     }
 
-    public MainScreenController() {
-
-    }
-
-    public String getClientName(){
-        String ID = LoginHandler.getUser();
-        Student student = StudentDAO.getInstance().selectByID(ID);
-        return student.getFirstName();
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -442,6 +468,7 @@ public class MainScreenController implements Initializable {
             year.setVisible(false);
             Teachers teachers = TeacherDao.getInstance().selectByID(ID);
             name.setText(teachers.getTeacherName());
+            user.setText(teachers.getTeacherName());
             studentID.setText(teachers.getTeacherID());
             classRoom.setText(teachers.getFaculty());
             majors.setText(teachers.getDepartment());

@@ -40,7 +40,7 @@
 
 /* Hover effect khi di chuột qua nút */
 .custom-button:hover {
-        -fx-background-color: #45a049; /* Màu nền khi hover */
+        -fx-background-color: #34cddb; /* Màu nền khi hover */
 }
 
 
@@ -48,8 +48,8 @@
 
 /* Nút Đăng xuất */
 .logout-button {
-        -fx-background-color: #e74c3c; /* Màu nền */
-        -fx-border-color: #c0392b; /* Màu viền */
+        -fx-background-color: #ffe299; /* Màu nền */
+        -fx-border-color: #c0962b; /* Màu viền */
         -fx-text-fill: white; /* Màu chữ */
         -fx-font-size: 16px; /* Kích thước chữ */
         -fx-font-weight: bold; /* Độ đậm của chữ */
@@ -61,12 +61,12 @@
 
 /* Hiệu ứng khi di chuột qua nút */
 .logout-button:hover {
-        -fx-background-color: #c0392b; /* Màu nền khi hover */
+        -fx-background-color: #ffb199; /* Màu nền khi hover */
 }
 
 /* Hiệu ứng khi nút được nhấn */
 .logout-button:pressed {
-        -fx-background-color: #922b21; /* Màu nền khi nhấn */
+        -fx-background-color: #ffc499; /* Màu nền khi nhấn */
 }
 /* style.css */
 
@@ -114,8 +114,8 @@
 
 /* Nội dung bên trong TableView */
 .table-cell {
-        -fx-background-color: #ecf0f1; /* Màu nền */
-        -fx-text-fill: #3498db; /* Màu chữ */
+        -fx-background-color: #9cd8e8; /* Màu nền */
+        -fx-text-fill: #100000; /* Màu chữ */
 }
 
 /* Hover effect khi di chuột qua dòng của TableView */
@@ -194,3 +194,183 @@
 .message-input:hover {
         -fx-border-color: #3498db; /* Màu viền khi hover */
 }
+
+
+/* styles.css */
+
+.textarea-score {
+        -fx-border-color: #4CAF50; /* Màu viền */
+        -fx-border-width: 2px; /* Độ rộng viền */
+        -fx-border-radius: 5px; /* Độ cong góc của viền */
+        -fx-padding: 5px; /* Khoảng trắng bên trong TextArea */
+        -fx-background-color: #e0f7fa; /* Màu nền bên trong */
+}
+
+.textarea-score:focused {
+        -fx-border-color: #2196F3; /* Màu viền khi TextArea được focus */
+}
+.textarea-score .content {
+        -fx-control-inner-background: #e0f7fa; /* Màu nền khi có chữ được điền vào */
+}
+
+/* styles.css */
+
+.button-submit {
+        -fx-background-color: #3498db; /* Màu nền */
+        -fx-text-fill: white; /* Màu chữ */
+        -fx-border-color: #3498db; /* Màu viền */
+        -fx-border-width: 2px; /* Độ rộng viền */
+        -fx-border-radius: 5px; /* Độ cong góc của viền */
+        -fx-padding: 8px 16px; /* Kích thước nút */
+        -fx-font-size: 14px; /* Kích thước chữ */
+        -fx-cursor: hand; /* Con trỏ khi di chuột qua nút */
+        -fx-background-radius: 5px; /* Độ cong góc của nền */
+}
+
+.button-submit:hover {
+        -fx-background-color: #2980b9; /* Màu nền khi lướt qua */
+        -fx-border-color: #2980b9; /* Màu viền khi lướt qua */
+}
+
+
+
+/* styles.css */
+
+.image-view-style {
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0); /* Hiệu ứng drop shadow */
+        -fx-border-color: #3498db; /* Màu viền */
+        -fx-border-width: 2px; /* Độ rộng viền */
+        -fx-border-radius: 10px; /* Độ cong góc của viền */
+        -fx-background-color: #ecf0f1; /* Màu nền */
+}
+
+.image-view-style:hover {
+        -fx-border-color: #2980b9; /* Màu viền khi lướt qua */
+}
+
+
+/* styles.css */
+
+.grid-pane-style {
+        -fx-background-color: #ecf0f1; /* Màu nền */
+        -fx-border-color: #3498db; /* Màu viền */
+        -fx-border-width: 2px; /* Độ rộng viền */
+        -fx-border-radius: 5px; /* Độ cong góc của viền */
+        -fx-padding: 10px; /* Khoảng cách nội dung từ viền */
+}
+
+/* Tùy chỉnh một ô trong GridPane */
+.grid-pane-style .grid-cell {
+        -fx-background-color: #3498db; /* Màu nền ô */
+        -fx-text-fill: white; /* Màu chữ trong ô */
+        -fx-border-color: #2980b9; /* Màu viền ô */
+        -fx-border-width: 1px; /* Độ rộng viền ô */
+        -fx-border-radius: 3px; /* Độ cong góc của viền ô */
+        -fx-padding: 5px; /* Khoảng cách nội dung từ viền ô */
+}
+
+/* Hiệu ứng khi lướt qua ô */
+.grid-pane-style .grid-cell:hover {
+        -fx-background-color: #2980b9; /* Màu nền ô khi lướt qua */
+}
+
+
+/* styles.css */
+
+.textfield-search {
+        -fx-prompt-text-fill: #95a5a6; /* Màu chữ gợi ý */
+        -fx-background-color: #ecf0f1; /* Màu nền */
+        -fx-background-insets: 0; /* Loại bỏ viền nền */
+        -fx-border-width: 0; /* Loại bỏ độ rộng viền */
+        -fx-background-radius: 20px; /* Độ cong góc của nền */
+        -fx-padding: 5px 10px; /* Kích thước và khoảng cách nội dung từ viền */
+        -fx-font-size: 14px; /* Kích thước chữ */
+}
+
+.textfield-search:hover {
+        -fx-background-color: #d4e6f1; /* Màu nền khi lướt qua */
+}
+
+
+/* styles.css */
+
+.date-picker-style {
+        -fx-font-size: 14px; /* Kích thước chữ */
+        -fx-prompt-text-fill: #95a5a6; /* Màu chữ gợi ý */
+        -fx-background-radius: 10px; /* Độ cong góc của DatePicker */
+}
+
+.date-picker-style .date-picker-popup {
+        -fx-background-color: #ecf0f1; /* Màu nền popup */
+        -fx-background-radius: 10px; /* Độ cong góc của Popup */
+}
+
+.date-picker-style .date-picker-cell {
+        -fx-background-color: #ecf0f1; /* Màu nền ngày trong popup */
+        -fx-font-size: 14px; /* Kích thước chữ ngày */
+        -fx-background-radius: 5px; /* Độ cong góc của ngày trong popup */
+}
+
+.date-picker-style .date-picker-cell:hover {
+        -fx-background-color: #d4e6f1; /* Màu nền ngày khi lướt qua */
+}
+
+.date-picker-style .date-picker-day-button {
+        -fx-background-color: #3498db; /* Màu nền nút chọn ngày */
+        -fx-text-fill: white; /* Màu chữ nút chọn ngày */
+        -fx-background-radius: 5px; /* Độ cong góc của nút chọn ngày */
+}
+
+.date-picker-style .date-picker-day-button:hover {
+        -fx-background-color: #2980b9; /* Màu nền nút chọn ngày khi lướt qua */
+}
+
+
+/* styles.css */
+
+.grid-pane-user-info {
+        -fx-background-color: #a5d9e7; /* Màu nền */
+        -fx-border-color: #3498db; /* Màu viền */
+        -fx-border-width: 2px; /* Độ rộng viền */
+        -fx-border-radius: 10px; /* Độ cong góc của viền */
+        -fx-padding: 20px; /* Khoảng cách nội dung từ viền */
+}
+
+.grid-pane-user-info .label {
+        -fx-font-size: 16px; /* Kích thước chữ */
+        -fx-text-fill: #2c3e50; /* Màu chữ */
+}
+
+.grid-pane-user-info .value {
+        -fx-font-size: 14px; /* Kích thước chữ */
+        -fx-text-fill: #7f8c8d; /* Màu chữ */
+}
+
+
+/* styles.css */
+
+.label-info {
+        -fx-font-weight: bold; /* Chữ đậm cho các Label thông tin */
+}
+
+
+/* styles.css */
+
+.textfield-rounded {
+        -fx-background-radius: 15px; /* Độ cong góc lớn hơn của TextField */
+        -fx-font-size: 14px; /* Kích thước chữ */
+        -fx-padding: 5px; /* Khoảng cách nội dung từ viền */
+}
+
+/* styles.css */
+
+.custom-textarea {
+        -fx-background-radius: 10px; /* Độ cong góc */
+        -fx-border-color: #3498db; /* Màu viền */
+        -fx-border-width: 2px; /* Độ rộng viền */
+        -fx-padding: 10px; /* Khoảng cách nội dung từ viền */
+        -fx-background-color: #a3b3b7; /* Màu nền */
+        -fx-font-size: 14px; /* Kích thước chữ */
+}
+
+

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -69,9 +70,9 @@
                <font>
                   <Font name="Book Antiqua" size="20.0" />
                </font></Label>
-            <Label fx:id="user" layoutX="42.0" layoutY="109.0" prefHeight="30.0" prefWidth="209.0" text="Nguyễn Minh Đức">
+            <Label fx:id="user" layoutX="29.0" layoutY="109.0" prefHeight="30.0" prefWidth="209.0" text="Nguyễn Minh Đức">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
             <Button fx:id="profile" layoutX="27.0" layoutY="165.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" styleClass="custom-button" text="Thông tin các nhân" />
@@ -128,63 +129,83 @@
          <children>
             <AnchorPane fx:id="profileForm" layoutX="2.0" layoutY="1.0" prefHeight="672.0" prefWidth="903.0" visible="false">
                <children>
-                  <Label fx:id="majors" layoutX="367.0" layoutY="440.0" prefHeight="30.0" prefWidth="234.0" text="Label">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="classRoom" layoutX="367.0" layoutY="389.0" prefHeight="30.0" prefWidth="279.0" text="Label">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="studentID" layoutX="367.0" layoutY="338.0" prefHeight="30.0" prefWidth="233.0" text="Label">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
                   <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="125.0" layoutX="322.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/logoAVT.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="176.0" layoutY="278.0" text="Họ và tên">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="name" layoutX="367.0" layoutY="278.0" prefHeight="30.0" prefWidth="393.0" text="Label">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="identifyLb" layoutX="176.0" layoutY="338.0" text="Mã sinh viên">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="facultyLb" layoutX="177.0" layoutY="389.0" prefHeight="30.0" prefWidth="156.0" text="Lớp">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="majorLb" layoutX="177.0" layoutY="440.0" text="Chuyên ngành">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="yearLb" layoutX="176.0" layoutY="498.0" text="Khoá">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="year" layoutX="367.0" layoutY="498.0" prefHeight="21.0" prefWidth="129.0" text="Label">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="531.0" layoutY="581.0" mnemonicParsing="false" onAction="#setChangePassWord" text="Đổi mật khẩu" />
-                  <Button layoutX="472.0" layoutY="224.0" mnemonicParsing="false" onAction="#setImageView" text="Chỉnh sửa" />
+                  <Button layoutX="531.0" layoutY="581.0" mnemonicParsing="false" onAction="#setChangePassWord" styleClass="custom-button" text="Đổi mật khẩu" />
+                  <Button layoutX="496.0" layoutY="173.0" mnemonicParsing="false" onAction="#setImageView" styleClass="custom-button" text="Chỉnh sửa" />
+                  <GridPane layoutX="170.0" layoutY="246.0" prefHeight="275.0" prefWidth="529.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="225.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="254.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="35.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="majorLb" styleClass="label-info" text="Chuyên ngành" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="studentID" prefHeight="30.0" prefWidth="233.0" styleClass="label-info" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="majors" prefHeight="30.0" prefWidth="234.0" styleClass="label-info" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="classRoom" prefHeight="30.0" prefWidth="279.0" styleClass="label-info" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label styleClass="label-info" text="Họ và tên">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="name" prefHeight="30.0" prefWidth="393.0" styleClass="label-info" text="Label" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="identifyLb" styleClass="label-info" text="Mã sinh viên" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="facultyLb" prefHeight="30.0" prefWidth="156.0" styleClass="label-info" text="Lớp" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="yearLb" styleClass="label-info" text="Khoá" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="year" prefHeight="21.0" prefWidth="129.0" styleClass="label-info" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="grid-pane-user-info" />
+                        <String fx:value="grid-cell" />
+                        <String fx:value="grid-pane-style" />
+                     </styleClass>
+                  </GridPane>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="main" prefHeight="674.0" prefWidth="905.0" visible="false">
@@ -197,7 +218,13 @@
                            </children></AnchorPane>
                      </content>
                   </TitledPane>
-                  <DatePicker layoutX="495.0" layoutY="156.0" />
+                  <DatePicker layoutX="495.0" layoutY="156.0">
+                     <styleClass>
+                        <String fx:value="date-picker-cell" />
+                        <String fx:value="date-picker-day-button" />
+                        <String fx:value="date-picker-popup" />
+                        <String fx:value="date-picker-style" />
+                     </styleClass></DatePicker>
                   <TableView fx:id="scheduleTable" layoutX="338.0" layoutY="217.0" prefHeight="382.0" prefWidth="549.0">
                     <columns>
                       <TableColumn fx:id="time" prefWidth="75.0" text="Thời gian" />
@@ -206,7 +233,7 @@
                         <TableColumn fx:id="wednesday" prefWidth="75.0" text="Thứ 4" />
                         <TableColumn fx:id="thursday" prefWidth="75.0" text="Thứ 5" />
                         <TableColumn fx:id="friday" prefWidth="75.0" text="Thứ 6" />
-                        <TableColumn fx:id="saturday" prefWidth="75.0" text="Thứ 7" />
+                        <TableColumn fx:id="saturday" prefWidth="98.0" text="Thứ 7" />
                     </columns>
                   </TableView>
                   <Label layoutX="543.0" layoutY="103.0" text="Thời khoá biểu" textFill="#eb2b2b">
@@ -220,16 +247,16 @@
                <children>
                   <TableView fx:id="tableSubject" layoutX="14.0" layoutY="141.0" prefHeight="459.0" prefWidth="893.0">
                     <columns>
-                      <TableColumn fx:id="subjectID" prefWidth="168.0" text="Mã Môn học" />
-                      <TableColumn fx:id="subjectName" prefWidth="563.0" text="Tên Môn Học" />
-                        <TableColumn fx:id="creditCol" prefWidth="128.0" text="Tín chỉ" />
+                      <TableColumn fx:id="subjectID" editable="false" prefWidth="168.0" text="Mã Môn học" />
+                      <TableColumn fx:id="subjectName" editable="false" prefWidth="599.0" text="Tên Môn Học" />
+                        <TableColumn fx:id="creditCol" editable="false" prefWidth="125.0" text="Tín chỉ" />
                     </columns>
                   </TableView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="gradePane" prefHeight="680.0" prefWidth="910.0" visible="false">
+            <AnchorPane fx:id="gradePane" prefHeight="680.0" prefWidth="910.0">
                <children>
-                  <TextField fx:id="msv" layoutX="62.0" layoutY="58.0" prefHeight="31.0" prefWidth="235.0" promptText="Mã sinh viên" />
+                  <TextField fx:id="msv" layoutX="62.0" layoutY="58.0" prefHeight="31.0" prefWidth="235.0" promptText="Mã sinh viên" styleClass="textfield-search" />
                   <TableView fx:id="tableGrade" layoutX="10.0" layoutY="168.0" prefHeight="502.0" prefWidth="881.0" styleClass="tab-anchor-pane">
                     <columns>
                         <TableColumn fx:id="nameSV" prefWidth="181.0" text="Tên" />
@@ -243,10 +270,10 @@
                         <TableColumn fx:id="letterGrade" prefWidth="95.0" text="Chữ" />
                     </columns>
                   </TableView>
-                  <Button fx:id="search" layoutX="344.0" layoutY="58.0" mnemonicParsing="false" onAction="#setSearch" text="Tra cứu" />
-                  <AnchorPane fx:id="rolePane" layoutX="607.0" layoutY="20.0" prefHeight="107.0" prefWidth="155.0" visible="false">
+                  <Button fx:id="search" layoutX="344.0" layoutY="58.0" mnemonicParsing="false" onAction="#setSearch" styleClass="custom-button" text="Tra cứu" />
+                  <AnchorPane fx:id="rolePane" layoutX="607.0" layoutY="20.0" prefHeight="107.0" prefWidth="155.0">
                      <children>
-                        <Button fx:id="editbbt" layoutX="45.0" layoutY="38.0" mnemonicParsing="false" onAction="#switchForm" text="Chỉnh sửa" />
+                        <Button fx:id="editbbt" layoutX="45.0" layoutY="38.0" mnemonicParsing="false" onAction="#switchForm" styleClass="custom-button" text="Chỉnh sửa" />
                      </children>
                   </AnchorPane>
                </children>
@@ -258,48 +285,48 @@
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="164.0" layoutY="218.0" text="Mật khẩu cũ">
+                  <Label layoutX="164.0" layoutY="218.0" styleClass="label-info" text="Mật khẩu cũ">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="164.0" layoutY="294.0" text="Mật khẩu mới">
+                  <Label layoutX="164.0" layoutY="294.0" styleClass="label-info" text="Mật khẩu mới">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="163.0" layoutY="363.0" text="Nhập lại mật khẩu">
+                  <Label layoutX="163.0" layoutY="363.0" styleClass="label-info" text="Nhập lại mật khẩu">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="166.0" layoutY="437.0" text="Nhập mã captcha">
+                  <Label layoutX="166.0" layoutY="437.0" styleClass="label-info" text="Nhập mã captcha">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="oldPass" layoutX="417.0" layoutY="217.0" prefHeight="38.0" prefWidth="359.0">
+                  <PasswordField fx:id="oldPass" layoutX="417.0" layoutY="217.0" prefHeight="38.0" prefWidth="359.0" styleClass="textfield-rounded">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </PasswordField>
-                  <PasswordField fx:id="newPass" layoutX="417.0" layoutY="293.0" prefHeight="38.0" prefWidth="359.0">
+                  <PasswordField fx:id="newPass" layoutX="417.0" layoutY="293.0" prefHeight="38.0" prefWidth="359.0" styleClass="textfield-rounded">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </PasswordField>
-                  <PasswordField fx:id="confirmPass" layoutX="417.0" layoutY="362.0" prefHeight="38.0" prefWidth="359.0">
+                  <PasswordField fx:id="confirmPass" layoutX="417.0" layoutY="362.0" prefHeight="38.0" prefWidth="359.0" styleClass="textfield-rounded">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </PasswordField>
-                  <PasswordField fx:id="captcha" layoutX="417.0" layoutY="437.0" prefHeight="38.0" prefWidth="359.0">
+                  <PasswordField fx:id="captcha" layoutX="417.0" layoutY="437.0" prefHeight="38.0" prefWidth="359.0" styleClass="textfield-rounded">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </PasswordField>
-                  <Button layoutX="649.0" layoutY="526.0" mnemonicParsing="false" onAction="#setConfirm" prefHeight="52.0" prefWidth="114.0" text="Xác nhận" />
-                  <Button layoutX="433.0" layoutY="525.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="52.0" prefWidth="111.0" text="Huỷ bỏ" />
+                  <Button layoutX="649.0" layoutY="526.0" mnemonicParsing="false" onAction="#setConfirm" prefHeight="52.0" prefWidth="114.0" styleClass="custom-button" text="Xác nhận" />
+                  <Button layoutX="433.0" layoutY="525.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="52.0" prefWidth="111.0" styleClass="custom-button" text="Huỷ bỏ" />
                </children>
             </AnchorPane>
             <BorderPane fx:id="borderPaneGrade" prefHeight="683.0" prefWidth="909.0" styleClass="main-pane-center" visible="false">
@@ -313,19 +340,15 @@
                <right>
                   <AnchorPane prefHeight="550.0" prefWidth="204.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Text fx:id="notice" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hãy nhập điểm mà bạn dự định sẽ đạt được" wrappingWidth="206.6708984375">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
+                        <TextArea fx:id="notice" editable="false" layoutX="2.0" prefHeight="537.0" prefWidth="200.0" promptText="Hãy nhập điểm mà bạn dự định sẽ đạt được:" styleClass="textarea-score" />
                      </children>
                   </AnchorPane>
                </right>
                <bottom>
                   <AnchorPane prefHeight="86.0" prefWidth="909.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button layoutX="455.0" layoutY="27.0" mnemonicParsing="false" onAction="#calcGrade" prefHeight="33.0" prefWidth="110.0" text="TÍnh điểm" />
-                        <Button layoutX="272.0" layoutY="27.0" mnemonicParsing="false" onAction="#setResetGrande" prefHeight="33.0" prefWidth="110.0" text="Làm mới" />
+                        <Button layoutX="455.0" layoutY="27.0" mnemonicParsing="false" onAction="#calcGrade" prefHeight="33.0" prefWidth="110.0" styleClass="button-submit" text="TÍnh điểm" />
+                        <Button layoutX="272.0" layoutY="27.0" mnemonicParsing="false" onAction="#setResetGrande" prefHeight="33.0" prefWidth="110.0" styleClass="button-submit" text="Làm mới" />
                      </children>
                   </AnchorPane>
                </bottom>
@@ -334,7 +357,7 @@
                      <children>
                         <ScrollPane fx:id="grandePane" prefHeight="550.0" prefWidth="698.0" styleClass="main-pane-center">
                            <content>
-                              <GridPane fx:id="gridPane" prefHeight="547.0" prefWidth="701.0" styleClass="main-pane-center">
+                              <GridPane fx:id="gridPane" prefHeight="547.0" prefWidth="701.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="429.0" minWidth="10.0" prefWidth="428.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="339.0" minWidth="10.0" prefWidth="265.0" />
@@ -344,6 +367,10 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
+                                 <styleClass>
+                                    <String fx:value="main-pane-center" />
+                                    <String fx:value="grid-pane-style" />
+                                 </styleClass>
                               </GridPane>
                            </content></ScrollPane>
                      </children>
@@ -354,11 +381,11 @@
                <bottom>
                   <AnchorPane prefHeight="89.0" prefWidth="912.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="add" layoutX="48.0" layoutY="29.0" mnemonicParsing="false" onAction="#setBbtUpdate" text="Thêm" />
-                        <Button fx:id="up" layoutX="184.0" layoutY="31.0" mnemonicParsing="false" onAction="#setBbtUpdate" text="Cập nhật" />
-                        <Button fx:id="del" layoutX="348.0" layoutY="31.0" mnemonicParsing="false" onAction="#setBbtUpdate" prefHeight="31.0" prefWidth="63.0" text="Xoá" />
-                        <Button fx:id="addAll" layoutX="509.0" layoutY="31.0" mnemonicParsing="false" onAction="#setBbtUpdate" text="Thêm danh sách" />
-                        <Button fx:id="cancel" layoutX="757.0" layoutY="29.0" mnemonicParsing="false" onAction="#setBbtUpdate" text="Huỷ bỏ" />
+                        <Button fx:id="add" layoutX="48.0" layoutY="29.0" mnemonicParsing="false" onAction="#setBbtUpdate" styleClass="custom-button" text="Thêm" />
+                        <Button fx:id="up" layoutX="184.0" layoutY="31.0" mnemonicParsing="false" onAction="#setBbtUpdate" styleClass="custom-button" text="Cập nhật" />
+                        <Button fx:id="del" layoutX="348.0" layoutY="31.0" mnemonicParsing="false" onAction="#setBbtUpdate" prefHeight="38.0" prefWidth="73.0" styleClass="custom-button" text="Xoá" />
+                        <Button fx:id="addAll" layoutX="509.0" layoutY="31.0" mnemonicParsing="false" onAction="#setBbtUpdate" styleClass="custom-button" text="Thêm danh sách" />
+                        <Button fx:id="cancel" layoutX="757.0" layoutY="29.0" mnemonicParsing="false" onAction="#setBbtUpdate" style="-fx-text-fill: #000000; -fx-font-weight: normal; -fx-font-style: italic;" styleClass="logout-button" text="Huỷ bỏ" />
                      </children>
                   </AnchorPane>
                </bottom>
@@ -367,20 +394,20 @@
                      <children>
                         <AnchorPane fx:id="addData" prefHeight="322.0" prefWidth="911.0">
                            <children>
-                              <TextField fx:id="cc" layoutX="33.0" layoutY="212.0" prefHeight="31.0" prefWidth="72.0" promptText="CC" />
-                              <TextField fx:id="heChu" layoutX="743.0" layoutY="212.0" prefHeight="31.0" prefWidth="72.0" promptText="Hệ chữ" />
-                              <TextField fx:id="TBHP" layoutX="638.0" layoutY="212.0" prefHeight="31.0" prefWidth="69.0" promptText="TBHP" />
-                              <TextField fx:id="thi" layoutX="137.0" layoutY="212.0" prefHeight="31.0" prefWidth="75.0" promptText="THI" />
-                              <TextField fx:id="bt" layoutX="259.0" layoutY="212.0" prefHeight="31.0" prefWidth="79.0" promptText="BT" />
-                              <TextField fx:id="maLop" layoutX="618.0" layoutY="138.0" prefHeight="31.0" prefWidth="158.0" promptText="Mã lớp" />
-                              <TextField fx:id="ten" layoutX="619.0" layoutY="65.0" prefHeight="31.0" prefWidth="158.0" promptText="Tên" />
-                              <TextField fx:id="ho" layoutX="338.0" layoutY="65.0" prefHeight="31.0" prefWidth="171.0" promptText="Họ lót" />
-                              <TextField fx:id="msvNew" layoutX="69.0" layoutY="65.0" prefHeight="31.0" prefWidth="153.0" promptText="Mã sinh viên" />
-                              <TextField fx:id="maMonNew" layoutX="69.0" layoutY="138.0" prefHeight="31.0" prefWidth="153.0" promptText="Mã môn" />
-                              <TextField fx:id="tenMon" layoutX="338.0" layoutY="138.0" prefHeight="31.0" prefWidth="171.0" promptText="Tên môn" />
-                              <TextField fx:id="kt" layoutX="385.0" layoutY="212.0" prefHeight="31.0" prefWidth="78.0" promptText="KT" />
-                              <TextField fx:id="TH" layoutX="509.0" layoutY="212.0" prefHeight="31.0" prefWidth="76.0" promptText="TH" />
-                              <Button layoutX="698.0" layoutY="270.0" mnemonicParsing="false" onAction="#getDataEdit" text="Xác nhận" />
+                              <TextField fx:id="cc" layoutX="33.0" layoutY="212.0" prefHeight="31.0" prefWidth="72.0" promptText="CC" styleClass="textfield-rounded" />
+                              <TextField fx:id="heChu" layoutX="743.0" layoutY="212.0" prefHeight="31.0" prefWidth="72.0" promptText="Hệ chữ" styleClass="textfield-rounded" />
+                              <TextField fx:id="TBHP" layoutX="638.0" layoutY="212.0" prefHeight="31.0" prefWidth="69.0" promptText="TBHP" styleClass="textfield-rounded" />
+                              <TextField fx:id="thi" layoutX="137.0" layoutY="212.0" prefHeight="31.0" prefWidth="75.0" promptText="THI" styleClass="textfield-rounded" />
+                              <TextField fx:id="bt" layoutX="259.0" layoutY="212.0" prefHeight="31.0" prefWidth="79.0" promptText="BT" styleClass="textfield-rounded" />
+                              <TextField fx:id="maLop" layoutX="618.0" layoutY="138.0" prefHeight="31.0" prefWidth="158.0" promptText="Mã lớp" styleClass="textfield-rounded" />
+                              <TextField fx:id="ten" layoutX="619.0" layoutY="65.0" prefHeight="31.0" prefWidth="158.0" promptText="Tên" styleClass="textfield-rounded" />
+                              <TextField fx:id="ho" layoutX="338.0" layoutY="65.0" prefHeight="31.0" prefWidth="171.0" promptText="Họ lót" styleClass="textfield-rounded" />
+                              <TextField fx:id="msvNew" layoutX="69.0" layoutY="65.0" prefHeight="31.0" prefWidth="153.0" promptText="Mã sinh viên" styleClass="textfield-rounded" />
+                              <TextField fx:id="maMonNew" layoutX="69.0" layoutY="138.0" prefHeight="31.0" prefWidth="153.0" promptText="Mã môn" styleClass="textfield-rounded" />
+                              <TextField fx:id="tenMon" layoutX="338.0" layoutY="138.0" prefHeight="31.0" prefWidth="171.0" promptText="Tên môn" styleClass="textfield-rounded" />
+                              <TextField fx:id="kt" layoutX="385.0" layoutY="212.0" prefHeight="31.0" prefWidth="78.0" promptText="KT" styleClass="textfield-rounded" />
+                              <TextField fx:id="TH" layoutX="509.0" layoutY="212.0" prefHeight="31.0" prefWidth="76.0" promptText="TH" styleClass="textfield-rounded" />
+                              <Button layoutX="698.0" layoutY="270.0" mnemonicParsing="false" onAction="#getDataEdit" styleClass="button-submit" text="Xác nhận" />
                               <Text layoutX="316.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập thông tin sinh viên" wrappingWidth="241.6083984375">
                                  <font>
                                     <Font size="20.0" />
@@ -390,34 +417,37 @@
                         </AnchorPane>
                         <AnchorPane fx:id="deleteData" prefHeight="321.0" prefWidth="914.0" visible="false">
                            <children>
-                              <TextField fx:id="msvn" layoutX="104.0" layoutY="161.0" promptText="Mã sinh viên" />
-                              <Button layoutX="618.0" layoutY="161.0" mnemonicParsing="false" onAction="#setDeleteData" text="Xác nhận" />
-                              <TextField fx:id="maMon" layoutX="330.0" layoutY="161.0" promptText="Mã môn học" />
+                              <TextField fx:id="msvn" layoutX="104.0" layoutY="161.0" promptText="Mã sinh viên" styleClass="textfield-rounded" />
+                              <Button layoutX="618.0" layoutY="161.0" mnemonicParsing="false" onAction="#setDeleteData" styleClass="custom-button" text="Xác nhận" />
+                              <TextField fx:id="maMon" layoutX="330.0" layoutY="161.0" promptText="Mã môn học" styleClass="textfield-rounded" />
                               <Text layoutX="276.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập thông tin sinh viên muốn xoá">
                                  <font>
-                                    <Font size="20.0" />
+                                    <Font name="System Bold Italic" size="20.0" />
                                  </font>
                               </Text>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="addDataAll" prefHeight="322.0" prefWidth="912.0" visible="false">
                            <children>
-                              <Text fx:id="fileAddress" layoutX="182.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đường dẫn" wrappingWidth="298.6708984375" />
-                              <Button layoutX="548.0" layoutY="172.0" mnemonicParsing="false" onAction="#setUpdateAll" text="Chọn file" />
+                              <Text fx:id="fileAddress" layoutX="182.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đường dẫn" textAlignment="CENTER" wrappingWidth="298.6708984375">
+                                 <font>
+                                    <Font name="Cambria Math" size="20.0" />
+                                 </font></Text>
+                              <Button layoutX="548.0" layoutY="172.0" mnemonicParsing="false" onAction="#setUpdateAll" styleClass="custom-button" text="Chọn file" />
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="update" prefHeight="323.0" prefWidth="913.0" visible="false">
                            <children>
-                              <TextField fx:id="msvx" layoutX="100.0" layoutY="57.0" promptText="Mã hinh viên" />
-                              <TextField fx:id="mmh" layoutX="363.0" layoutY="57.0" promptText="Mã môn học" />
-                              <TextField fx:id="attendance" layoutX="100.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="CC" />
-                              <TextField fx:id="finalExam" layoutX="194.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="Thi" />
-                              <TextField fx:id="assignment" layoutX="294.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="BT" />
-                              <TextField fx:id="exam" layoutX="401.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="KT" />
-                              <TextField fx:id="practical" layoutX="498.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="TH" />
-                              <TextField fx:id="component" layoutX="614.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="TBHP" />
-                              <TextField fx:id="letter" layoutX="730.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="Hệ chữ" />
-                              <Button layoutX="649.0" layoutY="220.0" mnemonicParsing="false" onAction="#setGradeData" prefHeight="42.0" prefWidth="82.0" text="xác nhận" />
+                              <TextField fx:id="msvx" layoutX="100.0" layoutY="57.0" promptText="Mã hinh viên" styleClass="textfield-rounded" />
+                              <TextField fx:id="mmh" layoutX="363.0" layoutY="57.0" promptText="Mã môn học" styleClass="textfield-rounded" />
+                              <TextField fx:id="attendance" layoutX="100.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="CC" styleClass="textfield-rounded" />
+                              <TextField fx:id="finalExam" layoutX="194.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="Thi" styleClass="textfield-rounded" />
+                              <TextField fx:id="assignment" layoutX="294.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="BT" styleClass="textfield-rounded" />
+                              <TextField fx:id="exam" layoutX="401.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="KT" styleClass="textfield-rounded" />
+                              <TextField fx:id="practical" layoutX="498.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="TH" styleClass="textfield-rounded" />
+                              <TextField fx:id="component" layoutX="614.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="TBHP" styleClass="textfield-rounded" />
+                              <TextField fx:id="letter" layoutX="730.0" layoutY="146.0" prefHeight="31.0" prefWidth="76.0" promptText="Hệ chữ" styleClass="textfield-rounded" />
+                              <Button layoutX="649.0" layoutY="220.0" mnemonicParsing="false" onAction="#setGradeData" prefHeight="42.0" prefWidth="94.0" styleClass="custom-button" text="xác nhận" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -426,17 +456,17 @@
                <top>
                   <AnchorPane prefHeight="280.0" prefWidth="912.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextArea fx:id="notify" layoutX="81.0" layoutY="49.0" prefHeight="182.0" prefWidth="732.0" />
+                        <TextArea fx:id="notify" editable="false" layoutX="81.0" layoutY="62.0" prefHeight="182.0" prefWidth="753.0" styleClass="custom-textarea" />
                         <Label layoutX="365.0" layoutY="14.0" prefHeight="30.0" prefWidth="125.0" text="Thông báo">
                            <font>
-                              <Font name="System Bold Italic" size="20.0" />
+                              <Font name="System Bold Italic" size="25.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
                </top>
             </BorderPane>
-            <BorderPane fx:id="chatRoom" prefHeight="688.0" prefWidth="914.0">
+            <BorderPane fx:id="chatRoom" prefHeight="688.0" prefWidth="914.0" visible="false">
                <bottom>
                   <AnchorPane prefHeight="155.0" prefWidth="914.0" BorderPane.alignment="CENTER">
                      <children>
