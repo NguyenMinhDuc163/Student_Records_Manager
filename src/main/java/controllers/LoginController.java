@@ -22,6 +22,8 @@ public class LoginController implements Initializable {
     private TextField passWord;
     @FXML
     private Button loginButton;
+    @FXML
+    private  CheckBox checkBox;
     private LoginHandler loginHandler = new LoginHandler();
     public Scene setScene() throws IOException {
         URL url = new File("src/main/resources/view/loginScreen.fxml").toURI().toURL();
@@ -44,6 +46,11 @@ public class LoginController implements Initializable {
             switchController.switchToSceneMain(event);
         } else {
             alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại và thử đăng nhập lại.");
+        }
+
+        if(checkBox.isSelected()){
+            userName.setText(username);
+            passWord.setText(password);
         }
         alert.show();
     }

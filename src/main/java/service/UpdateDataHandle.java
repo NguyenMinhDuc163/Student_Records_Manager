@@ -3,11 +3,9 @@ package service;
 import dao.*;
 import model.*;
 
-import java.sql.SQLException;
-
-public class UpdateDateHandle {
-    public static UpdateDateHandle getInstance(){
-        return new UpdateDateHandle();
+public class UpdateDataHandle {
+    public static UpdateDataHandle getInstance(){
+        return new UpdateDataHandle();
     }
 
     public void createProfile(String studentID, String firstName, String lastName, String courseID,String courseName, String classRoom,
