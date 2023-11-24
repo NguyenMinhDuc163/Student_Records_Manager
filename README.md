@@ -11,7 +11,7 @@ Phần mềm giúp hỗ trợ các chức năng
 Để cài đặt dự án, bạn cần chuẩn bị các điều kiện sau:
 
 1. Java Development Kit (JDK) 20.0.1 trở lên.
-2. Intellij IDE hoặc IDE tương tự
+2. Intellij IDE hoặc IDE tương tự ( Khuyến khích dùng Intellij IDE )
 3. Mysql Server và công cụ quản lý cơ sở dữ liệu
 4. Maven 3.11.0 trở lên.
 
@@ -43,11 +43,6 @@ Chắc chắn rằng bạn đã cài đặt các phiên bản phần mềm đư�
 
 ## Sử dụng
 - Khởi đông intelij đợi phần mềm khởi động và thêm những thứ cần thiết
-<<<<<<< HEAD
 - Khởi động Mysql workbench hoặc phần mềm khác để import cơ sở dữ liệu [DATA BASE](https://drive.google.com/file/d/1W3d3SFNPUaJ_eBFvalbgjRiW2PXUjT8t/view?usp=sharing)
 - Quay lại project vào file **../src/main/dao/JDBCUtil** đổi tên userName, passWord, tên DB theo thiết bị của bạn
 - Vào app/ main.java để run chương trình.
-=======
-- Quay lại project vào file ../src/main/dao/JDBCUtil dổid tên userName, passWord, tên DB theo thiết bị của bạn
-- Vào app/ main.java để run chương trình.
->>>>>>> dev
