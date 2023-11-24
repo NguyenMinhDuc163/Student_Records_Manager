@@ -19,7 +19,7 @@
          <font>
             <Font name="System Bold" size="23.0" />
          </font></Label>
-      <TextField fx:id="userName" layoutX="276.0" layoutY="127.0" prefHeight="38.0" prefWidth="274.0" />
+      <TextField fx:id="userName" layoutX="276.0" layoutY="127.0" prefHeight="38.0" prefWidth="274.0" styleClass="textfield-rounded" />
       <StackPane layoutX="402.0" layoutY="300.0" prefHeight="55.0" prefWidth="129.0">
          <children>
             <Button fx:id="loginButton" mnemonicParsing="false" onAction="#bttLogIn" prefHeight="53.0" prefWidth="111.0" styleClass="a" text="Login" />
@@ -42,7 +42,7 @@
       <Text layoutX="311.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <CheckBox fx:id="checkBox" layoutX="285.0" layoutY="258.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Remember me" />
       <Hyperlink layoutX="32.0" layoutY="315.0" onAction="#setForgotPass" text="Forgot UserName/ Password" textFill="#3339cc" />
-      <PasswordField fx:id="passWord" layoutX="274.0" layoutY="220.0" prefHeight="38.0" prefWidth="274.0" />
+      <PasswordField fx:id="passWord" layoutX="274.0" layoutY="220.0" prefHeight="38.0" prefWidth="274.0" styleClass="textfield-rounded" />
       <Button id="register" fx:id="registerButton" layoutX="248.0" layoutY="301.0" mnemonicParsing="false" onAction="#bttRegister" prefHeight="53.0" prefWidth="120.0" styleClass="a" text="Register" />
       <ImageView fitHeight="68.0" fitWidth="55.0" layoutX="230.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
          <image>

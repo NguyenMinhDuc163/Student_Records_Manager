@@ -44,6 +44,13 @@
     dropshadow(gaussian, rgba(255, 255, 255, 0.25), -3, -3, 9, 0) inset;
 }
 
+.textfield-rounded {
+    -fx-background-radius: 15px; /* Độ cong góc lớn hơn của TextField */
+    -fx-font-size: 14px; /* Kích thước chữ */
+    -fx-padding: 5px; /* Khoảng cách nội dung từ viền */
+}
+
+
 
 
 

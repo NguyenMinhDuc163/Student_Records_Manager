@@ -18,8 +18,8 @@
       </Label>
       <Label layoutX="408.0" layoutY="69.0" prefHeight="21.0" prefWidth="303.0" text="Don't have an account? Create your account." />
       <Label layoutX="408.0" layoutY="103.0" text="It takes less than a minute!" />
-      <TextField fx:id="name" layoutX="445.0" layoutY="147.0" prefHeight="39.0" prefWidth="339.0" promptText="Name" />
-      <TextField fx:id="username" layoutX="445.0" layoutY="206.0" prefHeight="39.0" prefWidth="339.0" promptText="UserName" />
+      <TextField fx:id="name" layoutX="445.0" layoutY="147.0" prefHeight="39.0" prefWidth="339.0" promptText="Name" styleClass="textfield-rounded" />
+      <TextField fx:id="username" layoutX="445.0" layoutY="206.0" prefHeight="39.0" prefWidth="339.0" promptText="UserName" styleClass="textfield-rounded" />
       <Button id="submit" layoutX="668.0" layoutY="493.0" mnemonicParsing="false" onAction="#setSubmit" prefHeight="46.0" prefWidth="98.0" styleClass="custom-button" text="Submit" />
       <AnchorPane layoutY="-2.0" prefHeight="564.0" prefWidth="317.0" styleClass="leftPaner" />
       <ImageView fitHeight="110.0" fitWidth="137.0" layoutX="784.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -28,9 +28,9 @@
          </image>
       </ImageView>
       <Button id="cancel" layoutX="461.0" layoutY="493.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="46.0" prefWidth="98.0" styleClass="custom-button" text="Cancel" />
-      <TextField fx:id="studentId" layoutX="445.0" layoutY="263.0" prefHeight="39.0" prefWidth="339.0" promptText="Student ID" />
-      <PasswordField fx:id="password" layoutX="445.0" layoutY="370.0" prefHeight="39.0" prefWidth="339.0" promptText="PassWord" />
-      <PasswordField fx:id="confirmPass" layoutX="445.0" layoutY="425.0" prefHeight="39.0" prefWidth="339.0" promptText="Confirm Password" />
-      <TextField fx:id="email" layoutX="445.0" layoutY="318.0" prefHeight="39.0" prefWidth="339.0" promptText="Email" />
+      <TextField fx:id="studentId" layoutX="445.0" layoutY="263.0" prefHeight="39.0" prefWidth="339.0" promptText="Student ID" styleClass="textfield-rounded" />
+      <PasswordField fx:id="password" layoutX="445.0" layoutY="370.0" prefHeight="39.0" prefWidth="339.0" promptText="PassWord" styleClass="textfield-rounded" />
+      <PasswordField fx:id="confirmPass" layoutX="445.0" layoutY="425.0" prefHeight="39.0" prefWidth="339.0" promptText="Confirm Password" styleClass="textfield-rounded" />
+      <TextField fx:id="email" layoutX="445.0" layoutY="318.0" prefHeight="39.0" prefWidth="339.0" promptText="Email" styleClass="textfield-rounded" />
    </children>
 </AnchorPane>

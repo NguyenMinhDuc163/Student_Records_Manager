@@ -373,4 +373,11 @@
         -fx-font-size: 14px; /* Kích thước chữ */
 }
 
+.custom-textarea .content {
+        -fx-background: #7ad9f1; /* Màu nền khi chữ được chọn */
+}
+
+.custom-textarea:hover {
+        -fx-border-color: #2980b9; /* Màu viền khi hover */
+}
 

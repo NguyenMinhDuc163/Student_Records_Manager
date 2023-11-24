@@ -75,6 +75,7 @@ public class MainScreenController implements Initializable {
         Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root);
         scene.getStylesheets().add(Objects.requireNonNull(css).toExternalForm());
+
         return scene;
     }
     public void setActionMenuBar(ActionEvent event){
@@ -306,12 +307,9 @@ public class MainScreenController implements Initializable {
         String courseID = maMonNew.getText().toUpperCase();
         String courseName = tenMon.getText();
         String classID = maLop.getText().toUpperCase();
-        if(isCheckInput(studentID, courseID)){
-            update.createProfile(studentID, firstName, lastName, courseID, courseName, classID,
-                    cc.getText(), thi.getText(), bt.getText(), kt.getText(), TH.getText(), TBHP.getText(), heChu.getText());
-            notify.appendText("Đã cập nhật thông tin cho sinh viên: " + studentID + "\n");
-        }
-        else notify.appendText("Dữ liệu nhập vào không đúng,  Hãy kiểm tra lại mã sinh viên hoặc mã khoá học\n");
+        update.createProfile(studentID, firstName, lastName, courseID, courseName, classID,
+                cc.getText(), thi.getText(), bt.getText(), kt.getText(), TH.getText(), TBHP.getText(), heChu.getText());
+        notify.appendText("\nĐã cập nhật thông tin cho sinh viên: " + studentID + "\n");
     }
     public void setDeleteData(ActionEvent event){
         String studentID = msvn.getText();
@@ -319,9 +317,9 @@ public class MainScreenController implements Initializable {
         if(isCheckInput(studentID, courseID)){
             UpdateDataHandle update = new UpdateDataHandle();
             update.deleteData(studentID, courseID);
-            notify.appendText("Đã xoá điểm môn học " + courseID + " của sinh viên " + studentID + "\n");
+            notify.appendText("\nĐã xoá điểm môn học " + courseID + " của sinh viên " + studentID + "\n");
         }
-        else notify.appendText("Dữ liệu nhập vào không đúng,  Hãy kiểm tra lại mã sinh viên hoặc mã khoá học\n");
+        else notify.appendText("\nDữ liệu nhập vào không đúng,  Hãy kiểm tra lại mã sinh viên hoặc mã khoá học\n");
 
     }
 
@@ -332,9 +330,9 @@ public class MainScreenController implements Initializable {
         if(isCheckInput(studentID, courseID)){
             update.updateGrade(studentID, courseID, attendance.getText(), finalExam.getText(), assignment.getText(),
                     exam.getText(), practical.getText(), component.getText(), letter.getText());
-            notify.appendText("Đã cập nhật điểm môn học " + courseID + " cho sinh viên " + studentID + "\n");
+            notify.appendText("\nĐã cập nhật điểm môn học " + courseID + " cho sinh viên " + studentID + "\n");
         }
-        else notify.appendText("Dữ liệu nhập vào không đúng,  Hãy kiểm tra lại mã sinh viên hoặc mã khoá học\n");
+        else notify.appendText("\nDữ liệu nhập vào không đúng,  Hãy kiểm tra lại mã sinh viên hoặc mã khoá học\n");
 
 
     }

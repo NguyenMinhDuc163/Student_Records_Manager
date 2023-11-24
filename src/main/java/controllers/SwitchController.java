@@ -21,6 +21,8 @@ public class SwitchController {
         scene = screenController.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+        stage.setX(250);
+        stage.setY(40);
         stage.show();
     }
     public void switchToSceneLogin(ActionEvent event) throws IOException {

@@ -243,7 +243,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="courseForm" prefHeight="677.0" prefWidth="898.0">
+            <AnchorPane fx:id="courseForm" prefHeight="677.0" prefWidth="898.0" visible="false">
                <children>
                   <TableView fx:id="tableSubject" layoutX="14.0" layoutY="141.0" prefHeight="459.0" prefWidth="893.0">
                     <columns>
@@ -382,7 +382,7 @@
                   </AnchorPane>
                </center>
             </BorderPane>
-            <BorderPane fx:id="editPane" prefHeight="686.0" prefWidth="912.0" visible="false">
+            <BorderPane fx:id="editPane" prefHeight="686.0" prefWidth="912.0">
                <bottom>
                   <AnchorPane prefHeight="89.0" prefWidth="912.0" BorderPane.alignment="CENTER">
                      <children>
@@ -461,7 +461,12 @@
                <top>
                   <AnchorPane prefHeight="280.0" prefWidth="912.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextArea fx:id="notify" editable="false" layoutX="81.0" layoutY="62.0" prefHeight="182.0" prefWidth="753.0" styleClass="custom-textarea" />
+                        <TextArea fx:id="notify" editable="false" layoutX="82.0" layoutY="63.0" prefHeight="182.0" prefWidth="753.0" text="Chào mừng bạn điến giao diện chỉnh sửa !">
+                           <styleClass>
+                              <String fx:value="custom-textarea" />
+                              <String fx:value="custom-textarea .content" />
+                              <String fx:value="ustom-textarea:hover" />
+                           </styleClass></TextArea>
                         <Label layoutX="365.0" layoutY="14.0" prefHeight="30.0" prefWidth="125.0" text="Thông báo">
                            <font>
                               <Font name="System Bold Italic" size="25.0" />

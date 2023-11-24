@@ -20,11 +20,15 @@ public class UpdateDataHandle {
             Course course1 = CourseDAO.getInstance().selectByID(courseID);
             if(student1 == null)
                 StudentDAO.getInstance().insert(student);
-            if(classes1 == null)
+            if(classes1 == null && student1 == null){
                 ClassesDAO.getInstance().insert(classes);
-            if(course1 == null)
+            }
+
+            if(course1 == null){
                 CourseDAO.getInstance().insert(course);
-            GradeDAO.getInstance().insert(grade);
+            }
+            if(course1 == null && student1 == null)
+                GradeDAO.getInstance().insert(grade);
         }catch (Exception e){
             e.printStackTrace();
         }
