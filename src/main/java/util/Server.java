@@ -4,7 +4,10 @@ package util;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Server {
@@ -21,17 +24,19 @@ public class Server {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("New client connected: " + clientSocket.getInetAddress().getHostAddress());
+                LocalDateTime currentDateTime = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                String formattedDateTime = currentDateTime.format(formatter);
 
-                ClientHandler clientHandler = new ClientHandler(clientSocket, this, System.currentTimeMillis() + " ");
+                ClientHandler clientHandler = new ClientHandler(clientSocket, this, formattedDateTime + " ");
                 clients.add(clientHandler);
-
                 new Thread(clientHandler).start();
+
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
     public void broadcastMessage(String message, ClientHandler sender) {
         for (ClientHandler client : clients) {
             if (client != sender) {
