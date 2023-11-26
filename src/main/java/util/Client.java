@@ -55,7 +55,8 @@ public class Client {
                 } else if (message.startsWith("USERS_LIST:")) {
                     updateOnlineUsersList(message);
                 } else if (message.startsWith("USER_")) {
-                    Platform.runLater(() -> chatScreen.appendText(message.replaceAll("USER_\\d+ :", "").trim() + "\n"));
+                    String []messageRes = message.split(":", 4);
+                    Platform.runLater(() -> chatScreen.appendText(messageRes[messageRes.length - 1].trim() + "\n"));
                 }
             }
         } catch (IOException e) {
