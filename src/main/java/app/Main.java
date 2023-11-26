@@ -26,9 +26,6 @@ public class Main extends Application {
             primaryStage.setTitle("Student Records Manager");
             primaryStage.getIcons().add(new Image(String.valueOf(new File("src/main/resources/images/Logo_PTIT.png").toURI().toURL())));
 
-//            primaryStage.setX(1155);
-//            primaryStage.setY(714);
-
             primaryStage.show();
         }catch (Exception e){
             System.out.println(e.getMessage());

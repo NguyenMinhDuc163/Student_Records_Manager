@@ -1,24 +1,34 @@
-package app;
-import dao.ClassesDAO;
+package service;
+
 import dao.GradeDAO;
-import dao.StudentDAO;
-import model.Classes;
 import model.Grade;
-import model.Student;
 
-import java.io.*;
-import java.time.LocalDateTime;
-import java.util.*;
-class test{
-    public static void main(String[] args) {
-//        ArrayList<Grade> grades = GradeDAO.getInstance().selectAll();
-        ArrayList<Grade> grades = GradeDAO.getInstance().selectByID("B21DCCN001");
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 
+public class MainHandle {
+
+    public static MainHandle getInstance(){
+        return new MainHandle();
+    }
+
+    public boolean exportCsvFile(String directory, String studentID){
+        ArrayList<Grade> grades = null;
+        if(!studentID.startsWith("B") && !studentID.equals(".")) return false;
+        if(studentID.equals(".")){
+                    grades = GradeDAO.getInstance().selectAll();
+        }else {
+            grades = GradeDAO.getInstance().selectByID(studentID.toUpperCase());
+        }
         // Tên file CSV
-        String csvFileName = "example.csv";
-        try (BufferedWriter csvWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(csvFileName), "UTF-8"))) {
+        String directoryFile = directory + "\\bangDiem.csv";
+        System.out.println(directoryFile);
+        try (BufferedWriter csvWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(directoryFile), "UTF-8"))) {
 //             Ghi dữ liệu vào file CSV
-            int  i = 0;
+
             for(Grade x : grades){
                 csvWriter.append(x.getStudent().getStudentID()); csvWriter.append(",");
                 csvWriter.append(x.getStudent().getFirstName() + " " + x.getStudent().getLastName()); csvWriter.append(",");
@@ -30,25 +40,11 @@ class test{
                 csvWriter.append(x.getLetterGrade());
                 csvWriter.append("\n");
             }
-
             System.out.println("File CSV đã được tạo thành công!");
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
-
-
-
-
-
-
-
-    }
-    // Phương thức để xử lý trường hợp các ký tự đặc biệt trong dữ liệu CSV
-    private static String escapeSpecialCharacters(String data) {
-        String escapedData = data;
-        if (data.contains(",") || data.contains("\"") || data.contains("\n")) {
-            escapedData = "\"" + data.replaceAll("\"", "\"\"") + "\"";
-        }
-        return escapedData;
     }
 }

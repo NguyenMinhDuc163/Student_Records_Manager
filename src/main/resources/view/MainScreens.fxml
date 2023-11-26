@@ -259,9 +259,9 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="gradePane" prefHeight="680.0" prefWidth="910.0" visible="false">
+            <AnchorPane fx:id="gradePane" prefHeight="680.0" prefWidth="910.0">
                <children>
-                  <TextField fx:id="msv" layoutX="62.0" layoutY="58.0" prefHeight="31.0" prefWidth="235.0" promptText="Mã sinh viên" styleClass="textfield-search" />
+                  <TextField fx:id="msv" layoutX="62.0" layoutY="58.0" onDragDropped="#setSearch" prefHeight="31.0" prefWidth="235.0" promptText="Mã sinh viên" styleClass="textfield-search" />
                   <TableView fx:id="tableGrade" layoutX="10.0" layoutY="168.0" prefHeight="502.0" prefWidth="881.0" styleClass="tab-anchor-pane">
                     <columns>
                         <TableColumn fx:id="nameSV" prefWidth="181.0" text="Tên" />
@@ -276,11 +276,12 @@
                     </columns>
                   </TableView>
                   <Button fx:id="search" layoutX="344.0" layoutY="58.0" mnemonicParsing="false" onAction="#setSearch" styleClass="custom-button" text="Tra cứu" />
-                  <AnchorPane fx:id="rolePane" layoutX="607.0" layoutY="20.0" prefHeight="107.0" prefWidth="155.0">
+                  <AnchorPane fx:id="rolePane" layoutX="683.0" layoutY="77.0" prefHeight="41.0" prefWidth="116.0">
                      <children>
-                        <Button fx:id="editbbt" layoutX="45.0" layoutY="38.0" mnemonicParsing="false" onAction="#switchForm" styleClass="custom-button" text="Chỉnh sửa" />
+                        <Button fx:id="editbbt" layoutX="-46.0" layoutY="40.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="38.0" prefWidth="122.0" styleClass="custom-button" text="Chỉnh sửa" />
                      </children>
                   </AnchorPane>
+                  <Button layoutX="636.0" layoutY="55.0" mnemonicParsing="false" onAction="#exportCsvFile" prefHeight="38.0" prefWidth="121.0" styleClass="custom-button" text="Xuất dữ liệu" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="ChangePassWordPane" prefHeight="681.0" prefWidth="907.0" visible="false">
@@ -382,7 +383,7 @@
                   </AnchorPane>
                </center>
             </BorderPane>
-            <BorderPane fx:id="editPane" prefHeight="686.0" prefWidth="912.0">
+            <BorderPane fx:id="editPane" prefHeight="686.0" prefWidth="912.0" visible="false">
                <bottom>
                   <AnchorPane prefHeight="89.0" prefWidth="912.0" BorderPane.alignment="CENTER">
                      <children>
