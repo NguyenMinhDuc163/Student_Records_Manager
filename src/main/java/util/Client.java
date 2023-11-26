@@ -39,7 +39,6 @@ public class Client {
                 String message = new String(buffer, 0, bytesRead);
                 System.out.println(message);
                 if (message.startsWith("CONNECTED:")) {
-//                    clientId = Integer.parseInt(message.split(":")[1]);
                     clientId = message.split(":")[1];
                 } else if (message.startsWith("USER_JOINED:")) {
                     String joinedUserName = message.split(":")[1];
@@ -65,14 +64,15 @@ public class Client {
     }
 
     public void updateOnlineUsersList(String message) {
-        String[] parts = message.split(":");
-        if (parts.length == 2) {
+        System.out.println(message);
+        String[] parts = message.split(":", 2);
+//        if (parts.length == 2) {
             String[] users = parts[1].split(",");
             Platform.runLater(() -> {
                 onlineUsersListView.getItems().clear();
                 onlineUsersListView.getItems().addAll(users);
             });
-        }
+//        }
     }
 
     public void sendMessage() {

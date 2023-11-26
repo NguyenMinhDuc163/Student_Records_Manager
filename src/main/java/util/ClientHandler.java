@@ -8,16 +8,12 @@ import java.net.Socket;
 
 public class ClientHandler implements Runnable {
 
-    private static final AtomicInteger nextClientId = new AtomicInteger(1);
-
     private Socket clientSocket;
     private Server server;
-    private int clientId;
     private String clientName;
     public ClientHandler(Socket clientSocket, Server server, String name) {
         this.clientSocket = clientSocket;
         this.server = server;
-//        this.clientId = nextClientId.getAndIncrement();
         this.clientName = name;
     }
 
@@ -28,7 +24,6 @@ public class ClientHandler implements Runnable {
             InputStream input = clientSocket.getInputStream();
             OutputStream output = clientSocket.getOutputStream();
 
-//            output.write(("CONNECTED:" + clientId).getBytes());
             output.write(("CONNECTED:" + clientName).getBytes());
 
             server.broadcastUserList();
@@ -37,7 +32,6 @@ public class ClientHandler implements Runnable {
             int bytesRead;
             while ((bytesRead = input.read(buffer)) != -1) {
                 String message = new String(buffer, 0, bytesRead);
-//                server.broadcastMessage("USER_" + clientId + ": " + message, this);
                 server.broadcastMessage("USER_" + clientName + ": " + message, this);
             }
         } catch (IOException e) {
@@ -47,9 +41,6 @@ public class ClientHandler implements Runnable {
         }
     }
 
-    public int getClientId() {
-        return clientId;
-    }
 
     public String getClientName() {
         return clientName;

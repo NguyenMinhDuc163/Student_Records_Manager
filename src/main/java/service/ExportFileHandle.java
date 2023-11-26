@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class MainHandle {
+public class ExportFileHandle {
 
-    public static MainHandle getInstance(){
-        return new MainHandle();
+    public static ExportFileHandle getInstance(){
+        return new ExportFileHandle();
     }
 
     public boolean exportCsvFile(String directory, String studentID){

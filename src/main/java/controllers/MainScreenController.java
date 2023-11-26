@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 import model.*;
 import service.ChangePassWordHandl;
 import service.LoginHandler;
-import service.MainHandle;
+import service.ExportFileHandle;
 import service.UpdateDataHandle;
 import util.Client;
 import util.Server;
@@ -214,7 +214,7 @@ public class MainScreenController implements Initializable {
 
         String studentID = "";
         studentID =  msv.getText().toUpperCase();
-        boolean ok = MainHandle.getInstance().exportCsvFile(directory.replace("\\", "\\\\"), studentID);
+        boolean ok = ExportFileHandle.getInstance().exportCsvFile(directory.replace("\\", "\\\\"), studentID);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Thông báo");
         alert.setHeaderText("Thông báo:");
@@ -382,7 +382,7 @@ public class MainScreenController implements Initializable {
             notify.appendText("Bạn đã chọn file " + file.getName() + "\n");
             fileAddress.setText(file.getPath());
         }else notify.appendText("Bạn đã chọn không tồn tại \n");
-
+        notify.appendText("Vui lòng chọn định dạng file CSV hoặc JSON");
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Thông báo");
