@@ -67,7 +67,22 @@ public class GradeDAO implements DAOInterface<Grade> {
         return 0;
     }
 
-//    @Override
+    @Override
+    public int delete(Grade grade) {
+        String url = "DELETE FROM grade WHERE studentID = ? AND courseID = ?";
+        // try-with-resources
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(url)) {
+            stmt.setString(1, grade.getStudent().getStudentID());
+            stmt.setString(2, grade.getCourse().getCourseID());
+            int row = stmt.executeUpdate();
+            System.out.println("Số dữ liệu được xóa là: " + row);
+            return row;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public int delete(String studentID, String courseID) {
         String url = "DELETE FROM grade WHERE studentID = ? AND courseID = ?";
         // try-with-resources
@@ -142,9 +157,38 @@ public class GradeDAO implements DAOInterface<Grade> {
         }
         return grades;
     }
+    @Override
+    public Grade selectByID(String studentID){
+        String sql = "SELECT * FROM grade WHERE studentID = ?";
+        // try-with-resource
+        Grade grade  = null;
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1,studentID);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                Student student = StudentDAO.getInstance().selectByID(rs.getString("studentID"));
+                Course course = CourseDAO.getInstance().selectByID(rs.getString("courseID"));
+                String group = rs.getString("Group");
+                String assignmentScore = rs.getString("assignmentScore");
+                String examScore = rs.getString("examScore");
+                String practicalScore = rs.getString("practicalScore");
+                String attendanceScore = rs.getString("attendanceScore");
+                String finalExamScore = rs.getString("finalExamScore");
+                String componentScore = rs.getString("componentScore");
+                String letterGrade = rs.getString("letterGrade");
 
+                grade = new Grade(student, course, group, assignmentScore, examScore, practicalScore, attendanceScore,
+                        finalExamScore, componentScore, letterGrade);
+                return grade;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return grade;
+    }
 
-    public ArrayList<Grade> selectByID(String studentID) {
+    public ArrayList<Grade> selectByIDAllGrade(String studentID) {
         String sql = "SELECT * FROM grade WHERE studentID = ?";
         ArrayList<Grade> grades = new ArrayList<>();
         // try-with-resource

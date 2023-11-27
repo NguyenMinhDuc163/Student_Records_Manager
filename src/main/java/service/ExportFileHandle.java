@@ -22,7 +22,7 @@ public class ExportFileHandle {
         if(studentID.equals(".")){
                     grades = GradeDAO.getInstance().selectAll();
         }else {
-            grades = GradeDAO.getInstance().selectByID(studentID.toUpperCase());
+            grades = GradeDAO.getInstance().selectByIDAllGrade(studentID.toUpperCase());
         }
         // Tên file CSV
         String directoryFile = directory + "\\bangDiem.csv";

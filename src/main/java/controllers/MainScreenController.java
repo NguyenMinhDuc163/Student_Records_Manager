@@ -189,7 +189,7 @@ public class MainScreenController implements Initializable {
                     gradeList = FXCollections.observableArrayList(GradeDAO.getInstance().selectAll());
                 }
                 else {
-                    gradeList = FXCollections.observableArrayList(GradeDAO.getInstance().selectByID(msv.getText().toUpperCase()));
+                    gradeList = FXCollections.observableArrayList(GradeDAO.getInstance().selectByIDAllGrade(msv.getText().toUpperCase()));
                 }
                 return gradeList;
             }
@@ -223,16 +223,18 @@ public class MainScreenController implements Initializable {
         // Lấy đường dẫn được chọn
         Stage stage = (Stage) gradePane.getScene().getWindow();
         String directory = "";
+        boolean userChoose = true;
         try {
             directory = directoryChooser.showDialog(stage).getAbsolutePath();
         }catch (Exception e){
+            userChoose = false;
             System.out.println("Nguời dùng chưa chọn file");
         }
 
         final String studentID =  msv.getText().toUpperCase();
         String finalDirectory = directory;
 
-        if(studentID.equals(".")) ProgressBarController.getInstance(18338L).showProgressBar();
+        if(studentID.equals(".") && userChoose) ProgressBarController.getInstance(18338L).showProgressBar();
         Task<Boolean> databaseTask = new Task<Boolean>() {
             @Override
             protected Boolean call() throws Exception {

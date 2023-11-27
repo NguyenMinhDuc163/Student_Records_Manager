@@ -44,6 +44,6 @@ public class UpdateDataHandle {
     }
     public void deleteData(String studentID, String courseID){
         GradeDAO.getInstance().delete(studentID, courseID);
-        ClassesDAO.getInstance().delete(studentID);
+        ClassesDAO.getInstance().deleteByStudentID(studentID);
     }
 }

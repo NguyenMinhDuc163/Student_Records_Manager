@@ -45,7 +45,21 @@ public class StudentDAO implements DAOInterface<Student> {
         }
     }
 
-//    @Override
+    @Override
+    public int delete(Student student){
+        String url = "DELETE FROM students WHERE studentID = ?";
+        // try-with-resources
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(url)) {
+            stmt.setString(1, student.getStudentID());
+            int row = stmt.executeUpdate();
+            System.out.println("Số dữ liệu được xóa là: " + row);
+            return row;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public int delete(String studentID) {
         String url = "DELETE FROM students WHERE studentID = ?";
         // try-with-resources

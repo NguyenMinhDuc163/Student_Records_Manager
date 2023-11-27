@@ -75,7 +75,7 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="profile" layoutX="27.0" layoutY="165.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" styleClass="custom-button" text="Thông tin các nhân" />
+            <Button fx:id="profile" layoutX="27.0" layoutY="165.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" styleClass="custom-button" text="Thông tin cá nhân" />
             <Button fx:id="home" layoutX="27.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="196.0" styleClass="custom-button" text="Trang chủ" />
             <Button fx:id="courseBtt" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" styleClass="custom-button" text="Khoá học" />
             <Button fx:id="gradebbt" layoutX="26.0" layoutY="378.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="31.0" prefWidth="198.0" styleClass="custom-button" text="Bảng điểm" />

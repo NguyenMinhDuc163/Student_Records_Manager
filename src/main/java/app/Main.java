@@ -32,5 +32,4 @@ public class Main extends Application {
             System.out.println(e.getMessage());
         }
     }
-
 }
