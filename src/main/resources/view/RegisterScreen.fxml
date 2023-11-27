@@ -28,7 +28,7 @@
          </image>
       </ImageView>
       <Button id="cancel" layoutX="461.0" layoutY="493.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="46.0" prefWidth="98.0" styleClass="custom-button" text="Cancel" />
-      <TextField fx:id="studentId" layoutX="445.0" layoutY="263.0" prefHeight="39.0" prefWidth="339.0" promptText="Student ID" styleClass="textfield-rounded" />
+      <TextField fx:id="studentId" layoutX="445.0" layoutY="263.0" prefHeight="39.0" prefWidth="339.0" promptText="Student ID / Teacher ID" styleClass="textfield-rounded" />
       <PasswordField fx:id="password" layoutX="445.0" layoutY="370.0" prefHeight="39.0" prefWidth="339.0" promptText="PassWord" styleClass="textfield-rounded" />
       <PasswordField fx:id="confirmPass" layoutX="445.0" layoutY="425.0" prefHeight="39.0" prefWidth="339.0" promptText="Confirm Password" styleClass="textfield-rounded" />
       <TextField fx:id="email" layoutX="445.0" layoutY="318.0" prefHeight="39.0" prefWidth="339.0" promptText="Email" styleClass="textfield-rounded" />

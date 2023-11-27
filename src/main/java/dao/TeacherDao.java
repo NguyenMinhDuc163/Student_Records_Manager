@@ -116,9 +116,4 @@ public class TeacherDao implements DAOInterface<Teachers>{
             throw new RuntimeException(e);
         }
     }
-
-    public static void main(String[] args) {
-        var x = TeacherDao.getInstance().selectByID("GV01");
-        System.out.println(x);
-    }
 }

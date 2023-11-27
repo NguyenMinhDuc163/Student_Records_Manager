@@ -381,3 +381,13 @@
         -fx-border-color: #2980b9; /* Màu viền khi hover */
 }
 
+/* styled-scrollpane.css */
+
+.scroll-pane-grade {
+        -fx-background-image: url("../images/GradeBackground.png");
+        -fx-background-size: cover;
+        -fx-background-repeat: no-repeat;
+        -fx-background-position: center;
+}
+
+

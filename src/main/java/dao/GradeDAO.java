@@ -143,7 +143,7 @@ public class GradeDAO implements DAOInterface<Grade> {
         return grades;
     }
 
-//    @Override
+
     public ArrayList<Grade> selectByID(String studentID) {
         String sql = "SELECT * FROM grade WHERE studentID = ?";
         ArrayList<Grade> grades = new ArrayList<>();

@@ -259,7 +259,7 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="gradePane" prefHeight="680.0" prefWidth="910.0">
+            <AnchorPane fx:id="gradePane" prefHeight="680.0" prefWidth="910.0" visible="false">
                <children>
                   <TextField fx:id="msv" layoutX="62.0" layoutY="58.0" onDragDropped="#setSearch" prefHeight="31.0" prefWidth="235.0" promptText="Mã sinh viên" styleClass="textfield-search" />
                   <TableView fx:id="tableGrade" layoutX="10.0" layoutY="168.0" prefHeight="502.0" prefWidth="881.0" styleClass="tab-anchor-pane">
@@ -326,16 +326,12 @@
                         <Font size="17.0" />
                      </font>
                   </PasswordField>
-                  <PasswordField fx:id="captcha" layoutX="417.0" layoutY="437.0" prefHeight="38.0" prefWidth="359.0" styleClass="textfield-rounded">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </PasswordField>
                   <Button layoutX="649.0" layoutY="526.0" mnemonicParsing="false" onAction="#setConfirm" prefHeight="52.0" prefWidth="114.0" styleClass="custom-button" text="Xác nhận" />
                   <Button layoutX="433.0" layoutY="525.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="52.0" prefWidth="111.0" styleClass="custom-button" text="Huỷ bỏ" />
+                  <TextField fx:id="captcha" layoutX="417.0" layoutY="437.0" prefHeight="39.0" prefWidth="360.0" styleClass="textfield-rounded" />
                </children>
             </AnchorPane>
-            <BorderPane fx:id="borderPaneGrade" prefHeight="683.0" prefWidth="909.0" styleClass="main-pane-center" visible="false">
+            <BorderPane fx:id="borderPaneGrade" prefHeight="683.0" prefWidth="909.0" styleClass="main-pane-center">
                <top>
                   <Label prefHeight="52.0" prefWidth="588.0" text="Dự tính điểm bạn sẽ đạt được trong những kì tới" BorderPane.alignment="CENTER">
                      <font>
@@ -374,8 +370,8 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <styleClass>
-                                    <String fx:value="main-pane-center" />
                                     <String fx:value="grid-pane-style" />
+                                    <String fx:value="scroll-pane-grade" />
                                  </styleClass>
                               </GridPane>
                            </content></ScrollPane>

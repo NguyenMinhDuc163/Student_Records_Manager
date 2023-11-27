@@ -26,10 +26,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.*;
-import service.ChangePassWordHandl;
-import service.LoginHandler;
-import service.ExportFileHandle;
-import service.UpdateDataHandle;
+import service.*;
 import util.Client;
 import util.Server;
 
@@ -52,14 +49,14 @@ public class MainScreenController implements Initializable {
     @FXML private TableColumn<Grade, String> nameSV, course, assignmentScore, examScore, practicalScore, attendanceScore;
     @FXML private TableColumn<Grade, String> finalExamScore, componentScore, letterGrade;
     @FXML private TextField msv;
-    @FXML private PasswordField oldPass, newPass, confirmPass,captcha;
+    @FXML private PasswordField oldPass, newPass, confirmPass;
     @FXML private BorderPane borderPaneGrade, editPane, chatRoom;
     @FXML private ScrollPane grandePane;
     @FXML private Text  fileAddress;
     @FXML private GridPane gridPane;
     @FXML private ImageView imageView, imageLogo;
     @FXML private TextField msvn, ho, ten, maMon, tenMon, maLop, cc, thi, bt, kt, TH, TBHP, heChu;
-    @FXML private TextField msvNew, maMonNew;
+    @FXML private TextField msvNew, maMonNew,  captcha;
     @FXML private AnchorPane addData, update, deleteData, addDataAll, rolePane;
     @FXML private Button add, up, del, addAll,cancel;
     @FXML private TextArea notify, thongBao;
@@ -177,7 +174,9 @@ public class MainScreenController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Nhập sai thông tin");
                 alert.setHeaderText("Kiểm tra lại thông tin:");
-                alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại đúng cú pháp mã sinh viên của PTIT.");
+                alert.setHeight(250);
+                alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại đúng cú pháp mã sinh viên của PTIT.\n\n" +
+                        "Hoặc nhập kí tự \".\" để tra cứu bảng điểm tất cả sinh viên");
                 alert.show();
                 return;
             }
@@ -262,6 +261,7 @@ public class MainScreenController implements Initializable {
     }
     public void setChangePassWord(ActionEvent event){
         profileForm.setVisible(false);
+        captcha.setText(UUID.randomUUID().toString().substring(0,6));
         ChangePassWordPane.setVisible(true);
     }
     public void setConfirm(ActionEvent event){
