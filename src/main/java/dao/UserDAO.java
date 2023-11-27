@@ -137,6 +137,24 @@ public class UserDAO implements DAOInterface<User>{
         }
         return user;
     }
+
+    public User selectByUserName(String userName) {
+        String sql = "SELECT * FROM users WHERE userName = ?";
+        User user = null;
+        // try-with-resource
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1,userName);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                user = new User(rs.getString("userID"), rs.getString("userName"),
+                        rs.getString( "passWord"), rs.getString("studentID"), rs.getString("teacherID"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
+    }
     public User selectByUserNamePassWord(String userName, String passWord) {
         String sql = "SELECT * FROM users WHERE userName = ? AND passWord = ?";
         User user = null;

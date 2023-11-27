@@ -36,7 +36,6 @@ public class LoginController implements Initializable {
     public void bttLogIn (ActionEvent event) throws IOException {
         String username = userName.getText();
         String password = passWord.getText();
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Đăng Nhập");
         alert.setHeaderText("Thông báo đăng nhập:");

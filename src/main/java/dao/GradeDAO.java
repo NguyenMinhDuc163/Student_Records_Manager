@@ -1,5 +1,6 @@
 package dao;
 
+import controllers.ProgressBarController;
 import model.Course;
 import model.Grade;
 import model.Student;

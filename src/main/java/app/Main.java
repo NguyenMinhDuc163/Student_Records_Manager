@@ -3,6 +3,7 @@ package app;
 import controllers.ForgotPassController;
 import controllers.LoginController;
 import controllers.MainScreenController;
+import controllers.ProgressBarController;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -46,4 +47,5 @@ public class Main extends Application {
 //            System.out.println(e.getMessage());
 //        }
     }
+
 }

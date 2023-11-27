@@ -7,6 +7,7 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class ExportFileHandle {
@@ -17,7 +18,7 @@ public class ExportFileHandle {
 
     public boolean exportCsvFile(String directory, String studentID){
         ArrayList<Grade> grades = null;
-        if(!studentID.startsWith("B") && !studentID.equals(".")) return false;
+        if(!studentID.matches("^B21DCCN\\d{3}$") && !studentID.equals(".")) return false;
         if(studentID.equals(".")){
                     grades = GradeDAO.getInstance().selectAll();
         }else {
@@ -26,7 +27,7 @@ public class ExportFileHandle {
         // Tên file CSV
         String directoryFile = directory + "\\bangDiem.csv";
         System.out.println(directoryFile);
-        try (BufferedWriter csvWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(directoryFile), "UTF-8"))) {
+        try (BufferedWriter csvWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(directoryFile), StandardCharsets.UTF_8))) {
 //             Ghi dữ liệu vào file CSV
 
             for(Grade x : grades){

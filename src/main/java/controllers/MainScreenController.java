@@ -1,11 +1,13 @@
 package controllers;
 
 
+import app.Main;
 import dao.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -162,12 +164,12 @@ public class MainScreenController implements Initializable {
         SwitchController switchController = new SwitchController();
         switchController.switchToSceneLogin(event);
     }
+
+
     public void setSearch(ActionEvent event){
-        ObservableList<Grade> gradeList = null;
         if(msv.getText().equals(".")){
-            gradeList = FXCollections.observableArrayList(GradeDAO.getInstance().selectAll());
-        }
-        else {
+            ProgressBarController.getInstance(18338L).showProgressBar();
+        }else {
             Student student1 = StudentDAO.getInstance().selectByID(msv.getText().toUpperCase());
             if(student1 == null) {
                 System.out.println("Nhập sai mã sinh viên");
@@ -179,9 +181,20 @@ public class MainScreenController implements Initializable {
                 alert.show();
                 return;
             }
-            gradeList = FXCollections.observableArrayList(GradeDAO.getInstance().selectByID(msv.getText().toUpperCase()));
-
         }
+        Task<ObservableList<Grade>> databaseTask = new Task<ObservableList<Grade>>() {
+            @Override
+            protected ObservableList<Grade> call() throws Exception {
+                ObservableList<Grade> gradeList = null;
+                if(msv.getText().equals(".")){
+                    gradeList = FXCollections.observableArrayList(GradeDAO.getInstance().selectAll());
+                }
+                else {
+                    gradeList = FXCollections.observableArrayList(GradeDAO.getInstance().selectByID(msv.getText().toUpperCase()));
+                }
+                return gradeList;
+            }
+        };
 
 
         nameSV.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getStudent().getFirstName() + " "
@@ -194,8 +207,13 @@ public class MainScreenController implements Initializable {
         finalExamScore.setCellValueFactory(new PropertyValueFactory<Grade, String>("finalExamScore"));
         componentScore.setCellValueFactory(new PropertyValueFactory<Grade, String>("componentScore"));
         letterGrade.setCellValueFactory(new PropertyValueFactory<Grade, String>("letterGrade"));
-        tableGrade.setItems(gradeList);
+        databaseTask.setOnSucceeded(e -> {
+            ObservableList<Grade> gradeList = databaseTask.getValue();
+            tableGrade.setItems(gradeList);
+        });
+        new Thread(databaseTask).start();
     }
+
 
     public void exportCsvFile(){
         // Tạo một đối tượng DirectoryChooser
@@ -212,21 +230,35 @@ public class MainScreenController implements Initializable {
             System.out.println("Nguời dùng chưa chọn file");
         }
 
-        String studentID = "";
-        studentID =  msv.getText().toUpperCase();
-        boolean ok = ExportFileHandle.getInstance().exportCsvFile(directory.replace("\\", "\\\\"), studentID);
+        final String studentID =  msv.getText().toUpperCase();
+        String finalDirectory = directory;
+
+        if(studentID.equals(".")) ProgressBarController.getInstance(18338L).showProgressBar();
+        Task<Boolean> databaseTask = new Task<Boolean>() {
+            @Override
+            protected Boolean call() throws Exception {
+                return ExportFileHandle.getInstance().exportCsvFile(finalDirectory.replace("\\", "\\\\"), studentID);
+            }
+        };
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Thông báo");
-        alert.setHeaderText("Thông báo:");
-        if(ok){
-            alert.setContentText("Bạn đã xuất file thành công vui lòng vào thử mục để kiểm  tra \n" +
-                    " (Lưu ý mở file bằng những phần mềm hỗ trợ UTF-8 để tránh \n lỗi font)");
-        }
-        else {
-            alert.setContentText("Đã có lỗi sảy ra vui lòng điền mã sinh viên khoá D21 khoa CNTT\ntheo đúng định dạng PTIT " +
-                    "vào ô trống hoặc nếu muốn in \nbảng điểm tất cả hãy viêt \".\"");
-        }
-        alert.show();
+        databaseTask.setOnSucceeded(e -> {
+            boolean ok = databaseTask.getValue();
+            if(ok){
+                alert.setHeaderText("Xuất file thành công:");
+                alert.setContentText("Bạn đã xuất file thành công vui lòng vào thử mục để kiểm tra \n" +
+                        " (Lưu ý mở file bằng những phần mềm hỗ trợ UTF-8 để tránh \n lỗi font)");
+            }
+            else {
+                alert.setHeaderText("Xuất file thất bại:");
+                alert.setContentText("Đã có lỗi sảy ra vui lòng điền mã sinh viên khoá D21 khoa CNTT\ntheo đúng định dạng PTIT " +
+                        "vào ô trống hoặc nếu muốn in \nbảng điểm tất cả hãy nhập \".\"" +
+                        "\nLưu ý: Nhập thông tin vao ô trống trước khi chọn vị trí lưu");
+            }
+            alert.show();
+        });
+        new Thread(databaseTask).start();
     }
     public void setChangePassWord(ActionEvent event){
         profileForm.setVisible(false);
