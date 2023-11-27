@@ -25,10 +25,19 @@ public class ExportFileHandle {
             grades = GradeDAO.getInstance().selectByIDAllGrade(studentID.toUpperCase());
         }
         // Tên file CSV
-        String directoryFile = directory + "\\bangDiem.csv";
+        String directoryFile = directory + "\\BangDiemSinhVien-" + studentID + ".csv";
         System.out.println(directoryFile);
         try (BufferedWriter csvWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(directoryFile), StandardCharsets.UTF_8))) {
 //             Ghi dữ liệu vào file CSV
+            csvWriter.append("StudentId"); csvWriter.append(",");
+            csvWriter.append("FullName"); csvWriter.append(",");
+            csvWriter.append("AssignmentScore"); csvWriter.append(",");
+            csvWriter.append("ExamScore"); csvWriter.append(",");
+            csvWriter.append("PracticalScore"); csvWriter.append(",");
+            csvWriter.append("FinalExamScore"); csvWriter.append(",");
+            csvWriter.append("ComponentScore"); csvWriter.append(",");
+            csvWriter.append("LetterGrade"); csvWriter.append(",");
+            csvWriter.append("\n");
 
             for(Grade x : grades){
                 csvWriter.append(x.getStudent().getStudentID()); csvWriter.append(",");

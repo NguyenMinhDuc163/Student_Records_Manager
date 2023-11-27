@@ -63,9 +63,23 @@ public class UserDAO implements DAOInterface<User>{
             throw new RuntimeException(e);
         }
     }
+    public int updateUserTeacher(User user) {
+        String url = "UPDATE users SET passWord = ? WHERE teacherID = ? and userName = ?";
+        // try-with-resources
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(url)) {
+            stmt.setString(1, user.getPassWord());
+            stmt.setString(2, user.getTeacherID());
+            stmt.setString(3, user.getUserName());
+            int row = stmt.executeUpdate();
+            System.out.println("Số dữ liệu được cập nhật là: " + row);
+            return row;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-
-//    @Override
+    @Override
     public int delete(User user) {
         String url = "DELETE FROM users WHERE studentID = ?";
         // try-with-resources
@@ -119,7 +133,7 @@ public class UserDAO implements DAOInterface<User>{
         return users;
     }
 
-//    @Override
+    @Override
     public User selectByID(String studentID) {
         String sql = "SELECT * FROM users WHERE studentID = ?";
         User user = null;
@@ -137,6 +151,25 @@ public class UserDAO implements DAOInterface<User>{
         }
         return user;
     }
+
+    public User selectTeacherByID(String teacherID) {
+        String sql = "SELECT * FROM users WHERE teacherID = ?";
+        User user = null;
+        // try-with-resource
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1,teacherID);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                user = new User(rs.getString("userID"), rs.getString("userName"),
+                        rs.getString( "passWord"), rs.getString("studentID"), rs.getString("teacherID"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
+    }
+
 
     public User selectByUserName(String userName) {
         String sql = "SELECT * FROM users WHERE userName = ?";

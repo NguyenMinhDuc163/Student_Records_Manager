@@ -1,6 +1,8 @@
 package service;
 
 import dao.UserDAO;
+import model.Student;
+import model.Teachers;
 import model.User;
 
 public class LoginHandler {
@@ -31,4 +33,5 @@ public class LoginHandler {
     public boolean checkRole(){
         return user.getStudentID() == null;
     }
+
 }

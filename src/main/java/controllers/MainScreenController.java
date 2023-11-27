@@ -40,7 +40,7 @@ import java.util.*;
 
 public class MainScreenController implements Initializable {
     @FXML private Label name, studentID, classRoom, majors, year, user;
-    @FXML private Label identifyLb, facultyLb, majorLb, yearLb;
+    @FXML private Label identifyLb, facultyLb, majorLb, yearLb,PersionRole;
     @FXML private Button profile, home, courseBtt, gradebbt,extrabbt, editbbt, commentbbt;
     @FXML private AnchorPane profileForm, main, courseForm, gradePane, ChangePassWordPane;
     @FXML private TableView<Subject> tableSubject;
@@ -59,7 +59,7 @@ public class MainScreenController implements Initializable {
     @FXML private TextField msvNew, maMonNew,  captcha;
     @FXML private AnchorPane addData, update, deleteData, addDataAll, rolePane;
     @FXML private Button add, up, del, addAll,cancel;
-    @FXML private TextArea notify, thongBao;
+    @FXML private TextArea notify, thongBao,captchaID;
     @FXML private TextField msvx, mmh, attendance,finalExam, assignment,exam, practical, component, letter;
     @FXML private TableView<ClassSchedule> scheduleTable;
     @FXML private TableColumn<ClassSchedule, String> time, monday, tuesday, wednesday, thursday, friday,saturday;
@@ -69,7 +69,10 @@ public class MainScreenController implements Initializable {
     private OutputStream outputStream;
 
     private Map<Label, ChoiceBox> choiceList = new LinkedHashMap<>();
-    Student student;
+    private Student student;
+    private Teachers teacher;
+    private String captchaRoot = "";
+
     public Scene setScene() throws IOException {
         URL url = new File("src/main/resources/view/MainScreens.fxml").toURI().toURL();
         URL css = new File("src/main/resources/css/cssMainScreen.css").toURI().toURL();
@@ -161,26 +164,37 @@ public class MainScreenController implements Initializable {
         SwitchController switchController = new SwitchController();
         switchController.switchToSceneLogin(event);
     }
-
-
+//userAllowed.matches("^B21DCCN\\d{3}$")
+    public void showError(String text, String title, String header){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setHeight(280);
+        alert.setContentText(text);
+        alert.show();
+    }
     public void setSearch(ActionEvent event){
-        if(msv.getText().equals(".")){
-            ProgressBarController.getInstance(18338L).showProgressBar();
-        }else {
-            Student student1 = StudentDAO.getInstance().selectByID(msv.getText().toUpperCase());
+        String studentID = msv.getText().toUpperCase();
+        if(studentID.matches("^B21DCCN\\d{3}$")) {
+            Student student1 = StudentDAO.getInstance().selectByID(studentID);
             if(student1 == null) {
                 System.out.println("Nhập sai mã sinh viên");
-
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Nhập sai thông tin");
-                alert.setHeaderText("Kiểm tra lại thông tin:");
-                alert.setHeight(250);
-                alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại đúng cú pháp mã sinh viên của PTIT.\n\n" +
-                        "Hoặc nhập kí tự \".\" để tra cứu bảng điểm tất cả sinh viên");
-                alert.show();
+                showError("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại đúng cú pháp mã sinh viên của PTIT.\n\n" +
+                        "Đối với giảng viên có thể sử dụng nhập kí tự \".\" để tra cứu bảng điểm tất cả sinh viên",
+                        "Nhập sai thông tin", "Kiểm tra lại thông tin:");
                 return;
             }
         }
+        else if(studentID.equals(".") && teacher != null){
+            ProgressBarController.getInstance(18338L).showProgressBar();
+        }
+        else{
+            showError("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại đúng cú pháp mã sinh viên của PTIT.\n\n" +
+                            "Đối với giảng viên có thể sử dụng nhập kí tự \".\" để tra cứu bảng điểm tất cả sinh viên",
+                    "Nhập sai thông tin", "Kiểm tra lại thông tin:");
+            return;
+        }
+
         Task<ObservableList<Grade>> databaseTask = new Task<ObservableList<Grade>>() {
             @Override
             protected ObservableList<Grade> call() throws Exception {
@@ -234,7 +248,13 @@ public class MainScreenController implements Initializable {
         final String studentID =  msv.getText().toUpperCase();
         String finalDirectory = directory;
 
-        if(studentID.equals(".") && userChoose) ProgressBarController.getInstance(18338L).showProgressBar();
+        if(studentID.equals(".") && userChoose && teacher != null) ProgressBarController.getInstance(18338L).showProgressBar();
+        if(studentID.equals(".") && userChoose && teacher == null) {
+            showError("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại đúng cú pháp mã sinh viên của PTIT.\n\n" +
+                            "Đối với giảng viên có thể sử dụng nhập kí tự \".\" để xuất file bảng điểm tất cả sinh viên",
+                    "Nhập sai thông tin", "Kiểm tra lại thông tin:");
+            return;
+        }
         Task<Boolean> databaseTask = new Task<Boolean>() {
             @Override
             protected Boolean call() throws Exception {
@@ -242,28 +262,25 @@ public class MainScreenController implements Initializable {
             }
         };
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Thông báo");
         databaseTask.setOnSucceeded(e -> {
             boolean ok = databaseTask.getValue();
             if(ok){
-                alert.setHeaderText("Xuất file thành công:");
-                alert.setContentText("Bạn đã xuất file thành công vui lòng vào thử mục để kiểm tra \n" +
-                        " (Lưu ý mở file bằng những phần mềm hỗ trợ UTF-8 để tránh \n lỗi font)");
+                showError("Bạn đã xuất file thành công vui lòng vào thử mục để kiểm tra \n" +
+                        " (Lưu ý mở file bằng những phần mềm hỗ trợ UTF-8 để tránh \n lỗi font)","Thông báo",
+                        "Xuất file thành công:");
             }
             else {
-                alert.setHeaderText("Xuất file thất bại:");
-                alert.setContentText("Đã có lỗi sảy ra vui lòng điền mã sinh viên khoá D21 khoa CNTT\ntheo đúng định dạng PTIT " +
+                showError("Đã có lỗi sảy ra vui lòng điền mã sinh viên khoá D21 khoa CNTT\ntheo đúng định dạng PTIT " +
                         "vào ô trống hoặc nếu muốn in \nbảng điểm tất cả hãy nhập \".\"" +
-                        "\nLưu ý: Nhập thông tin vao ô trống trước khi chọn vị trí lưu");
+                        "\nLưu ý: Nhập thông tin vao ô trống trước khi chọn vị trí lưu", "Thông báo", "Xuất file thất bại:");
             }
-            alert.show();
         });
         new Thread(databaseTask).start();
     }
     public void setChangePassWord(ActionEvent event){
         profileForm.setVisible(false);
-        captcha.setText(UUID.randomUUID().toString().substring(0,6));
+        captchaRoot = UUID.randomUUID().toString().substring(0,6);
+        captchaID.setText(captchaRoot);
         ChangePassWordPane.setVisible(true);
     }
     public void setConfirm(ActionEvent event){
@@ -273,7 +290,14 @@ public class MainScreenController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Thay đổi mật khẩu");
             alert.setHeaderText("Thông báo:");
-            if(ChangePassWordHandl.updatePassWord(oldPassWord, newPassWord, confirmPassWord, student.getStudentID())){
+            boolean userAllowed = false;
+            String captchaInput = captcha.getText();
+            if(student == null){
+                userAllowed = ChangePassWordHandl.updatePassWord(oldPassWord, newPassWord, confirmPassWord, teacher.getTeacherID(), captchaRoot, captchaInput);
+            }else {
+                userAllowed = ChangePassWordHandl.updatePassWord(oldPassWord, newPassWord, confirmPassWord, student.getStudentID(),captchaRoot, captchaInput);
+            }
+            if(userAllowed){
                 alert.setContentText("Đổi mật khẩu thành công");
                 clearData();
             }
@@ -281,6 +305,8 @@ public class MainScreenController implements Initializable {
                 alert.setContentText("Đổi mật khẩu thất bai, vui lòng kiểm tra lại thông tin");
                 clearData();
             }
+            captchaRoot = UUID.randomUUID().toString().substring(0,6);
+            captchaID.setText(captchaRoot);
             alert.show();
     }
     public void setCancel(ActionEvent event){
@@ -542,12 +568,13 @@ public class MainScreenController implements Initializable {
             majorLb.setText("Phòng ban");
             yearLb.setVisible(false);
             year.setVisible(false);
-            Teachers teachers = TeacherDao.getInstance().selectByID(ID);
-            name.setText(teachers.getTeacherName());
-            user.setText(teachers.getTeacherName());
-            studentID.setText(teachers.getTeacherID());
-            classRoom.setText(teachers.getFaculty());
-            majors.setText(teachers.getDepartment());
+            teacher = TeacherDao.getInstance().selectByID(ID);
+            name.setText(teacher.getTeacherName());
+            user.setText(teacher.getTeacherName());
+            studentID.setText(teacher.getTeacherID());
+            classRoom.setText(teacher.getFaculty());
+            majors.setText(teacher.getDepartment());
+            PersionRole.setText("Giảng viên");
         }else {
             student = StudentDAO.getInstance().selectByID(ID);
             Classes classes= ClassesDAO.getInstance().selectByID(ID);
@@ -557,6 +584,7 @@ public class MainScreenController implements Initializable {
             majors.setText("Công nghệ thông tin");
             year.setText("D21");
             user.setText(student.getFirstName() + " " + student.getLastName());
+            PersionRole.setText("Sinh viên");
         }
 
 

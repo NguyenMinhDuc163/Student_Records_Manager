@@ -121,6 +121,11 @@
                   <Image url="@../images/message.png" />
                </image>
             </ImageView>
+            <Label fx:id="PersionRole" layoutX="117.0" layoutY="84.0" prefHeight="21.0" prefWidth="82.0" text="Giảng viên">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </left>
@@ -278,13 +283,13 @@
                   <Button fx:id="search" layoutX="344.0" layoutY="58.0" mnemonicParsing="false" onAction="#setSearch" styleClass="custom-button" text="Tra cứu" />
                   <AnchorPane fx:id="rolePane" layoutX="618.0" layoutY="77.0" prefHeight="78.0" prefWidth="181.0" visible="false">
                      <children>
-                        <Button fx:id="editbbt" layoutX="14.0" layoutY="44.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="38.0" prefWidth="128.0" styleClass="custom-button" text="Chỉnh sửa" />
+                        <Button fx:id="editbbt" layoutX="21.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="38.0" prefWidth="117.0" styleClass="custom-button" text="Chỉnh sửa" />
                      </children>
                   </AnchorPane>
-                  <Button layoutX="636.0" layoutY="55.0" mnemonicParsing="false" onAction="#exportCsvFile" prefHeight="38.0" prefWidth="121.0" styleClass="custom-button" text="Xuất dữ liệu" />
+                  <Button layoutX="638.0" layoutY="55.0" mnemonicParsing="false" onAction="#exportCsvFile" prefHeight="38.0" prefWidth="121.0" styleClass="custom-button" text="Xuất dữ liệu" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="ChangePassWordPane" prefHeight="681.0" prefWidth="907.0" visible="false">
+            <AnchorPane fx:id="ChangePassWordPane" prefHeight="681.0" prefWidth="907.0">
                <children>
                   <Label layoutX="65.0" layoutY="66.0" prefHeight="36.0" prefWidth="236.0" text="Thay đổi mật khẩu">
                      <font>
@@ -329,9 +334,14 @@
                   <Button layoutX="649.0" layoutY="526.0" mnemonicParsing="false" onAction="#setConfirm" prefHeight="52.0" prefWidth="114.0" styleClass="custom-button" text="Xác nhận" />
                   <Button layoutX="433.0" layoutY="525.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="52.0" prefWidth="111.0" styleClass="custom-button" text="Huỷ bỏ" />
                   <TextField fx:id="captcha" layoutX="417.0" layoutY="437.0" prefHeight="39.0" prefWidth="360.0" styleClass="textfield-rounded" />
+                  <TextArea fx:id="captchaID" disable="true" editable="false" layoutX="110.0" layoutY="505.0" opacity="0.7" prefHeight="104.0" prefWidth="200.0" promptText="122345" style="-fx-text-alignment: center;" styleClass="custom-textarea-captcha">
+                     <font>
+                        <Font name="System Bold Italic" size="30.0" />
+                     </font>
+                  </TextArea>
                </children>
             </AnchorPane>
-            <BorderPane fx:id="borderPaneGrade" prefHeight="683.0" prefWidth="909.0" styleClass="main-pane-center">
+            <BorderPane fx:id="borderPaneGrade" prefHeight="683.0" prefWidth="909.0" styleClass="main-pane-center" visible="false">
                <top>
                   <Label prefHeight="52.0" prefWidth="588.0" text="Dự tính điểm bạn sẽ đạt được trong những kì tới" BorderPane.alignment="CENTER">
                      <font>

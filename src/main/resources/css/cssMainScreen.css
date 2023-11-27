@@ -390,4 +390,11 @@
         -fx-background-position: center;
 }
 
+.custom-textarea-captcha {
+        -fx-background-image: url("../images/captcha.png");
+        -fx-background-size: cover;
+        -fx-background-repeat: no-repeat;
+        -fx-background-position: center;
+}
+
 
