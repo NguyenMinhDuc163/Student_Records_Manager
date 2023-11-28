@@ -37,19 +37,18 @@ public class ForgotPassController {
     public void setButtonSubmit(ActionEvent event){
         String userName = username.getText();
         String emailText = email.getText();
-        String studentID = studentid.getText().toUpperCase();
+        String personIDcode  = studentid.getText().toUpperCase();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Register");
 //         kiem tra dieu kien
-        boolean isCheck = ForgotPasswordHandl.getInstance().checkSendMail(userName, studentID, emailText);
+        boolean isCheck = ForgotPasswordHandl.getInstance().checkSendMail(userName, personIDcode , emailText);
         if (isCheck) ProgressBarController.getInstance(13226L).showProgressBar();
         Task<Boolean> sendMailTask = new Task<Boolean>() {
             @Override
             protected Boolean call() throws Exception {
-                boolean isCheckConditions = ForgotPasswordHandl.getInstance().checkSendMail(userName, studentID, emailText);
+                boolean isCheckConditions = ForgotPasswordHandl.getInstance().checkSendMail(userName, personIDcode , emailText);
                 if(!isCheckConditions) return false;
-                boolean isCheckSendMail = ForgotPasswordHandl.confirmPasswordResetRequest(userName, studentID, emailText);
-                return isCheckSendMail;
+                return ForgotPasswordHandl.confirmPasswordResetRequest(userName, personIDcode , emailText);
             }
         };
 
