@@ -13,7 +13,8 @@ public class JDBCUtil {
         try {
             con = DriverManager.getConnection(url, userName, passWord);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Lỗi: Chưa kết nối cơ sở dữ liệu!!!");
+            e.printStackTrace();
         }
         return con;
     }

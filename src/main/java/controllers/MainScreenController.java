@@ -169,7 +169,7 @@ public class MainScreenController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(header);
-        alert.setHeight(280);
+        alert.setHeight(300);
         alert.setContentText(text);
         alert.show();
     }
@@ -180,7 +180,8 @@ public class MainScreenController implements Initializable {
             if(student1 == null) {
                 System.out.println("Nhập sai mã sinh viên");
                 showError("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại đúng cú pháp mã sinh viên của PTIT.\n\n" +
-                        "Đối với giảng viên có thể sử dụng nhập kí tự \".\" để tra cứu bảng điểm tất cả sinh viên",
+                        "Đối với giảng viên có thể sử dụng nhập kí tự \".\" để tra cứu bảng điểm tất cả sinh viên" +
+                                "\nDữ liệu được cập nhật đến kì 2 năm 2021-2022: Khoá D21-CNTT",
                         "Nhập sai thông tin", "Kiểm tra lại thông tin:");
                 return;
             }
@@ -190,7 +191,8 @@ public class MainScreenController implements Initializable {
         }
         else{
             showError("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại đúng cú pháp mã sinh viên của PTIT.\n\n" +
-                            "Đối với giảng viên có thể sử dụng nhập kí tự \".\" để tra cứu bảng điểm tất cả sinh viên",
+                            "Đối với giảng viên có thể sử dụng nhập kí tự \".\" để tra cứu bảng điểm tất cả sinh viên" +
+                            "\nDữ liệu được cập nhật đến kì 2 năm 2021-2022: Khoá D21-CNTT",
                     "Nhập sai thông tin", "Kiểm tra lại thông tin:");
             return;
         }
@@ -248,10 +250,13 @@ public class MainScreenController implements Initializable {
         final String studentID =  msv.getText().toUpperCase();
         String finalDirectory = directory;
 
-        if(studentID.equals(".") && userChoose && teacher != null) ProgressBarController.getInstance(18338L).showProgressBar();
+        if(studentID.equals(".") && userChoose && teacher != null) {
+            ProgressBarController.getInstance(18338L).showProgressBar();
+        }
         if(studentID.equals(".") && userChoose && teacher == null) {
             showError("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại đúng cú pháp mã sinh viên của PTIT.\n\n" +
-                            "Đối với giảng viên có thể sử dụng nhập kí tự \".\" để xuất file bảng điểm tất cả sinh viên",
+                            "Đối với giảng viên có thể sử dụng nhập kí tự \".\" để xuất file bảng điểm tất cả sinh viên" +
+                            "\nDữ liệu được cập nhật đến kì 2 năm 2021-2022: Khoá D21-CNTT",
                     "Nhập sai thông tin", "Kiểm tra lại thông tin:");
             return;
         }
@@ -272,7 +277,7 @@ public class MainScreenController implements Initializable {
             else {
                 showError("Đã có lỗi sảy ra vui lòng điền mã sinh viên khoá D21 khoa CNTT\ntheo đúng định dạng PTIT " +
                         "vào ô trống hoặc nếu muốn in \nbảng điểm tất cả hãy nhập \".\"" +
-                        "\nLưu ý: Nhập thông tin vao ô trống trước khi chọn vị trí lưu", "Thông báo", "Xuất file thất bại:");
+                        "\nLưu ý: Nhập thông tin vào ô trống trước khi chọn vị trí lưu", "Thông báo", "Xuất file thất bại:");
             }
         });
         new Thread(databaseTask).start();
@@ -403,7 +408,7 @@ public class MainScreenController implements Initializable {
         String classID = maLop.getText().toUpperCase();
         update.createProfile(studentID, firstName, lastName, courseID, courseName, classID,
                 cc.getText(), thi.getText(), bt.getText(), kt.getText(), TH.getText(), TBHP.getText(), heChu.getText());
-        notify.appendText("\nĐã cập nhật thông tin cho sinh viên: " + studentID + "\n");
+        notify.appendText("\nĐã thêm thông tin cho sinh viên: " + studentID + "\n");
     }
     public void setDeleteData(ActionEvent event){
         String studentID = msvn.getText();

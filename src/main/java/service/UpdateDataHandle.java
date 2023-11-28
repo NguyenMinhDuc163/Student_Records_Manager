@@ -18,17 +18,21 @@ public class UpdateDataHandle {
             Student student1 = StudentDAO.getInstance().selectByID(studentID);
             Classes classes1 = ClassesDAO.getInstance().selectByID(classRoom);
             Course course1 = CourseDAO.getInstance().selectByID(courseID);
-            if(student1 == null)
+            if(student1 == null){
+                System.out.println(1);
                 StudentDAO.getInstance().insert(student);
+            }
             if(classes1 == null && student1 == null){
+                System.out.println(2);
                 ClassesDAO.getInstance().insert(classes);
             }
 
             if(course1 == null){
+                System.out.println(3);
                 CourseDAO.getInstance().insert(course);
             }
-            if(course1 == null && student1 == null)
                 GradeDAO.getInstance().insert(grade);
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -40,7 +44,6 @@ public class UpdateDataHandle {
         Course course = CourseDAO.getInstance().selectByID(courseID);
         Grade grade = new Grade(student, course, "5", bt, kt, TH, cc, thi, TBHP, heChu);
         GradeDAO.getInstance().update(grade);
-        System.out.println(grade);
     }
     public void deleteData(String studentID, String courseID){
         GradeDAO.getInstance().delete(studentID, courseID);

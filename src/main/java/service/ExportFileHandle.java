@@ -20,6 +20,7 @@ public class ExportFileHandle {
         ArrayList<Grade> grades = null;
         if(!studentID.matches("^B21DCCN\\d{3}$") && !studentID.equals(".")) return false;
         if(studentID.equals(".")){
+            studentID = "ToanTruong";
                     grades = GradeDAO.getInstance().selectAll();
         }else {
             grades = GradeDAO.getInstance().selectByIDAllGrade(studentID.toUpperCase());

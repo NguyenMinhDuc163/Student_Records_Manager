@@ -48,9 +48,10 @@ public class RegisterController {
         String Email = email.getText();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Register");
-        alert.setHeaderText("Login Notification");
+        alert.setHeight(250);
+        alert.setHeaderText("Thông báo đăng kí!");
         if (registerHandler.isRegister(nameText, usernameText, passWordText, confirmPassText, studentID, Email)) {
-            alert.setContentText("Register successfully");
+            alert.setContentText("Bạn đã đăng kí tài khoản thành công");
             // set hanh dong sau khi an ok o alert
             alert.setOnCloseRequest(e -> {
                 // neu thanh cong se ve man hinh login
@@ -62,7 +63,8 @@ public class RegisterController {
                 }
             });
         } else {
-            alert.setContentText("Registration failed");
+            alert.setContentText("Đăng kí thất bại, vui lòng kiểm tra lại thông tin\nLưu ý: mã sinh viên đúng chuẩn PTIT B21DCCN___ " +
+                    "\n mã giảng viên theo định dạng GV__");
         }
         alert.show();
     }

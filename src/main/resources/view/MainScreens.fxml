@@ -223,7 +223,7 @@
                            </children></AnchorPane>
                      </content>
                   </TitledPane>
-                  <DatePicker layoutX="495.0" layoutY="156.0">
+                  <DatePicker disable="true" layoutX="495.0" layoutY="156.0" promptText="28/11/2023">
                      <styleClass>
                         <String fx:value="date-picker-cell" />
                         <String fx:value="date-picker-day-button" />
@@ -289,7 +289,7 @@
                   <Button layoutX="638.0" layoutY="55.0" mnemonicParsing="false" onAction="#exportCsvFile" prefHeight="38.0" prefWidth="121.0" styleClass="custom-button" text="Xuất dữ liệu" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="ChangePassWordPane" prefHeight="681.0" prefWidth="907.0">
+            <AnchorPane fx:id="ChangePassWordPane" prefHeight="681.0" prefWidth="907.0" visible="false">
                <children>
                   <Label layoutX="65.0" layoutY="66.0" prefHeight="36.0" prefWidth="236.0" text="Thay đổi mật khẩu">
                      <font>
@@ -483,7 +483,7 @@
                   </AnchorPane>
                </top>
             </BorderPane>
-            <BorderPane fx:id="chatRoom" prefHeight="688.0" prefWidth="914.0" visible="false">
+            <BorderPane fx:id="chatRoom" prefHeight="688.0" prefWidth="914.0">
                <bottom>
                   <AnchorPane prefHeight="155.0" prefWidth="914.0" BorderPane.alignment="CENTER">
                      <children>
@@ -495,7 +495,7 @@
                <center>
                   <AnchorPane prefHeight="510.0" prefWidth="914.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextArea fx:id="chatScreen" editable="false" layoutX="39.0" layoutY="117.0" maxHeight="396.0" maxWidth="587.0" prefHeight="396.0" prefWidth="587.0" styleClass="text-area-message" />
+                        <TextArea fx:id="chatScreen" editable="false" layoutX="39.0" layoutY="117.0" maxHeight="396.0" maxWidth="587.0" prefHeight="396.0" prefWidth="587.0" promptText="Để chat nhièu người vui lòng bật chế multiple instances (Theo Video hướng dẫn hoặc ALT + U), Sau đó run những user mà bạn muốn." styleClass="text-area-message" />
                         <ListView fx:id="onlineUsersListView" layoutX="688.0" layoutY="81.0" prefHeight="400.0" prefWidth="200.0" />
                         <Label layoutX="274.0" layoutY="35.0" text="Chat Room">
                            <font>
