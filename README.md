@@ -44,3 +44,5 @@ Chắc chắn rằng bạn đã cài đặt các phiên bản phần mềm đư�
 - Khởi động Mysql workbench hoặc phần mềm khác để import cơ sở dữ liệu. Tải CSDL: [Tại đây](https://drive.google.com/file/d/15QBWPeKoPaH5fbJSrpY9L62QR8gJGxab/view?usp=sharing)
 - Quay lại project vào file **../src/main/dao/JDBCUtil** đổi tên userName, passWord, tên DB theo thiết bị của bạn
 - Vào app/ main.java để run chương trình.
+## Video Hướng dẫn cài đặt
+youtobe: [Tại đây](https://youtu.be/QkTtiNl4Rzk)
