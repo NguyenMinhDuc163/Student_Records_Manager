@@ -1,7 +1,9 @@
 package util;
 
 import dao.StudentDAO;
+import dao.TeacherDao;
 import model.Student;
+import model.Teachers;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -15,7 +17,7 @@ public class EmailHandler {
     final static String password = "rbaq rlfc wemx bktu";
 
 
-    public static boolean sendMail(String to, String newPassWord, String studentID){
+    public static boolean sendMail(String to, String newPassWord, String personIDcode ){
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
@@ -39,10 +41,18 @@ public class EmailHandler {
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
             msg.setSubject("Mật khẩu mới của bạn ");
             msg.setSentDate(new Date());
-            Student student = StudentDAO.getInstance().selectByID(studentID);
+            String Name;
+            if(personIDcode .matches("^B21DCCN\\d{3}$")){
+                Student student = StudentDAO.getInstance().selectByID(personIDcode);
+                Name = student.getFirstName() + " " + student.getLastName();
+            }else {
+                Teachers teachers = TeacherDao.getInstance().selectByID(personIDcode);
+                Name = teachers.getTeacherName();
+            }
+
 
             String updatedPassword = "<strong><em>" + newPassWord + "</em></strong>";
-            String studentName = "<strong><em>" + student.getFirstName() + " " + student.getLastName() + "</em></strong>";
+            String studentName = "<strong><em>" + Name + "</em></strong>";
 
             String emailContent = "Chào " + studentName + "," + "<br><br>" +
                     "Chúng tôi đã nhận được yêu cầu đặt lại mật khẩu của bạn. Dưới đây là thông tin mật khẩu mới để bạn đăng nhập vào tài khoản của mình:" + "<br><br>" +
