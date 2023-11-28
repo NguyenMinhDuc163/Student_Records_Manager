@@ -50,7 +50,8 @@ public class RegisterController {
         alert.setTitle("Register");
         alert.setHeight(250);
         alert.setHeaderText("Thông báo đăng kí!");
-        if (registerHandler.isRegister(nameText, usernameText, passWordText, confirmPassText, studentID, Email)) {
+        int isRegister =  registerHandler.isRegister(nameText, usernameText, passWordText, confirmPassText, studentID, Email);
+        if (isRegister == 1) {
             alert.setContentText("Bạn đã đăng kí tài khoản thành công");
             // set hanh dong sau khi an ok o alert
             alert.setOnCloseRequest(e -> {
@@ -62,12 +63,21 @@ public class RegisterController {
                     throw new RuntimeException(ex);
                 }
             });
-        } else {
+        } else if(isRegister == 0){
             alert.setContentText("Đăng kí thất bại, vui lòng kiểm tra lại thông tin\nLưu ý: mã sinh viên đúng chuẩn PTIT B21DCCN___ " +
                     "\n mã giảng viên theo định dạng GV__");
         }
+        else if(isRegister == 2){
+            alert.setContentText("Mã sinh viên đã được sử dụng để tạo tài khoản vui lòng nhập mã sinh viên khác " +
+                    "\nNếu bạn đã có tài khoản nhưng không nhớ mật khẩu hãy chuyển sang màn hình chính và chọn tính năng xin lại mật khẩu");
+        }
+        else {
+            alert.setContentText("User Name đã được sử dụng để tạo tài khoản vui lòng nhập User Name khác " +
+                    "\nNếu bạn đã có tài khoản nhưng không nhớ mật khẩu hãy chuyển sang màn hình chính và chọn tính năng xin lại mật khẩu");
+        }
         alert.show();
     }
+
     public void setCancel(ActionEvent event) throws IOException {
         SwitchController switchController = new SwitchController();
         switchController.switchToSceneLogin(event);

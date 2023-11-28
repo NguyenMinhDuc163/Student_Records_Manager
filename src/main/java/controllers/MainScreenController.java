@@ -298,8 +298,10 @@ public class MainScreenController implements Initializable {
             boolean userAllowed = false;
             String captchaInput = captcha.getText();
             if(student == null){
+                System.out.println(String.join(" ", oldPassWord, newPassWord, confirmPassWord, teacher.getTeacherID(), captchaRoot, captchaInput));
                 userAllowed = ChangePassWordHandl.updatePassWord(oldPassWord, newPassWord, confirmPassWord, teacher.getTeacherID(), captchaRoot, captchaInput);
             }else {
+                System.out.println(String.join(" ", oldPassWord, newPassWord, confirmPassWord, student.getStudentID(), captchaRoot, captchaInput));
                 userAllowed = ChangePassWordHandl.updatePassWord(oldPassWord, newPassWord, confirmPassWord, student.getStudentID(),captchaRoot, captchaInput);
             }
             if(userAllowed){

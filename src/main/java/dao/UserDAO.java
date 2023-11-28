@@ -116,7 +116,7 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public ArrayList<User> selectByCondition(String condition) {
-        String sql = "SELECT * FROM users WHERE ?;";
+        String sql = "SELECT * FROM users WHERE ?";
         // try-with-resource
         ArrayList<User> users = new ArrayList<>();
         try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -169,7 +169,6 @@ public class UserDAO implements DAOInterface<User>{
         }
         return user;
     }
-
 
     public User selectByUserName(String userName) {
         String sql = "SELECT * FROM users WHERE userName = ?";
