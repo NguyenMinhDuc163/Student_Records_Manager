@@ -10,7 +10,7 @@ Phần mềm giúp hỗ trợ các chức năng
 
 Để cài đặt dự án, bạn cần chuẩn bị các điều kiện sau:
 
-1. Java Development Kit (JDK) 20.0.1 trở lên.
+1. Java Development Kit (JDK) 11 -> 20.0.1 trở lên.
 2. Intellij IDE hoặc IDE tương tự ( Khuyến khích dùng Intellij IDE )
 3. Mysql Server và công cụ quản lý cơ sở dữ liệu
 4. Maven 3.11.0 trở lên.
@@ -20,8 +20,6 @@ Sau khi bạn đã cài đặt JDK và Maven, hãy thực hiện các bước sa
 
 ```sh
 git clone https://github.com/NguyenMinhDuc163/Student_Records_Manager.git
-cd Student_Records_Manager
-mvn clean javafx:run
 ```
 ### Nếu không sử dụng maven hãy cài thủ công các thư viện sau:
 - [JavaFX Controls 20.0.1](https://mvnrepository.com/artifact/org.openjfx/javafx-controls/20.0.1)
@@ -43,6 +41,6 @@ Chắc chắn rằng bạn đã cài đặt các phiên bản phần mềm đư�
 
 ## Sử dụng
 - Khởi đông intelij IDE đợi phần mềm khởi động và thêm những thứ cần thiết
-- Khởi động Mysql workbench hoặc phần mềm khác để import cơ sở dữ liệu [DATA BASE](https://drive.google.com/file/d/1W3d3SFNPUaJ_eBFvalbgjRiW2PXUjT8t/view?usp=sharing)
+- Khởi động Mysql workbench hoặc phần mềm khác để import cơ sở dữ liệu. Tải CSDL: [Tại đây](https://drive.google.com/file/d/15QBWPeKoPaH5fbJSrpY9L62QR8gJGxab/view?usp=sharing)
 - Quay lại project vào file **../src/main/dao/JDBCUtil** đổi tên userName, passWord, tên DB theo thiết bị của bạn
 - Vào app/ main.java để run chương trình.
