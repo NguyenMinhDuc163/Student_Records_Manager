@@ -41,7 +41,7 @@ Chắc chắn rằng bạn đã cài đặt các phiên bản phần mềm đư�
 
 ## Sử dụng
 - Khởi đông intelij IDE đợi phần mềm khởi động và thêm những thứ cần thiết
-- Khởi động Mysql workbench hoặc phần mềm khác để import cơ sở dữ liệu. Tải CSDL: [Tại đây](https://drive.google.com/file/d/1ArSaVDe0IeV29a-de7FDTWgmLSmlYxWF/view?usp=sharing)
+- Khởi động Mysql workbench hoặc phần mềm khác để import cơ sở dữ liệu. Tải CSDL: [Tại đây](https://drive.google.com/file/d/1pImrIgXBMmWHqRxZvbBTcfKZrUs-J4qu/view?usp=sharing)
 - Quay lại project vào file **../src/main/dao/JDBCUtil** đổi tên userName, passWord, tên DB theo thiết bị của bạn
 - Vào app/ main.java để run chương trình.
 ## Video Hướng dẫn cài đặt
