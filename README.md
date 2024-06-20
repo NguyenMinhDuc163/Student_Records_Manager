@@ -45,4 +45,4 @@ Chắc chắn rằng bạn đã cài đặt các phiên bản phần mềm đư�
 - Quay lại project vào file **../src/main/dao/JDBCUtil** đổi tên userName, passWord, tên DB theo thiết bị của bạn
 - Vào app/ main.java để run chương trình.
 ## Video Hướng dẫn cài đặt
-youtobe: [Tại đây](https://youtu.be/QkTtiNl4Rzk) 
+youtube: [Tại đây](https://youtu.be/QkTtiNl4Rzk) 
